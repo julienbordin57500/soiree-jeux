@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0b0820">
+<title>Soirée Jeux</title>
+<style>
+:root{--bg:#0b0820;--card:#17123a;--pink:#ff2bd6;--cyan:#22e4ff;--green:#39ff88;--yellow:#ffe14d;--red:#ff4d6d;--txt:#f4f1ff;--mut:#9a93c9}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;overscroll-behavior:none}
+body{background:radial-gradient(circle at 20% 0%,#2a1066 0,transparent 45%),radial-gradient(circle at 90% 100%,#06395c 0,transparent 45%),var(--bg);background-attachment:fixed}
+#app{max-width:520px;margin:0 auto;min-height:100%;padding:max(18px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px}
+h1{margin:6px 0 0;font-size:34px;text-align:center;letter-spacing:1px;color:#fff;text-shadow:0 0 8px var(--pink),0 0 24px var(--pink)}
+h2{margin:0;font-size:22px}
+.sub{text-align:center;color:var(--mut);margin:0}
+.card{background:var(--card);border:1px solid #2c2564;border-radius:18px;padding:16px}
+.tile{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border-radius:18px;padding:18px;border:2px solid;background:var(--card);color:var(--txt);font-size:18px;font-weight:700;cursor:pointer}
+.tile small{display:block;font-weight:400;color:var(--mut);font-size:13px;margin-top:2px}
+.tile .ic{font-size:34px}
+.t1{border-color:var(--cyan);box-shadow:0 0 14px #22e4ff55}
+.t2{border-color:var(--pink);box-shadow:0 0 14px #ff2bd655}
+.t3{border-color:var(--green);box-shadow:0 0 14px #39ff8855}
+.btn{border:0;border-radius:14px;padding:15px 18px;font-size:17px;font-weight:700;color:#0b0820;background:var(--cyan);cursor:pointer;width:100%}
+.btn.pink{background:var(--pink);color:#fff}.btn.green{background:var(--green)}.btn.red{background:var(--red);color:#fff}
+.btn.ghost{background:transparent;border:1px solid #3a3380;color:var(--txt)}
+.btn:active,.tile:active,.opt:active{transform:scale(.98)}
+.row{display:flex;gap:10px}
+.players{display:flex;flex-direction:column;gap:8px}
+.players input{flex:1;background:#0f0b2b;border:1px solid #3a3380;border-radius:12px;color:var(--txt);padding:12px;font-size:16px;min-width:0}
+.x{width:46px;border-radius:12px;border:1px solid #3a3380;background:transparent;color:var(--mut);font-size:20px}
+.score{display:flex;gap:8px;overflow-x:auto}
+.chip{flex:1;min-width:76px;text-align:center;background:var(--card);border:1px solid #2c2564;border-radius:12px;padding:8px 6px;font-size:13px;color:var(--mut)}
+.chip b{display:block;font-size:22px;color:#fff}
+.chip.on{border-color:var(--yellow);box-shadow:0 0 12px #ffe14d66;color:var(--yellow)}
+.top{display:flex;align-items:center;justify-content:space-between;color:var(--mut);font-size:14px}
+.top button{background:none;border:0;color:var(--mut);font-size:15px}
+.q{font-size:21px;font-weight:700;line-height:1.3;text-align:center;padding:10px 0}
+.cat{text-align:center;color:var(--cyan);font-size:13px;text-transform:uppercase;letter-spacing:2px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{border:2px solid #3a3380;background:var(--card);color:var(--txt);border-radius:14px;padding:15px;font-size:17px;text-align:left;cursor:pointer}
+.opt.ok{border-color:var(--green);background:#0e3a24}.opt.ko{border-color:var(--red);background:#401224}
+.big{font-size:56px;text-align:center}
+.center{text-align:center}
+.word{font-size:38px;font-weight:800;text-align:center;color:var(--yellow);text-shadow:0 0 14px #ffe14d88;padding:18px 0}
+.timer{font-size:44px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums}
+canvas{width:100%;background:#fff;border-radius:16px;touch-action:none;display:block}
+.pal{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}
+.dot{width:34px;height:34px;border-radius:50%;border:3px solid transparent}
+.dot.on{border-color:#888}
+.vinyl{width:140px;height:140px;border-radius:50%;margin:8px auto;background:conic-gradient(#111,#333,#111,#333,#111);border:6px solid var(--pink);box-shadow:0 0 28px var(--pink);display:flex;align-items:center;justify-content:center;font-size:44px}
+.vinyl.spin{animation:sp 2s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pill{border:1px solid #3a3380;background:transparent;color:var(--txt);border-radius:999px;padding:9px 14px;font-size:15px}
+.pill.on{background:var(--pink);border-color:var(--pink);color:#fff}
+.win{font-size:26px;text-align:center;color:var(--yellow)}
+.err{color:var(--red);text-align:center}
+#app{position:relative}
+.mute{position:absolute;right:12px;top:6px;background:none;border:0;font-size:22px;color:var(--txt)}
+.ov{position:fixed;inset:0;z-index:50;background:rgba(6,4,24,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;animation:fi .2s;padding:20px;text-align:center}
+.ov.out{opacity:0;transition:opacity .2s}
+@keyframes fi{from{opacity:0}}
+.avb{animation:bounce .7s cubic-bezier(.3,1.6,.5,1);filter:drop-shadow(0 0 22px var(--pink))}
+@keyframes bounce{0%{transform:scale(.2) translateY(80px)}100%{transform:none}}
+.avb.sad{filter:grayscale(.8);animation:shake .5s}
+@keyframes shake{25%{transform:translateX(-12px)}75%{transform:translateX(12px)}}
+.plus{font-size:96px;font-weight:900;line-height:1;color:var(--yellow);text-shadow:0 0 20px var(--yellow),0 0 50px var(--pink);animation:pop .6s .15s both cubic-bezier(.3,1.8,.5,1)}
+@keyframes pop{0%{transform:scale(0) rotate(-25deg)}100%{transform:none}}
+.nm{font-size:24px;font-weight:800}
+.tot{color:var(--mut);font-size:18px}.tot b{color:#fff;font-size:28px}
+.avbtn{border:0;background:none;padding:0;border-radius:50%;flex:none;position:relative;width:46px;height:46px}
+.avbtn::after{content:"✎";position:absolute;right:-3px;bottom:-3px;background:var(--pink);color:#fff;border-radius:50%;width:18px;height:18px;font-size:11px;display:flex;align-items:center;justify-content:center}
+.pickgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;max-width:420px}
+.pg{background:var(--card);border:2px solid #3a3380;border-radius:14px;padding:8px 2px;text-align:center;font-size:11px;color:var(--txt)}
+.pg.taken{opacity:.3}.pg svg{display:block;margin:0 auto 4px}
+.chip svg{display:block;margin:0 auto 2px}
+.chip{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rf{height:60vh;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;text-align:center;user-select:none;touch-action:manipulation}
+.rf.wait{background:#7a1226}.rf.go{background:#0f9d58;color:#fff}
+.tapbtn{height:44vh;border:0;border-radius:28px;background:linear-gradient(135deg,var(--pink),#7b2cff);color:#fff;font-size:44px;font-weight:900;box-shadow:0 0 30px var(--pink);touch-action:manipulation;user-select:none}
+.tapbtn:active{transform:scale(.97)}
+.simon{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pad{height:130px;border:0;border-radius:22px;opacity:.5;transition:.08s}
+.p0{background:#ff4d6d}.p1{background:#39ff88}.p2{background:#22e4ff}.p3{background:#ffe14d}
+.pad.lit{opacity:1;box-shadow:0 0 30px #fff;transform:scale(1.04)}
+.rk{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #2c2564}
+.rk b{width:34px;font-size:22px;text-align:center}.rk span{flex:1;font-weight:700}.rk em{color:var(--cyan);font-style:normal;font-size:14px}.rk i{color:var(--yellow);font-style:normal;font-weight:800;width:30px;text-align:right}
+.pod{display:flex;align-items:flex-end;justify-content:center;gap:8px;margin-top:6px}
+.pcol{display:flex;flex-direction:column;align-items:center;width:31%}
+.pn{font-weight:700;font-size:14px;margin:4px 0;text-align:center}
+.pb{width:100%;border-radius:12px 12px 0 0;background:linear-gradient(var(--pink),#7b2cff);text-align:center;font-weight:900;font-size:26px;padding-top:6px}
+.pb small{font-size:12px;font-weight:600}
+.h0{height:120px}.h1{height:88px}.h2{height:68px}
+.crown{font-size:28px;height:32px}
+.party{border-color:var(--yellow);box-shadow:0 0 18px #ffe14d88;background:linear-gradient(135deg,#3a1166,#17123a)}
+.num{width:100%;font-size:32px;text-align:center;background:#0f0b2b;border:2px solid #3a3380;border-radius:14px;color:#fff;padding:14px}
+.vf{display:flex;gap:12px}.vf .btn{padding:26px;font-size:22px}
+.vfs{font-size:22px;font-weight:700;text-align:center;padding:26px 8px;min-height:130px}
+.sm{font-size:13px;color:var(--mut);text-align:center}
+</style></head><body><div id="app"></div><script>
+const QUESTIONS=[
+["Géographie","Quelle est la capitale de l'Australie ?",["Canberra","Sydney","Melbourne","Perth"]],
+["Géographie","Quel est le plus long fleuve de France ?",["La Loire","La Seine","Le Rhône","La Garonne"]],
+["Géographie","Quel pays a la forme d'une botte ?",["L'Italie","L'Espagne","La Grèce","Le Portugal"]],
+["Géographie","Quel est le plus grand océan du monde ?",["Le Pacifique","L'Atlantique","L'Indien","L'Arctique"]],
+["Géographie","Dans quel pays se trouve la ville de Marrakech ?",["Le Maroc","La Tunisie","L'Égypte","L'Algérie"]],
+["Géographie","Quelle est la plus haute montagne d'Europe occidentale ?",["Le Mont Blanc","Le Cervin","L'Etna","Le Mont Ventoux"]],
+["Géographie","Combien y a-t-il de départements en France (outre-mer compris) ?",["101","95","96","100"]],
+["Géographie","Quelle ville est surnommée la Ville Rose ?",["Toulouse","Marseille","Nice","Bordeaux"]],
+["Histoire","En quelle année a eu lieu la Révolution française ?",["1789","1799","1769","1815"]],
+["Histoire","Qui était le premier président de la Ve République ?",["Charles de Gaulle","Georges Pompidou","François Mitterrand","Valéry Giscard d'Estaing"]],
+["Histoire","En quelle année l'homme a-t-il marché sur la Lune ?",["1969","1959","1972","1965"]],
+["Histoire","Quel roi de France était surnommé le Roi-Soleil ?",["Louis XIV","Louis XVI","François Ier","Henri IV"]],
+["Histoire","En quelle année est tombé le mur de Berlin ?",["1989","1991","1985","1979"]],
+["Histoire","Qui a découvert l'Amérique en 1492 ?",["Christophe Colomb","Magellan","Vasco de Gama","Marco Polo"]],
+["Histoire","Quelle bataille a eu lieu en 1815 ?",["Waterloo","Austerlitz","Verdun","Marignan"]],
+["Sciences","Quelle est la planète la plus proche du Soleil ?",["Mercure","Vénus","Mars","Jupiter"]],
+["Sciences","Combien d'os compte le corps humain adulte ?",["206","180","250","312"]],
+["Sciences","Quel est le symbole chimique de l'or ?",["Au","Ag","Or","Go"]],
+["Sciences","Quel gaz respirons-nous principalement ?",["L'azote","L'oxygène","Le CO2","L'hélium"]],
+["Sciences","Combien de pattes a une araignée ?",["8","6","10","12"]],
+["Sciences","Quelle est la vitesse de la lumière environ ?",["300 000 km/s","30 000 km/s","3 000 km/s","3 millions km/s"]],
+["Sciences","Quel est le plus grand mammifère du monde ?",["La baleine bleue","L'éléphant","Le requin-baleine","La girafe"]],
+["Sciences","À quelle température l'eau bout-elle (au niveau de la mer) ?",["100 °C","90 °C","110 °C","80 °C"]],
+["Cinéma & Musique","Qui a réalisé le film Titanic ?",["James Cameron","Steven Spielberg","Ridley Scott","Christopher Nolan"]],
+["Cinéma & Musique","Quel groupe a chanté « Bohemian Rhapsody » ?",["Queen","Led Zeppelin","The Beatles","Pink Floyd"]],
+["Cinéma & Musique","Comment s'appelle le lion du Roi Lion ?",["Simba","Mufasa","Scar","Nala"]],
+["Cinéma & Musique","Qui chante « Alors on danse » ?",["Stromae","Maître Gims","Soprano","Bigflo & Oli"]],
+["Cinéma & Musique","Dans quel film entend-on « Hakuna Matata » ?",["Le Roi Lion","Aladdin","Le Livre de la jungle","Tarzan"]],
+["Cinéma & Musique","Combien de films compte la saga principale Harry Potter ?",["8","7","9","10"]],
+["Cinéma & Musique","Quel acteur joue Jack Sparrow ?",["Johnny Depp","Brad Pitt","Orlando Bloom","Tom Cruise"]],
+["Cinéma & Musique","Qui a chanté « La Vie en rose » ?",["Édith Piaf","Dalida","Barbara","Mireille Mathieu"]],
+["Sport","Combien de joueurs y a-t-il dans une équipe de football sur le terrain ?",["11","10","12","9"]],
+["Sport","Quel pays a gagné la Coupe du monde de football en 2018 ?",["La France","La Croatie","Le Brésil","L'Allemagne"]],
+["Sport","Dans quel sport utilise-t-on un volant ?",["Le badminton","Le tennis","Le squash","Le ping-pong"]],
+["Sport","Où ont eu lieu les Jeux olympiques de 2024 ?",["Paris","Londres","Tokyo","Los Angeles"]],
+["Sport","Combien de sets faut-il gagner pour un match de tennis masculin en Grand Chelem ?",["3","2","4","5"]],
+["Sport","Quel est le sport national du Japon (traditionnel) ?",["Le sumo","Le judo","Le karaté","Le baseball"]],
+["Gastronomie","De quel pays vient la pizza ?",["L'Italie","La France","La Grèce","Les États-Unis"]],
+["Gastronomie","Quel fromage est utilisé dans une vraie fondue savoyarde ?",["Beaufort, comté, emmental","Mozzarella","Cheddar","Feta"]],
+["Gastronomie","Quel est l'ingrédient principal du guacamole ?",["L'avocat","La tomate","Le concombre","Le poivron"]],
+["Gastronomie","Les cuisses de grenouille se préparent souvent avec…",["De l'ail et du persil","Du curry","De la menthe","Du miel"]],
+["Gastronomie","De quel pays vient le sushi ?",["Le Japon","La Chine","La Corée","La Thaïlande"]],
+["Gastronomie","Quelle pâtisserie est faite de choux et de crème, en forme d'éclair ?",["L'éclair","Le paris-brest","Le mille-feuille","Le macaron"]],
+["Gastronomie","Quelle région est célèbre pour la quiche lorraine ?",["La Lorraine","L'Alsace","La Bretagne","La Normandie"]],
+["Culture générale","Combien y a-t-il de jours dans une année bissextile ?",["366","365","367","364"]],
+["Culture générale","Qui a peint la Joconde ?",["Léonard de Vinci","Michel-Ange","Picasso","Van Gogh"]],
+["Culture générale","Quel est l'animal le plus rapide sur terre ?",["Le guépard","Le lion","Le faucon","La gazelle"]],
+["Culture générale","Combien de couleurs dans l'arc-en-ciel ?",["7","6","8","5"]],
+["Culture générale","Qui a écrit « Les Misérables » ?",["Victor Hugo","Émile Zola","Molière","Balzac"]],
+["Culture générale","Quelle est la monnaie du Royaume-Uni ?",["La livre sterling","L'euro","Le dollar","Le franc"]],
+["Culture générale","Quel est le plus petit pays du monde ?",["Le Vatican","Monaco","Saint-Marin","Malte"]],
+["Culture générale","Combien de cordes a une guitare classique ?",["6","4","5","7"]]
+];
+const CATS=["Toutes",...[...new Set(QUESTIONS.map(q=>q[0]))]];
+
+const WORDS={
+"Facile":["chat","maison","soleil","voiture","pizza","arbre","lune","vélo","parapluie","poisson","fleur","bateau","avion","gâteau","lunettes","clé","chaussure","guitare","fusée","ballon"],
+"Moyen":["tour Eiffel","pirate","volcan","montgolfière","cuisse de grenouille","restaurant","barbecue","feu d'artifice","château","dentiste","magicien","sirène","tempête","cactus","escargot","hélicoptère","pingouin","microscope","vampire","tsunami"],
+"Difficile":["démocratie","nostalgie","embouteillage","jalousie","réveillon","insomnie","télétravail","jeu de société","tour de magie","concours de cuisine","météo","vacances d'été","anniversaire surprise","pause café","mal de dos"]
+};
+const COLORS=["#111111","#e63946","#2a9d8f","#1d6bff","#f4a300","#8b4513"];
+
+/* ===== Titres célèbres (recherche "artiste titre") ===== */
+const TRACKS={
+"Hits français":["Stromae Papaoutai","Stromae Alors on danse","Indochine L'Aventurier","Johnny Hallyday Allumer le feu","Jean-Jacques Goldman Je te donne","Mylène Farmer Désenchantée","Francis Cabrel Je l'aime à mourir","Daft Punk Get Lucky","Céline Dion Pour que tu m'aimes encore","Zaz Je veux","Aya Nakamura Djadja","Christine and the Queens Saint Claude","Patrick Bruel Casser la voix","Julien Doré Coco Câline","Louane Avenir","Édith Piaf La Vie en rose","Joe Dassin Les Champs-Élysées","Claude François Alexandrie Alexandra","Michel Sardou Les lacs du Connemara","Téléphone Un autre monde","Vianney Je m'en vais","Angèle Balance ton quoi"],
+"Années 80":["Michael Jackson Billie Jean","Madonna Like a Virgin","a-ha Take On Me","Queen Don't Stop Me Now","Prince Purple Rain","Cyndi Lauper Girls Just Want to Have Fun","Whitney Houston I Wanna Dance with Somebody","Eurythmics Sweet Dreams","Duran Duran Rio","Europe The Final Countdown","Bonnie Tyler Total Eclipse of the Heart","Survivor Eye of the Tiger","Kim Wilde Kids in America","Rick Astley Never Gonna Give You Up","Toto Africa","Dire Straits Money for Nothing"],
+"Années 90":["Backstreet Boys I Want It That Way","Spice Girls Wannabe","Nirvana Smells Like Teen Spirit","Oasis Wonderwall","Aqua Barbie Girl","Eiffel 65 Blue","Britney Spears Baby One More Time","Ace of Base The Sign","Haddaway What Is Love","Vengaboys Boom Boom Boom","Roxette It Must Have Been Love","Alanis Morissette Ironic","TLC No Scrubs","Shaggy It Wasn't Me","Lou Bega Mambo No. 5","The Cranberries Zombie"],
+"Années 2000":["Rihanna Umbrella","Beyoncé Crazy in Love","Coldplay Clocks","Eminem Lose Yourself","Shakira Hips Don't Lie","Black Eyed Peas I Gotta Feeling","Amy Winehouse Rehab","Linkin Park In the End","Justin Timberlake Cry Me a River","Avril Lavigne Complicated","Kyo Le Chemin","Superbus Butterfly","The Killers Mr. Brightside","Outkast Hey Ya","Gorillaz Feel Good Inc","Kelly Clarkson Since U Been Gone","Evanescence Bring Me to Life","Sean Paul Temperature","50 Cent In Da Club"],
+"Rock":["AC/DC Highway to Hell","Led Zeppelin Stairway to Heaven","The Rolling Stones Satisfaction","Metallica Nothing Else Matters","Guns N' Roses Sweet Child O' Mine","Muse Uprising","Red Hot Chili Peppers Californication","Foo Fighters Everlong","Bon Jovi Livin' on a Prayer","Pink Floyd Another Brick in the Wall","Queen We Will Rock You","Deep Purple Smoke on the Water","Scorpions Wind of Change","Kiss I Was Made for Lovin' You","The Beatles Hey Jude","U2 With or Without You"],
+"Rap & Urbain FR":["Soprano Cosmo","Maître Gims Sapés comme jamais","Booba DKR","Orelsan La pluie","Nekfeu On verra","PNL Au DD","Jul Wesh alors","Bigflo & Oli Dommage","Dadju Reine","Soolking Liberté","Niska Réseaux","Ninho Goutte d'eau","Naps La Kiffance","MC Solaar Caroline","IAM Je danse le Mia","Aya Nakamura Pookie"],
+"Disney & Films":["Idina Menzel Let It Go","Aladdin A Whole New World","Elton John Can You Feel the Love Tonight","Whitney Houston I Will Always Love You","Kenny Loggins Danger Zone","Ray Parker Jr. Ghostbusters","Bill Medley The Time of My Life","Pharrell Williams Happy","Vaiana How Far I'll Go","Encanto We Don't Talk About Bruno","Coco Remember Me","ABBA Mamma Mia","ABBA Dancing Queen","Louis Armstrong What a Wonderful World","John Travolta You're the One That I Want","Céline Dion My Heart Will Go On"]
+};
+const ESTIM=[
+["Combien mesure la tour Eiffel (en mètres) ?",330],["En quelle année a été construite la tour Eiffel ?",1889],["Combien d'habitants en France (en millions) ?",68],
+["Distance Paris–Marseille par la route (en km) ?",775],["Hauteur de l'Everest (en mètres) ?",8849],["Combien de pays reconnus par l'ONU ?",193],
+["Année de sortie du premier iPhone ?",2007],["Combien de touches sur un piano ?",88],["Durée du film Titanic (en minutes) ?",195],
+["Distance Terre–Lune (en km) ?",384000],["Combien de pays dans l'Union européenne ?",27],["Vitesse record d'un TGV (en km/h) ?",574],
+["Combien de Coupes du monde de foot pour le Brésil ?",5],["Profondeur de la fosse des Mariannes (en mètres) ?",10900],["Âge de la Terre (en millions d'années) ?",4540],
+["Combien de marches jusqu'au sommet de la tour Eiffel ?",1665],["Température à la surface du Soleil (en °C) ?",5500]
+];
+const VF=[
+["Le miel ne périme jamais.",1],["La Grande Muraille de Chine est visible à l'œil nu depuis la Lune.",0],["Les autruches enfouissent leur tête dans le sable.",0],["Un escargot a des dents.",1],
+["La tomate est un fruit.",1],["Les chauves-souris sont aveugles.",0],["Napoléon était très petit.",0],["Les poissons rouges ont une mémoire de 3 secondes.",0],
+["Le Sahara est le plus grand désert du monde.",0],["Un jour sur Vénus dure plus longtemps qu'une année vénusienne.",1],["Les bananes poussent sur des arbres.",0],
+["Les humains n'utilisent que 10 % de leur cerveau.",0],["La foudre ne tombe jamais deux fois au même endroit.",0],["Le cœur d'une crevette est dans sa tête.",1],
+["Le Mont-Saint-Michel est en Bretagne.",0],["Les pieuvres ont trois cœurs.",1],["Le Brésil a gagné le plus de Coupes du monde de football.",1],["Le Canada est le plus grand pays du monde.",0],
+["Les requins sont des mammifères.",0],["La Tour de Pise est en Espagne.",0],["Un kilo de plumes pèse moins qu'un kilo de plomb.",0],["Le plus grand os du corps est le fémur.",1],
+["Le Louvre est le musée le plus visité au monde.",1],["Le café est fabriqué à partir de graines.",1],["La Seine traverse Paris.",1],["Le verre est un liquide qui coule très lentement.",0],
+["L'Australie est plus large que la Lune.",1],["Les grenouilles peuvent vivre sans eau toute leur vie.",0],["Le cœur d'un colibri bat plus de 1000 fois par minute.",1],["Les koalas sont des ours.",0]
+];
+
+/* ===== Avatars super-héros ===== */
+const HEROES=[
+{n:"Captain Néon",t:"mask",suit:"#12c9e8",acc:"#ff2bd6",hair:"#ffe14d",skin:"#f2c9a0",bg:["#4a22b8","#0b0820"],em:"bolt"},
+{n:"Madame Éclair",t:"mask",suit:"#ffd23f",acc:"#7b2cff",hair:"#2b1b0e",skin:"#a86a43",bg:["#8a2bd0","#1a0a3a"],em:"star"},
+{n:"Turbo Panda",t:"panda",suit:"#39ff88",acc:"#111111",skin:"#fff",bg:["#0f8a5e","#06231a"],em:"paw"},
+{n:"Doc Cosmos",t:"helmet",suit:"#8a5bff",acc:"#22e4ff",skin:"#ddd",bg:["#2a34a0","#04051a"],em:"ring"},
+{n:"Flamme Rouge",t:"mask",suit:"#ff4d6d",acc:"#ffb703",hair:"#ff7b00",skin:"#e0a77c",bg:["#a52338","#220610"],em:"flame"},
+{n:"Ninja Citron",t:"hood",suit:"#a8e10c",acc:"#111111",skin:"#f2c9a0",bg:["#3d6b00","#0d1a00"],em:"diamond"},
+{n:"Robo-Max",t:"robot",suit:"#b8c4d6",acc:"#22e4ff",skin:"#ddd",bg:["#33506e","#0a121c"],em:"plus"},
+{n:"Reine Glace",t:"crown",suit:"#9be7ff",acc:"#ffffff",hair:"#e8f7ff",skin:"#f6d5c0",bg:["#2b7fbf","#08203a"],em:"snow"}
+];
+function avatar(k,sz=56){
+  const h=HEROES[k%HEROES.length],O='stroke="#0b0820" stroke-width="3" stroke-linejoin="round"';
+  const eyes=y=>`<ellipse cx="42" cy="${y}" rx="4.5" ry="5" fill="#fff"/><ellipse cx="58" cy="${y}" rx="4.5" ry="5" fill="#fff"/><circle cx="43" cy="${y+1}" r="2.3" fill="#111"/><circle cx="59" cy="${y+1}" r="2.3" fill="#111"/>`;
+  const smile=`<path d="M43 54 Q50 60 57 54" stroke="#111" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+  const E={bolt:`<path d="M53 74 L43 86 H49 L46 97 L58 82 H52Z" fill="${h.acc}"/>`,
+   star:`<polygon points="50,75 53,83 61,83 55,88 57,96 50,91 43,96 45,88 39,83 47,83" fill="${h.acc}"/>`,
+   paw:`<circle cx="50" cy="88" r="5" fill="#111"/><circle cx="43" cy="82" r="2.6" fill="#111"/><circle cx="50" cy="79" r="2.6" fill="#111"/><circle cx="57" cy="82" r="2.6" fill="#111"/>`,
+   ring:`<circle cx="50" cy="86" r="7" fill="none" stroke="${h.acc}" stroke-width="3.5"/>`,
+   flame:`<path d="M50 74 Q59 84 55 92 Q50 99 45 92 Q41 85 50 74Z" fill="${h.acc}"/>`,
+   diamond:`<path d="M50 75 L59 85 L50 96 L41 85Z" fill="#111"/>`,
+   plus:`<rect x="46" y="77" width="8" height="18" rx="2" fill="${h.acc}"/><rect x="41" y="82" width="18" height="8" rx="2" fill="${h.acc}"/>`,
+   snow:`<g stroke="${h.acc}" stroke-width="3" stroke-linecap="round"><path d="M50 77V95M42 81L58 91M58 81L42 91"/></g>`}[h.em];
+  let head="";
+  if(h.t==="mask")head=`<circle cx="50" cy="46" r="20" fill="${h.skin}" ${O}/><path d="M29 44 Q28 22 50 23 Q72 22 71 44 Q62 31 50 33 Q38 31 29 44Z" fill="${h.hair}" ${O}/><path d="M30 40 H70 Q72 52 62 52 Q50 48 38 52 Q28 52 30 40Z" fill="${h.acc}" ${O}/>${eyes(44.5)}${smile}`;
+  if(h.t==="hood")head=`<circle cx="50" cy="44" r="23" fill="${h.suit}" ${O}/><rect x="32" y="36" width="36" height="14" rx="7" fill="${h.skin}" ${O}/>${eyes(43)}<rect x="27" y="29" width="46" height="5" rx="2" fill="${h.acc}"/>`;
+  if(h.t==="robot")head=`<line x1="50" y1="22" x2="50" y2="12" stroke="#0b0820" stroke-width="3"/><circle cx="50" cy="11" r="4" fill="${h.acc}" ${O}/><rect x="29" y="22" width="42" height="40" rx="10" fill="${h.suit}" ${O}/><rect x="33" y="32" width="34" height="15" rx="7" fill="#08203a" ${O}/><circle cx="43" cy="39.5" r="3.6" fill="${h.acc}"/><circle cx="57" cy="39.5" r="3.6" fill="${h.acc}"/><rect x="40" y="52" width="20" height="5" rx="2" fill="#0b0820"/>`;
+  if(h.t==="panda")head=`<circle cx="32" cy="27" r="9" fill="#111"/><circle cx="68" cy="27" r="9" fill="#111"/><circle cx="50" cy="46" r="21" fill="#fff" ${O}/><ellipse cx="41" cy="44" rx="6" ry="8" fill="#111" transform="rotate(20 41 44)"/><ellipse cx="59" cy="44" rx="6" ry="8" fill="#111" transform="rotate(-20 59 44)"/><circle cx="42" cy="43" r="2.4" fill="#fff"/><circle cx="58" cy="43" r="2.4" fill="#fff"/><ellipse cx="50" cy="53" rx="4" ry="3" fill="#111"/><rect x="30" y="31" width="40" height="5" rx="2" fill="${h.suit}" ${O} stroke-width="1.5"/>`;
+  if(h.t==="helmet")head=`<circle cx="50" cy="44" r="25" fill="${h.suit}" ${O}/><ellipse cx="50" cy="46" rx="18" ry="15" fill="#08203a" ${O}/><circle cx="43" cy="47" r="3.2" fill="${h.acc}"/><circle cx="57" cy="47" r="3.2" fill="${h.acc}"/><path d="M44 53 Q50 57 56 53" stroke="${h.acc}" stroke-width="2" fill="none" stroke-linecap="round"/><ellipse cx="42" cy="38" rx="7" ry="3.5" fill="#fff" opacity=".55" transform="rotate(-25 42 38)"/>`;
+  if(h.t==="crown")head=`<path d="M26 46 Q24 74 34 78 L66 78 Q76 74 74 46 Q74 22 50 22 Q26 22 50 22Z" fill="${h.hair}" ${O}/><circle cx="50" cy="47" r="17" fill="${h.skin}" ${O}/><path d="M33 43 Q40 30 50 35 Q60 30 67 43 Q58 37 50 39 Q42 37 33 43Z" fill="${h.hair}" ${O} stroke-width="2"/>${eyes(47)}${smile.replace(/54/g,"56").replace("60","61")}<path d="M36 27 L39 14 L45 22 L50 11 L55 22 L61 14 L64 27Z" fill="#ffd23f" ${O} stroke-width="2"/>`;
+  return `<svg viewBox="0 0 100 100" width="${sz}" height="${sz}"><defs><radialGradient id="a${k}" cx=".5" cy=".3" r=".8"><stop offset="0" stop-color="${h.bg[0]}"/><stop offset="1" stop-color="${h.bg[1]}"/></radialGradient><clipPath id="c${k}"><circle cx="50" cy="50" r="48"/></clipPath></defs><circle cx="50" cy="50" r="48" fill="url(#a${k})"/><g clip-path="url(#c${k})"><path d="M16 100 Q4 70 32 60 L68 60 Q96 70 84 100Z" fill="${h.acc==="#111111"?"#222":h.acc}" ${O}/><path d="M14 100 Q16 68 50 66 Q84 68 86 100Z" fill="${h.suit}" ${O}/>${E}${head}</g><circle cx="50" cy="50" r="48" fill="none" stroke="${h.acc==="#111111"?h.suit:h.acc}" stroke-width="3"/></svg>`;
+}
+
+/* ===== État & outils ===== */
+const $=s=>document.querySelector(s);
+const app=$("#app");
+function load(k,d){try{return JSON.parse(localStorage.getItem("sj_"+k))||d}catch(e){return d}}
+function save(k,v){try{localStorage.setItem("sj_"+k,JSON.stringify(v))}catch(e){}}
+let S={players:load("players2",[{name:"Joueur 1",av:0},{name:"Joueur 2",av:1}]),scores:{},turn:0,game:null,party:null,replay:null,streak:{}};
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let audio=null,timerId=null;
+function stopAll(){if(audio){audio.pause();audio=null}clearInterval(timerId)}
+function screen(h){app.onclick=null;app.innerHTML=h}
+function savePlayers(){save("players2",S.players)}
+
+/* Sons (générés, aucun fichier) */
+let AC=null,muted=load("muted",false);
+function tone(f,d=.15,type="sine",t0=0,v=.15){if(muted)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime+t0;o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+d+.02)}catch(e){}}
+const sfx={win:()=>[523,659,784,1047].forEach((f,k)=>tone(f,.25,"triangle",k*.09)),
+ big:()=>[523,659,784,1047,1319,1568,2093].forEach((f,k)=>tone(f,.3,"triangle",k*.08)),
+ lose:()=>{tone(220,.25,"sawtooth",0,.08);tone(165,.4,"sawtooth",.18,.08)},
+ tick:()=>tone(880,.06,"square",0,.05),tap:()=>tone(650,.04,"square",0,.05)};
+
+/* Confettis */
+function confetti(n=90){
+  const c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60";
+  c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const x=c.getContext("2d");
+  const cols=["#ff2bd6","#22e4ff","#39ff88","#ffe14d","#ff4d6d","#ffffff"];
+  const ps=Array.from({length:n},()=>({x:c.width/2,y:c.height*.42,vx:(Math.random()-.5)*18,vy:-Math.random()*17-4,s:6+Math.random()*7,r:Math.random()*6,vr:(Math.random()-.5)*.4,c:cols[Math.random()*6|0]}));
+  let f=0;(function a(){x.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/3,p.s,p.s*.6);x.restore()});if(++f<120)requestAnimationFrame(a);else c.remove()})();
+}
+
+/* Scores + belle animation de points */
+function add(pts,i=S.turn){S.scores[i]=(S.scores[i]||0)+pts}
+function nextTurn(){S.turn=(S.turn+1)%S.players.length}
+function resetScores(){S.scores={};S.turn=0;S.streak={}}
+function award(pts,i,cb,label){
+  const before=S.scores[i]||0;add(pts,i);
+  const p=S.players[i],o=document.createElement("div");o.className="ov";
+  o.innerHTML=pts>0?`<div class="avb">${avatar(p.av,140)}</div><div class="plus">+${pts}</div><div class="nm">${esc(p.name)}</div><div class="tot">${label?esc(label)+"<br>":""}Total : <b id="ct">${before}</b></div>`
+    :`<div class="avb sad">${avatar(p.av,120)}</div><div class="nm">${esc(p.name)}</div><div class="tot">${esc(label||"Dommage… 0 point")}</div>`;
+  document.body.appendChild(o);
+  if(pts>0){sfx[pts>=3?"big":"win"]();confetti(45+pts*35);
+    const t0=performance.now();(function c(){const k=Math.min(1,(performance.now()-t0-500)/600),e=$("#ct");if(e){e.textContent=Math.round(before+pts*Math.max(0,k))}if(k<1&&document.body.contains(o))requestAnimationFrame(c)})();
+  }else sfx.lose();
+  let done=false;const end=()=>{if(done)return;done=true;o.classList.add("out");setTimeout(()=>{o.remove();cb&&cb()},200)};
+  o.onclick=end;setTimeout(end,pts>0?2200:1500);
+}
+function scoreBar(){
+  return `<div class="score">${S.players.map((p,i)=>`<div class="chip ${i===S.turn?'on':''}">${avatar(p.av,30)}${esc(p.name)}<b>${S.scores[i]||0}</b></div>`).join("")}</div>`;
+}
+function who(i,sz=26){return `<b style="color:var(--yellow)">${esc(S.players[i].name)}</b>`}
+function topbar(t){return `<div class="top"><button id="back">← Accueil</button><span>${t}</span></div>`}
+function bindBack(){$("#back").onclick=()=>{S.party=null;home()}}
+function begin(replay){if(!S.party){S.replay=replay;resetScores()}}
+
+/* Écran de réglages générique */
+function setup(c){
+  const v={};c.groups.forEach(g=>v[g.k]=g.def);
+  screen(`${topbar(c.title)}<h2>${c.title}</h2><div class="card">${c.groups.map((g,n)=>`<div class="cat" style="text-align:left;margin:${n?16:0}px 0 8px">${g.l}</div><div class="pick" id="g_${g.k}"></div>`).join("")}</div>${c.note?`<p class="sub" style="font-size:13px">${c.note}</p>`:""}<div id="msg" class="err"></div><button class="btn ${c.cls||''}" id="go">${c.go||"C'est parti !"}</button>`);
+  bindBack();
+  const d=()=>c.groups.forEach(g=>{$("#g_"+g.k).innerHTML=g.o.map(([val,lab])=>`<button class="pill ${val===v[g.k]?'on':''}" data-k="${g.k}" data-v="${esc(val)}">${esc(lab)}</button>`).join("")});
+  d();
+  app.onclick=e=>{const t=e.target;if(t.dataset&&t.dataset.k){const g=c.groups.find(x=>x.k===t.dataset.k);v[t.dataset.k]=g.o.find(x=>String(x[0])===t.dataset.v)[0];d()}};
+  $("#go").onclick=()=>c.onGo(v);
+}
+
+/* ===== Accueil ===== */
+function home(){
+  stopAll();S.party=null;
+  screen(`<button class="mute" id="mu">${muted?"🔇":"🔊"}</button>
+  <h1>SOIRÉE JEUX</h1><p class="sub">Choisis ton super-héros et c'est parti !</p>
+  <div class="card"><h2 style="font-size:17px;margin-bottom:10px">Les joueurs</h2>
+    <div class="players" id="pl"></div>
+    <div class="row" style="margin-top:10px"><button class="btn ghost" id="addp">+ Ajouter un joueur</button></div>
+  </div>
+  <div class="card party" style="text-align:center"><div style="font-size:44px">🔥</div><h2 style="margin:4px 0">LA SOIRÉE</h2>
+    <p class="sub" style="margin-bottom:12px">Tous les jeux s'enchaînent : quiz, blind test, Pictionary et mini-jeux. Celui qui a le plus de points à la fin gagne !</p>
+    <button class="btn pink" id="pf">Soirée complète · 8 jeux</button>
+    <button class="btn ghost" id="pe" style="margin-top:8px">Soirée express · 5 jeux</button></div>
+  <button class="pill" id="solo" style="align-self:center">Jouer à un jeu seul ▾</button>
+  <div id="solos" style="display:none;flex-direction:column;gap:14px">
+  <button class="tile t1" id="g1"><span class="ic">🧠</span><span>Quiz culture G<small>Questions à choix multiples</small></span></button>
+  <button class="tile t2" id="g2"><span class="ic">🎧</span><span>Blind test<small>Les tubes que tout le monde connaît</small></span></button>
+  <button class="tile t3" id="g3"><span class="ic">🎨</span><span>Pictionary<small>1 dessin, le premier qui devine gagne</small></span></button>
+  <button class="tile t1" id="g4" style="border-color:var(--yellow);box-shadow:0 0 14px #ffe14d55"><span class="ic">⚡</span><span>Mini-jeux<small>Réflexes, tap-tap, mémoire, estimation, vrai/faux</small></span></button></div>`);
+  $("#mu").onclick=()=>{muted=!muted;save("muted",muted);$("#mu").textContent=muted?"🔇":"🔊";sfx.win()};
+  const pl=$("#pl");
+  const draw=()=>{pl.innerHTML=S.players.map((p,i)=>`<div class="row" style="align-items:center"><button class="avbtn" data-a="${i}">${avatar(p.av,46)}</button><input value="${esc(p.name)}" data-i="${i}" maxlength="14">${S.players.length>1?`<button class="x" data-d="${i}">✕</button>`:""}</div>`).join("")};
+  draw();
+  pl.oninput=e=>{if(e.target.dataset.i!=null){S.players[e.target.dataset.i].name=e.target.value;savePlayers()}};
+  pl.onclick=e=>{const b=e.target.closest("button");if(!b)return;
+    if(b.dataset.d!=null){S.players.splice(b.dataset.d,1);savePlayers();draw()}
+    if(b.dataset.a!=null)pickAvatar(+b.dataset.a,draw)};
+  $("#addp").onclick=()=>{if(S.players.length<8){const used=S.players.map(p=>p.av),free=HEROES.findIndex((_,k)=>!used.includes(k));S.players.push({name:HEROES[free].n,av:free});savePlayers();draw()}};
+  const fix=()=>{S.players.forEach((p,i)=>{p.name=p.name.trim()||"Joueur "+(i+1)});savePlayers()};
+  $("#pf").onclick=()=>{fix();partyStart(8)};$("#pe").onclick=()=>{fix();partyStart(5)};$("#solo").onclick=()=>{const d=$("#solos");d.style.display=d.style.display==="none"?"flex":"none"};
+  $("#g1").onclick=()=>{fix();quizSetup()};
+  $("#g2").onclick=()=>{fix();blindSetup()};
+  $("#g3").onclick=()=>{fix();picSetup()};
+  $("#g4").onclick=()=>{fix();miniMenu()};
+}
+function pickAvatar(i,redraw){
+  const o=document.createElement("div");o.className="ov";
+  o.innerHTML=`<h2>Choisis ton héros</h2><div class="pickgrid">${HEROES.map((h,k)=>`<button class="pg ${S.players.some((p,j)=>p.av===k&&j!==i)?'taken':''}" data-k="${k}">${avatar(k,64)}${h.n}</button>`).join("")}</div>`;
+  document.body.appendChild(o);
+  o.onclick=e=>{const b=e.target.closest(".pg");if(b&&!b.classList.contains("taken")){S.players[i].av=+b.dataset.k;savePlayers();sfx.win();redraw()}if(!b||!b.classList.contains("taken"))o.remove()};
+}
+
+/* ===== Fin de partie / podium / mode soirée ===== */
+function endGame(title){S.party?partyBoard(title):podium()}
+function sortedPlayers(){return S.players.map((p,i)=>({p,i,s:S.scores[i]||0})).sort((a,b)=>b.s-a.s)}
+function podium(){
+  stopAll();const was=S.party;S.party=null;
+  const o=sortedPlayers(),top=o.slice(0,3),rest=o.slice(3);
+  screen(`<div class="top"><button id="back">← Accueil</button><span>Podium final</span></div>
+  <div class="center" style="font-size:26px;font-weight:800;color:var(--yellow);text-shadow:0 0 14px #ffe14d88">🏆 ${esc(top[0].p.name)} ${"gagne"} !</div>
+  <div class="pod">${[1,0,2].filter(k=>top[k]).map(k=>`<div class="pcol"><div class="crown">${k===0?"👑":""}</div><div class="avb">${avatar(top[k].p.av,k===0?96:74)}</div><div class="pn">${esc(top[k].p.name)}</div><div class="pb h${k}">${k+1}<br><small>${top[k].s} pts</small></div></div>`).join("")}</div>
+  ${rest.length?`<div class="card">${rest.map((x,n)=>`<div class="rk"><b>${n+4}.</b>${avatar(x.p.av,36)}<span>${esc(x.p.name)}</span><i style="width:auto">${x.s} pts</i></div>`).join("")}</div>`:""}
+  <button class="btn pink" id="again">Rejouer</button><button class="btn ghost" id="h">Retour à l'accueil</button>`);
+  bindBack();$("#h").onclick=home;$("#again").onclick=()=>S.replay&&S.replay();
+  sfx.big();confetti(170);setTimeout(()=>confetti(100),700);
+}
+function partyStart(len){
+  len=len||8;S.replay=()=>partyStart(len);resetScores();
+  const th=Object.keys(TRACKS);
+  const all=[["Quiz culture G","🧠",()=>quizStart("Toutes",5)],["Blind test","🎧",()=>blindGo(th[Math.random()*th.length|0],4)],["Pictionary","🎨",()=>picStart(45)],
+   ["Réflexe éclair","⚡",()=>miniStart("reflex")],["Tap-Tap","👆",()=>miniStart("tap")],["Mémoire flash","🧩",()=>miniStart("simon")],["Le juste chiffre","🎯",()=>miniStart("estimate")],["Vrai ou Faux express","✅",()=>miniStart("vf")]];
+  S.party=shuffle(all).slice(0,len);S.partyTotal=len;partyNext();
+}
+function partyNext(){
+  const g=S.party&&S.party.shift();if(!g)return podium();
+  const k=S.partyTotal-S.party.length;let go=false;
+  const run=()=>{if(go)return;go=true;g[2]()};
+  screen(`<div class="top"><button id="back">← Quitter</button><span>Manche ${k}/${S.partyTotal}</span></div>
+  <div class="sub" style="margin-top:20px">Prochain jeu</div>
+  <div class="big avb" style="font-size:110px;margin:10px 0">${g[1]}</div>
+  <h1 style="font-size:30px">${g[0]}</h1>
+  <div class="pod" style="margin:10px 0">${S.players.map(p=>`<div style="width:${100/S.players.length}%;max-width:60px">${avatar(p.av,Math.min(52,300/S.players.length))}</div>`).join("")}</div>
+  <button class="btn pink" id="go">C'est parti ▶</button>`);
+  bindBack();sfx.win();$("#go").onclick=run;setTimeout(()=>{if(document.getElementById("go"))run()},3000);
+}
+function partyBoard(title){
+  const o=sortedPlayers(),left=S.party.length;
+  screen(`<div class="top"><button id="back">← Quitter</button><span>Manche ${S.partyTotal-left}/${S.partyTotal}</span></div>
+  <h2 class="center">Classement</h2><div class="sub">après « ${esc(title)} »</div>
+  <div class="card">${o.map((x,n)=>`<div class="rk"><b>${["🥇","🥈","🥉"][n]||n+1+"."}</b>${avatar(x.p.av,40)}<span>${esc(x.p.name)}</span><i style="width:auto;font-size:20px">${x.s}</i></div>`).join("")}</div>
+  <button class="btn pink" id="nx">${left?"Jeu suivant ▶":"Voir le podium 🏆"}</button>`);
+  bindBack();$("#nx").onclick=partyNext;
+}
+
+/* ===== QUIZ ===== */
+function quizSetup(){
+  setup({title:"Quiz",groups:[{k:"cat",l:"Thème",def:"Toutes",o:CATS.map(c=>[c,c])},{k:"n",l:"Nombre de questions",def:10,o:[[5,"5"],[10,"10"],[20,"20"]]}],onGo:v=>quizStart(v.cat,v.n)});
+}
+function quizStart(cat,n){
+  begin(quizSetup);
+  const pool=QUESTIONS.filter(q=>cat==="Toutes"||q[0]===cat);
+  S.game={qs:shuffle(pool).slice(0,n),i:0};quizAsk();
+}
+function quizAsk(){
+  const g=S.game;if(g.i>=g.qs.length)return endGame("Quiz");
+  const [c,q,a]=g.qs[g.i];const opts=shuffle(a.map((t,k)=>({t,ok:k===0})));
+  screen(`${topbar(`Question ${g.i+1}/${g.qs.length}`)}${scoreBar()}
+  <div class="cat">${esc(c)}</div><div class="q">${esc(q)}</div>
+  <div class="center" style="color:var(--mut)">À toi, ${who(S.turn)}</div>
+  <div class="opts">${opts.map((o,k)=>`<button class="opt" data-k="${k}">${esc(o.t)}</button>`).join("")}</div>`);
+  bindBack();
+  let done=false;
+  document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    if(done)return;done=true;const o=opts[b.dataset.k],i=S.turn;
+    document.querySelectorAll(".opt").forEach((x,k)=>{if(opts[k].ok)x.classList.add("ok")});
+    if(!o.ok)b.classList.add("ko");
+    S.streak[i]=o.ok?(S.streak[i]||0)+1:0;
+    const st=S.streak[i],pts=o.ok?(st>=3?2:1):0;
+    const label=o.ok?(st>=3?"🔥 Série de "+st+" ! Bonus !":"Bonne réponse !"):"Raté ! C'était : "+a[0];
+    setTimeout(()=>award(pts,i,()=>{g.i++;nextTurn();quizAsk()},label),o.ok?500:900);
+  });
+}
+
+/* ===== BLIND TEST ===== */
+function blindSetup(){
+  setup({title:"Blind test",cls:"pink",go:"Lancer",note:"Il faut internet : les extraits de 30 s viennent d'Apple Music.<br>+2 pts si tu trouves artiste et titre, +1 pour l'un des deux.",
+   groups:[{k:"th",l:"Style de musique",def:"Hits français",o:Object.keys(TRACKS).map(t=>[t,t])},{k:"n",l:"Nombre de titres",def:10,o:[[5,"5"],[10,"10"],[15,"15"]]}],
+   onGo:v=>blindGo(v.th,v.n,true)});
+}
+async function blindGo(th,n,fromSetup){
+  begin(blindSetup);
+  const btn=$("#go");if(btn){btn.disabled=true;btn.textContent="Chargement des tubes…"}
+  else screen(`<div class="big">🎧</div><p class="center">Chargement des tubes…</p>`);
+  try{
+    const terms=shuffle(TRACKS[th]).slice(0,Math.min(TRACKS[th].length,n+4));
+    const res=await Promise.all(terms.map(t=>fetch("https://itunes.apple.com/search?media=music&entity=song&country=fr&limit=4&term="+encodeURIComponent(t)).then(r=>r.json()).catch(()=>null)));
+    const tracks=res.map(r=>r&&r.results.find(x=>x.previewUrl)).filter(Boolean);
+    if(tracks.length<Math.min(3,n))throw 0;
+    S.game={ts:tracks.slice(0,n),i:0};blindPlay();
+  }catch(e){
+    if(S.party){partyNext();return}
+    if(btn){$("#msg").textContent="Impossible de charger la musique. Vérifie ta connexion internet.";btn.disabled=false;btn.textContent="Lancer"}
+    else blindSetup();
+  }
+}
+function blindPlay(){
+  stopAll();
+  const g=S.game;if(g.i>=g.ts.length)return endGame("Blind test");
+  const t=g.ts[g.i];
+  screen(`${topbar(`Titre ${g.i+1}/${g.ts.length}`)}${scoreBar()}
+  <div class="center" style="color:var(--mut)">Tour de ${who(S.turn)}</div>
+  <div class="vinyl" id="v">🎵</div>
+  <div id="bx"><button class="btn" id="play">▶ Lancer l'extrait</button></div>`);
+  bindBack();
+  $("#play").onclick=()=>{
+    audio=new Audio(t.previewUrl);audio.play().catch(()=>{});$("#v").classList.add("spin");
+    $("#bx").innerHTML=`<div class="timer" id="tm">30</div><button class="btn pink" id="rev">Révéler la réponse</button>`;
+    let left=30;timerId=setInterval(()=>{left--;const e=$("#tm");if(e)e.textContent=Math.max(left,0);if(left<=0){clearInterval(timerId);reveal()}},1000);
+    $("#rev").onclick=reveal;
+  };
+  function reveal(){
+    clearInterval(timerId);if(audio)audio.pause();$("#v").classList.remove("spin");
+    $("#v").innerHTML=t.artworkUrl100?`<img src="${esc(t.artworkUrl100.replace("100x100","300x300"))}" style="width:100%;height:100%;border-radius:50%;object-fit:cover">`:"🎵";
+    $("#bx").innerHTML=`<div class="card center"><div style="font-size:20px;font-weight:800">${esc(t.trackName)}</div><div style="color:var(--cyan)">${esc(t.artistName)}</div></div>
+    <div class="cat" style="margin:10px 0">Points pour ${esc(S.players[S.turn].name)}</div>
+    <div class="row"><button class="btn ghost" data-p="0">0</button><button class="btn green" data-p="1">+1</button><button class="btn pink" data-p="2">+2</button></div>`;
+    document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{const p=+b.dataset.p;award(p,S.turn,()=>{g.i++;nextTurn();blindPlay()},p===2?"Parfait !":p===1?"Pas mal !":"")});
+  }
+}
+
+/* ===== PICTIONARY ===== */
+function picSetup(){picStart(60)}
+function picStart(secs,keep){
+  const pool=shuffle([...WORDS["Facile"],...WORDS["Moyen"]]);
+  if(keep&&!S.party){S.replay=()=>picStart(secs,true)}
+  else{begin(()=>picStart(secs,true));S.turn=Math.random()*S.players.length|0}
+  S.game={words:pool.slice(0,1),i:0,secs};picReady();
+}
+function picReady(){
+  stopAll();const g=S.game;if(g.i>=g.words.length)return endGame("Pictionary");
+  screen(`${topbar("Pictionary")}${scoreBar()}
+  <div class="big">${avatar(S.players[S.turn].av,110)}</div>
+  <div class="center" style="font-size:20px">${who(S.turn)}, tu dessines !<br><span style="color:var(--mut);font-size:15px">Les autres ne regardent pas l'écran.</span></div>
+  <button class="btn green" id="see">Voir mon mot</button>`);
+  bindBack();$("#see").onclick=()=>{
+    screen(`<div class="big">🎨</div><div class="word">${esc(g.words[g.i])}</div>
+    <p class="sub">Mémorise-le, puis lance le chrono.</p><button class="btn" id="st">Je commence à dessiner</button>`);
+    $("#st").onclick=picDraw;
+  };
+}
+function picDraw(){
+  const g=S.game;let color=COLORS[0],size=5,left=g.secs,drawing=false,lx=0,ly=0;
+  screen(`<div class="timer" id="tm">${left}</div><canvas id="cv"></canvas>
+  <div class="pal">${COLORS.map((c,i)=>`<button class="dot ${i?'':'on'}" style="background:${c}" data-c="${c}"></button>`).join("")}
+   <button class="pill" id="er">Gomme</button><button class="pill" id="cl">Tout effacer</button></div>
+  <button class="btn pink" id="fin">Trouvé ! / Temps écoulé</button>`);
+  const cv=$("#cv"),w=cv.clientWidth;cv.width=w*2;cv.height=w*1.6;cv.style.height=(w*.8)+"px";
+  const x=cv.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,cv.width,cv.height);x.lineCap="round";x.lineJoin="round";
+  const pos=e=>{const r=cv.getBoundingClientRect();return[(e.clientX-r.left)*cv.width/r.width,(e.clientY-r.top)*cv.height/r.height]};
+  cv.onpointerdown=e=>{drawing=true;[lx,ly]=pos(e);cv.setPointerCapture(e.pointerId);x.strokeStyle=color;x.lineWidth=size*2;x.beginPath();x.moveTo(lx,ly);x.lineTo(lx+.1,ly+.1);x.stroke()};
+  cv.onpointermove=e=>{if(!drawing)return;const[px,py]=pos(e);x.strokeStyle=color;x.lineWidth=size*2;x.beginPath();x.moveTo(lx,ly);x.lineTo(px,py);x.stroke();lx=px;ly=py};
+  cv.onpointerup=cv.onpointercancel=()=>drawing=false;
+  document.querySelectorAll(".dot").forEach(b=>b.onclick=()=>{color=b.dataset.c;size=5;document.querySelectorAll(".dot").forEach(d=>d.classList.remove("on"));b.classList.add("on")});
+  $("#er").onclick=()=>{color="#ffffff";size=14;document.querySelectorAll(".dot").forEach(d=>d.classList.remove("on"))};
+  $("#cl").onclick=()=>{x.fillStyle="#fff";x.fillRect(0,0,cv.width,cv.height)};
+  timerId=setInterval(()=>{left--;const e=$("#tm");if(e){e.textContent=Math.max(left,0);if(left<=10)e.style.color="var(--red)"}if(left<=5&&left>0)sfx.tick();if(left<=0){clearInterval(timerId);picResult()}},1000);
+  $("#fin").onclick=()=>{clearInterval(timerId);picResult()};
+}
+function picResult(){
+  const g=S.game,d=S.turn;
+  screen(`<div class="big">⏱️</div><div class="center" style="font-size:20px">Le mot était<div class="word">${esc(g.words[g.i])}</div></div>
+  <div class="center" style="color:var(--mut)">Qui a deviné en premier ?</div>
+  <div class="opts">${S.players.map((p,i)=>i===d?"":`<button class="opt" data-w="${i}" style="display:flex;align-items:center;gap:12px">${avatar(p.av,36)}${esc(p.name)}</button>`).join("")}
+  <button class="opt" data-w="-1">😅 Personne</button></div>`);
+  const after=()=>{g.i++;nextTurn();picReady()};
+  document.querySelectorAll("[data-w]").forEach(b=>b.onclick=()=>{
+    const w=+b.dataset.w;
+    if(w>=0)award(2,w,()=>award(1,d,after,"Bien dessiné !"),"Bien deviné !");
+    else award(0,d,after,"Personne n'a trouvé 😅");
+  });
+}
+
+/* ===== MINI-JEUX ===== */
+const MINI={
+ reflex:()=>({title:"Réflexe éclair",icon:"⚡",rules:"L'écran devient vert au hasard. Tape le plus vite possible ! (Pas avant, sinon faux départ.)",better:"low",
+  turn:(i,done)=>{screen(`<div id="rf" class="rf wait">Attends le vert…</div>`);const r=$("#rf");let st="wait",t0=0;
+   const to=setTimeout(()=>{st="go";r.className="rf go";r.textContent="TAPE !";t0=performance.now();tone(880,.12,"square")},1500+Math.random()*3000);
+   r.onpointerdown=()=>{if(st==="done")return;if(st==="wait"){clearTimeout(to);st="done";sfx.lose();done(99999,"Faux départ 🙈")}else{st="done";const ms=Math.round(performance.now()-t0);sfx.win();done(ms,ms+" ms")}}}}),
+ tap:()=>({title:"Tap-Tap !",icon:"👆",rules:"10 secondes pour taper le plus de fois possible sur le gros bouton. Le chrono démarre au premier tap.",better:"high",
+  turn:(i,done)=>{screen(`<div class="timer" id="tm">10.0</div><div class="big" id="ct">0</div><button class="tapbtn" id="tb">TAPE !</button>`);let n=0,t0=0,over=false;
+   const tb=$("#tb");tb.onpointerdown=()=>{if(over)return;if(!t0){t0=performance.now();const iv=setInterval(()=>{const l=10-(performance.now()-t0)/1000;if(l<=0){clearInterval(iv);over=true;$("#tm").textContent="0.0";sfx.big();done(n,n+" taps")}else $("#tm").textContent=l.toFixed(1)},50)}n++;$("#ct").textContent=n;sfx.tap()}}}),
+ simon:()=>({title:"Mémoire flash",icon:"🧩",rules:"Regarde la suite de couleurs, puis répète-la. Elle s'allonge à chaque tour. Le plus loin gagne !",better:"high",
+  turn:(i,done)=>{const seq=[];let pos=0,lock=true;screen(`<div class="center" id="st" style="font-size:20px;font-weight:700;margin:6px">Regarde…</div><div class="simon">${[0,1,2,3].map(k=>`<button class="pad p${k}"></button>`).join("")}</div>`);
+   const pads=[...document.querySelectorAll(".pad")],F=[330,415,494,587];
+   const flash=(k,ms=380)=>{pads[k].classList.add("lit");tone(F[k],ms/1000,"triangle",0,.2);setTimeout(()=>pads[k].classList.remove("lit"),ms)};
+   const play=()=>{lock=true;pos=0;seq.push(Math.random()*4|0);$("#st").textContent="Regarde…";seq.forEach((k,j)=>setTimeout(()=>flash(k),700+j*600));setTimeout(()=>{lock=false;$("#st").textContent="À toi ! ("+seq.length+")"},700+seq.length*600)};
+   pads.forEach((b,k)=>b.onpointerdown=()=>{if(lock)return;flash(k,200);if(k===seq[pos]){pos++;if(pos===seq.length){lock=true;setTimeout(play,700)}}else{lock=true;sfx.lose();setTimeout(()=>done(seq.length-1,"Série de "+(seq.length-1)),600)}});
+   play()}}),
+ estimate:()=>{const q=ESTIM[Math.random()*ESTIM.length|0];return{title:"Le juste chiffre",icon:"🎯",rules:"Une question avec un nombre à deviner. Chacun tape sa réponse en secret. Le plus proche gagne !",better:"low",
+  intro:`<div class="q">${esc(q[0])}</div>`,reveal:`Réponse : <b style="color:var(--yellow)">${q[1].toLocaleString("fr-FR")}</b>`,
+  turn:(i,done)=>{screen(`<div class="q">${esc(q[0])}</div><input class="num" id="nb" type="number" inputmode="numeric" placeholder="Ton chiffre"><button class="btn" id="ok">Valider</button>`);
+   $("#ok").onclick=()=>{const v=parseFloat($("#nb").value);if(isNaN(v))return;done(Math.abs(v-q[1]),v.toLocaleString("fr-FR"))}}}},
+ vf:()=>{const pool=shuffle(VF);let c=0;return{title:"Vrai ou Faux express",icon:"✅",rules:"5 affirmations. Réponds vite : VRAI ou FAUX ? Le plus de bonnes réponses gagne.",better:"high",
+  turn:(i,done)=>{const qs=[];for(let k=0;k<5;k++)qs.push(pool[c++%pool.length]);let n=0,ok=0;
+   const show=()=>{screen(`<div class="cat">Question ${n+1}/5</div><div class="vfs">${esc(qs[n][0])}</div><div class="vf"><button class="btn green" data-a="1">VRAI</button><button class="btn red" data-a="0">FAUX</button></div>`);
+    document.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{const good=+b.dataset.a===qs[n][1];if(good){ok++;sfx.win()}else sfx.lose();b.style.outline="4px solid "+(good?"#39ff88":"#ff4d6d");setTimeout(()=>{n++;n<5?show():done(ok,ok+"/5")},450)})};show()}}}
+};
+function miniMenu(){
+  const items=[["reflex","⚡","Réflexe éclair","Le plus rapide à taper"],["tap","👆","Tap-Tap !","10 s, combien de taps ?"],["simon","🧩","Mémoire flash","Répète la suite de couleurs"],["estimate","🎯","Le juste chiffre","Devine le nombre"],["vf","✅","Vrai ou Faux express","5 affirmations, vite !"]];
+  screen(`${topbar("Mini-jeux")}<h2>Mini-jeux ⚡</h2>${items.map(x=>`<button class="tile t${["1","2","3","1","2"][items.indexOf(x)]}" data-m="${x[0]}"><span class="ic">${x[1]}</span><span>${x[2]}<small>${x[3]}</small></span></button>`).join("")}`);
+  bindBack();document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>miniStart(b.dataset.m));
+}
+function miniStart(key){
+  begin(()=>miniStart(key));
+  const cfg=MINI[key](),res=[];let k=0;
+  const next=()=>{
+    if(k>=S.players.length)return miniRank(cfg,res);
+    const i=k;S.turn=i;
+    screen(`${topbar(cfg.title)}${scoreBar()}<div class="big">${cfg.icon}</div><h2 class="center">${cfg.title}</h2><p class="sub">${cfg.rules}</p>
+    <div class="center" style="display:flex;flex-direction:column;align-items:center;gap:6px">${avatar(S.players[i].av,90)}<div style="font-size:20px">À toi, ${who(i)} !</div></div>
+    <button class="btn pink" id="go">Je suis prêt</button>`);
+    bindBack();
+    $("#go").onclick=()=>cfg.turn(i,(v,label)=>{
+      screen(`<div class="center" style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:30px">${avatar(S.players[i].av,110)}<div class="nm">${esc(S.players[i].name)}</div><div class="plus" style="font-size:52px;animation:none">${esc(label)}</div></div>
+       <button class="btn" id="nx">${k+1<S.players.length?"Passer le téléphone ▶":"Voir le classement 🏆"}</button>`);
+      $("#nx").onclick=()=>{res.push({i,v,label});k++;next()};
+    });
+  };
+  next();
+}
+function miniRank(cfg,res){
+  const hi=cfg.better==="high";
+  const s=[...res].sort((a,b)=>hi?b.v-a.v:a.v-b.v);
+  s.forEach(x=>{x.r=s.filter(y=>hi?y.v>x.v:y.v<x.v).length;x.pts=[3,2,1][x.r]||0});
+  screen(`${topbar(cfg.title)}<h2 class="center">Résultats</h2>
+  <div class="card">${s.map(x=>`<div class="rk"><b>${["🥇","🥈","🥉"][x.r]||x.r+1+"."}</b>${avatar(S.players[x.i].av,40)}<span>${esc(S.players[x.i].name)}</span><em>${esc(x.label)}</em><i>+${x.pts}</i></div>`).join("")}</div>
+  ${cfg.reveal?`<p class="center" style="font-size:18px">${cfg.reveal}</p>`:""}
+  <button class="btn pink" id="dist">Distribuer les points 🎉</button>`);
+  bindBack();
+  $("#dist").onclick=()=>{const q=s.filter(x=>x.pts>0);const go=()=>{const x=q.shift();if(!x)return endGame(cfg.title);award(x.pts,x.i,go,x.r===0?"👑 Vainqueur !":"")};go()};
+}
+
+home();
+</script></body></html>
