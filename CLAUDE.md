@@ -18,22 +18,38 @@ Fin : **étoiles bonus** (`bonusStars`, 2 catégories tirées au sort) → podiu
 → gage du dernier (option « à la fin ») → **route des trophées** (`trophyRoad`) avec coffre si un héros se débloque.
 Points par manche : 1er = n-1, 2e = n-2… ; égalité totale = personne ne marque.
 
-## Les 39 mini-jeux
-**24 jeux de table** (objet `GAMES`) : degaine, course, sumo, bombe, chrono, cible, couleur, quiz, vf, compte,
+## Les 44 mini-jeux
+**28 jeux de table** (objet `GAMES`) : degaine, course, sumo, bombe, chrono, cible, couleur, quiz, vf, compte,
 blind (extraits iTunes), etoiles, corde, hockey, dessin, ballon (gonfler sans éclater), roue (stopper l'aiguille),
 golf (mini-golf, 1 trou chacun, lance-pierre), burger (mémoriser puis reconstruire), flechettes, estime (le plus proche
-d'un nombre, règle à glisser), plusmoins (cartes plus haut / plus bas), pfc (pierre-feuille-ciseaux), paires (memory).
+d'un nombre, règle à glisser), plusmoins (cartes plus haut / plus bas), pfc (pierre-feuille-ciseaux), paires (memory), serpents (traînées lumineuses, ↺ ↻),
+peinture (couvrir l'écran de sa couleur, `full`), pong (2 joueurs seulement, `need`, `full`), atterro (parachute).
 « Feu rouge, feu vert » a été retiré (trop proche de Course folle) : Julien trouve qu'il y a déjà assez de jeux
 « taper vite jusqu'à une ligne d'arrivée », en ajouter d'autres genres.
 **Dessin éclair** : le dessinateur prend le téléphone, voit son mot en gardant le doigt appuyé, 60 s ;
 « Trouvé » → il choisit qui a trouvé ; temps écoulé → personne ne marque.
-**15 jeux à se passer** (`solo:true`) : tour, memoire, tiles, devine, cercle (40 s max), bulles, reflexe, pile10, quizx,
+**16 jeux à se passer** (`solo:true`) : tour, memoire, tiles, devine, cercle (40 s max), bulles, reflexe, pile10, quizx,
 helico (doigt appuyé pour monter), intrus (trouver l'image différente), calcul (calcul mental 30 s),
-golfp (parcours de 3 trous, 2 min 30), basket (lancer franc), anagramme (mot mélangé).
+basket (lancer franc), anagramme (mot mélangé), lampe (lampe torche), espion (jeu de groupe 3+ joueurs :
+mot secret, discussion, vote ; déroulé spécial via `custom(key)` au lieu de `run`).
+« Parcours de golf » retiré : Julien préfère le mini-golf où l'on joue en même temps.
+Chaque jeu a une règle courte `tip` (objet `TIPS`) affichée dans les petits coins et dans l'écran « Les jeux ».
+Icônes : dessins SVG maison (`icons8.js` dans la source, bloc « ICÔNES DESSINÉES ») ; `g.emoji` garde l'ancien émoji.
 Les jeux ajoutés sont à la fin du script, blocs « NOUVEAUX MINI-JEUX (v5) » et « MINI-JEUX v6 ». Le moteur de mini-golf
 (`golfField`, trous `GOLF`) sert aux deux versions. `zpos` donne la position du doigt dans un coin retourné.
 `hi:false` = le score le plus bas gagne. `avail()` filtre les jeux selon le mode. `CAT` range chaque jeu dans une
 famille (vite, tête, visée, force, ambiance) pour les titres et les étoiles bonus.
+
+## Réglages et modes
+- Fin de partie : 6/10/15 manches ou « premier à 15/25 ⭐ » (`G.fin`, `applyFin`, `matchOver`), « balle de match » annoncée.
+- Équipes Rouges contre Bleus (4, 6 ou 8 joueurs) : table = les 2 du bas contre les 2 du haut, sinon un sur deux.
+  Les couleurs des joueurs deviennent celles de l'équipe (`setTeams`, `PCOL_BASE`), score d'équipe = somme (`teamTot`).
+- Thèmes de soirée (`G.fete`, clé `sa_fete`) : classique, Noël, anniversaire, soirée foot ; décor, particules,
+  confettis et accessoire sur les héros (`feteHat`). Bouton « Thème » sur l'accueil.
+- Écran « 🎮 Jeux » (`gamesScreen`) : essayer un jeu seul (`practice`, boutons Rejouer / Jeux) et retirer
+  des jeux de la roulette (clé `sa_off`, au moins 3 gardés).
+- Victoire de manche : rayons + trophée qui tombe dans le coin du gagnant (`winFx`), écran plein en mode tour (`winShow`).
+- Après le podium : « Les moments forts » (`recapScreen`) puis gage et trophées.
 
 ## Progression (gardée sur le téléphone, clé `sa_prof`)
 - `PROF.tro` : trophées de la bande. Chaque partie rapporte la somme des points + 2 par manche + 10.
@@ -76,9 +92,12 @@ famille (vite, tête, visée, force, ambiance) pour les titres et les étoiles b
 - Minuteries par écran (`newRun` / `cleanup` / `T` / `IV` / `LOOP`). Boutons qui font avancer protégés par `once()`.
 - Boutons des écrans en zones : attribut `data-act` + objet `ACT` (marche aussi pour les écrans en liste).
 - Prénoms saisis dans une fenêtre du jeu (`editName`), plus de `prompt()`.
+- Anti-débordement : un observateur réduit automatiquement (propriété `zoom` via `--fz`) le contenu d'un coin,
+  de la bande ou d'un écran qui ne rentre pas (`fitBox`). Julien est très sensible aux cases coupées.
 - Préférences dans le navigateur (localStorage, clés `sa_…`).
-- Test automatique utilisé : chaque jeu joué avec des touches au hasard (Chrome sans fenêtre), vérification qu'il se
-  termine sans erreur et qu'aucun texte n'est coupé ou trop petit.
+- Test automatique utilisé : Chrome sans fenêtre piloté par le protocole DevTools. (1) chaque jeu joué avec des touches
+  au hasard : il doit se terminer sans erreur ; (2) chaque écran rendu à 2/3/4 joueurs (et 8 en tour) sur 375×667,
+  390×844 et 430×932 avec un détecteur d'éléments coupés ou hors écran ; (3) parties complètes dans les 3 modes.
 
 ## Reste à faire / vérifier
 - Test sur un vrai téléphone : son sur iPhone, plusieurs doigts en même temps, fluidité.
