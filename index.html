@@ -630,6 +630,84 @@ body{font-weight:700}
 .qcat{font-size:14px;letter-spacing:1px}
 .opt small{font-size:13px}
 .zh .nm{white-space:normal;line-height:1.05;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:clip;font-size:14px}
+
+/* ===================== MODE TABLE v6 : bande centrale nette, textes dans chaque coin ===================== */
+.area.band{background:repeating-linear-gradient(135deg,#ffffff0a 0 14px,transparent 14px 28px),#151049;border-block:5px solid var(--ink);box-shadow:inset 0 4px 0 #ffffff1c,inset 0 -4px 0 #0006,0 0 0 2px #ffffff22}
+.bandc{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;height:100%;padding:6px 14px 6px 54px;overflow:hidden}
+.bandc.row{flex-direction:row;gap:18px}
+.band .btn{font-size:21px;padding:11px 26px;flex:none}
+.band .stand{gap:12px}
+.band .rcard{min-width:0;padding:8px 26px;margin:0}
+.band .rcard .ri{font-size:56px}
+.band .gi{font-size:64px}
+.band .evc .ei{font-size:64px}
+.band .champ svg{display:block}
+.vs{font-family:var(--fd);font-size:44px;color:#ffe766;text-shadow:var(--olb);transform:rotate(-6deg)}
+/* Annonces dans chaque coin (compte à rebours, FIN, C'EST PARTI) */
+.zsay{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;border-radius:20px;background:radial-gradient(circle,#120d3acc 0,#120d3a66 55%,#120d3a22 100%)}
+.zsay .cd{font-size:clamp(70px,24vw,120px)}
+.zsay .fin{font-size:clamp(34px,11vw,56px);text-align:center;line-height:1}
+/* Textes dans les coins */
+.zname{font-family:var(--fd);font-size:clamp(20px,6.4vw,30px);line-height:1.05;color:#ffe766;text-shadow:var(--olb);text-align:center}
+.zgame{display:flex;flex-direction:column;align-items:center;gap:4px}
+.zgame .gi{font-size:52px}
+.zone .grule{font-size:14px;line-height:1.25;padding:6px 10px;max-width:100%}
+.zready{font-family:var(--fd);font-size:clamp(17px,5vw,22px);color:#fff;text-shadow:var(--ol1);background:#ffffff26;border:3px dashed #ffffffaa;border-radius:16px;padding:8px 14px;animation:cta 1.4s ease-in-out infinite}
+.zone.ok .zready{background:var(--gold);border-style:solid;border-color:var(--ink);animation:none}
+.zone .evc .en{font-size:clamp(20px,6vw,28px)}
+.zone .evc .ed{font-size:14px}
+.zone .evc{gap:6px}
+.zone .pickg button{width:30%;min-width:74px;font-size:12px}
+.zone .pickg button span{font-size:30px}
+.zone .medal{font-size:52px}
+/* ===================== NOUVEAUX JEUX v6 ===================== */
+.gf{position:relative;flex:1;width:100%;min-height:0}
+.gf.full{border-radius:18px;overflow:hidden;border:4px solid var(--ink)}
+.border{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px;font-size:clamp(30px,9vw,44px);background:#120d3acc;border:3px solid var(--ink);border-radius:18px;padding:8px 10px}
+.border i{font-style:normal;font-size:.5em;color:#ffe766}
+.bplate{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px;min-height:48px;font-size:clamp(26px,8vw,36px);background:#fff;border:3px solid var(--ink);border-radius:999px;padding:4px 14px;box-shadow:0 4px 0 var(--ink)}
+.bings{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:100%}
+.bing{font-size:clamp(26px,8vw,38px);padding:6px 0;border-radius:14px;border:3px solid var(--ink);background:var(--panel);box-shadow:0 4px 0 var(--ink)}
+.bing:active{transform:translateY(3px);box-shadow:none}
+.fs{margin-top:2px}
+.rule{position:relative;width:92%;height:34px;border-radius:17px;background:#120d3a;border:3px solid var(--ink);box-shadow:0 3px 0 var(--ink);touch-action:none;overflow:hidden;flex:none}
+.rule i{position:absolute;left:0;top:0;bottom:0;background:var(--gold);border-right:4px solid #fff;pointer-events:none}
+.erow{display:flex;gap:6px;align-items:center;justify-content:center}
+.erow .btn.sm{padding:9px 12px;font-size:17px}
+.ev{font-size:clamp(30px,10vw,48px)}
+.cardrow{display:flex;gap:14px;align-items:center;justify-content:center}
+.pcard{position:relative;width:74px;height:104px;border-radius:12px;background:#fff;border:3px solid var(--ink);box-shadow:0 5px 0 var(--ink);color:#1b1440;display:flex;align-items:center;justify-content:center;font-family:var(--fd)}
+.pcard.red{color:#e8213f}
+.pcard b{font-size:40px;font-weight:400}
+.pcard .ci{position:absolute;left:6px;top:4px;font-size:16px;line-height:.95;text-align:center}
+.pcard .ci.r{left:auto;top:auto;right:6px;bottom:4px;transform:rotate(180deg)}
+.cnext{width:74px;height:104px;border-radius:12px;background:repeating-linear-gradient(45deg,#ff5fae 0 10px,#f2449a 10px 20px);border:3px solid var(--ink);box-shadow:0 5px 0 var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:44px;color:#fff;text-shadow:var(--ol1)}
+.flipin{animation:flipin .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes flipin{from{transform:rotateY(90deg) scale(.8)}}
+.pmb{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.pmb .btn{font-size:20px;padding:12px 16px}
+.pfcb{display:flex;gap:6px;justify-content:center;width:100%}
+.pfcb button{flex:1;max-width:110px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:clamp(34px,10vw,48px);line-height:1;padding:8px 2px;border-radius:16px;border:3px solid var(--ink);background:var(--panel);box-shadow:var(--lift)}
+.pfcb button small{font-family:var(--fd);font-size:12px;color:#fff;text-shadow:var(--ol1)}
+.pfcb button:active{transform:translateY(4px);box-shadow:none}
+.pfcr{font-size:clamp(56px,16vw,84px)!important}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;width:100%;max-width:340px}
+.pc{aspect-ratio:1;border-radius:12px;border:3px solid var(--ink);background:repeating-linear-gradient(45deg,#5aa2ff 0 8px,#3d86f5 8px 16px);box-shadow:0 3px 0 var(--ink);padding:0;font-size:clamp(20px,6vw,34px);display:flex;align-items:center;justify-content:center}
+.pc span{visibility:hidden}
+.pc.up{background:#fff}.pc.up span{visibility:visible}
+.pc.ok{background:#8dfcb8}
+.anw{display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
+.anw span{width:clamp(30px,9vw,42px);height:clamp(40px,11vw,52px);border-radius:10px;background:#fff;border:3px solid var(--ink);box-shadow:0 3px 0 var(--ink);font-family:var(--fd);font-size:clamp(22px,7vw,32px);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.anw.good span{background:#8dfcb8}.anw.bad span{background:#ff9aa8}
+.anl{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:420px}
+.anc{width:clamp(44px,13vw,58px);height:clamp(44px,13vw,58px);border-radius:14px;border:3px solid var(--ink);background:var(--gold);box-shadow:var(--lift);font-family:var(--fd);font-size:clamp(24px,7vw,32px);color:#fff;text-shadow:var(--ol1)}
+.anc:disabled{opacity:.25;transform:translateY(4px);box-shadow:none}
+
+.pmb{flex-direction:column;width:100%;max-width:220px}
+.pmb .btn{font-size:18px;padding:10px 12px;width:100%}
+.pfcb button small{font-size:13px}
+.erow{flex-wrap:wrap;gap:5px}
+.erow .btn.sm{padding:8px 11px;font-size:16px}
 </style>
 </head>
 <body>
@@ -1268,17 +1346,20 @@ function scoreBoard(){/* affiche les scores (zones ou liste) et renvoie de quoi 
   if(G.mode==="tour"){plain();const ord=G.P.map((_,i)=>i).sort((a,b)=>G.scores[b]-G.scores[a]);
     stage.innerHTML=`<div class="scr scroll"><div style="height:14px;flex:none"></div><div id="sbc" style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%"></div><div class="rlist" id="sbl">${ord.map(i=>`<div class="rrow" data-k="${i}" style="--c:${PCOL[i]}">${avatar(G.P[i].av,36)}<span class="rnm"><b>${esc(G.P[i].name)}</b></span><span class="rtot big" id="sc${i}">⭐ ${G.scores[i]}</span></div>`).join("")}</div><div id="sbb"></div></div>`;addPause();
     return{el:i=>$("#sc"+i),fmt:v=>"⭐ "+v,center:h=>{$("#sbc").innerHTML=h},btn:h=>{$("#sbb").innerHTML=h},resort:()=>{const L=$("#sbl");flipMove(L,".rrow",()=>{[...L.children].sort((a,b)=>G.scores[b.dataset.k]-G.scores[a.dataset.k]).forEach(e=>L.appendChild(e))})}}}
-  const st=buildStage(G.n,.26);scoreHeads(st.Z);st.Z.forEach(z=>{z.zb.innerHTML=avatar(G.P[z.i].av,Math.round(Math.max(40,Math.min(z.el.clientHeight*.5,z.el.clientWidth*.4,110))))});let last="";const put=h=>{st.area.innerHTML=`<div class="dual"><div class="r">${h}</div><div>${h}</div></div>`};
-  return{el:i=>st.Z[i].st,fmt:v=>"⭐ "+v,center:h=>{last=h;put(h)},btn:h=>put(last+h),resort:()=>{},Z:st.Z}}
+  const st=buildStage(G.n,.36);scoreHeads(st.Z);st.area.classList.add("band");let last="";const put=h=>{st.area.innerHTML=`<div class="bandc">${h}</div>`};
+  const zones=f=>st.Z.forEach(z=>{z.zb.innerHTML=typeof f==="function"?f(z.i):f});zones(i=>avatar(G.P[i].av,Math.round(Math.max(40,Math.min(st.Z[i].el.clientHeight*.45,st.Z[i].el.clientWidth*.4,100)))));
+  return{el:i=>st.Z[i].st,fmt:v=>"⭐ "+v,center:h=>{last=h;put(h)},btn:h=>put(last+h),zones,resort:()=>{},Z:st.Z}}
+/* Affiche un événement : en mode table, l'icône au centre et le texte dans le coin de chacun (à l'endroit) */
+function evShow(sb,ico,txt){const t=i=>typeof txt==="function"?txt(i):txt;if(sb.zones){sb.center(`<div class="evc"><div class="ei">${ico}</div></div>`);sb.zones(i=>`<div class="evc">${t(i)}</div>`)}else sb.center(`<div class="evc"><div class="ei">${ico}</div>${t(-1)}</div>`)}
 const lastOf=()=>{const m=Math.min(...G.scores),w=G.P.map((_,i)=>i).filter(i=>G.scores[i]===m);return w.length===G.n?-1:pick(w)};
 const firstOf=()=>{const m=Math.max(...G.scores),w=G.P.map((_,i)=>i).filter(i=>G.scores[i]===m);return w.length===G.n?-1:pick(w)};
 function eventScreen(then){newRun();musicMode("match");theme("candy");
   const okEv=EVENTS.filter(e=>(e.k!=="robin"&&e.k!=="pouce"&&e.k!=="choix")||lastOf()>=0),ev=pick(okEv),sb=scoreBoard(),gift=Math.max(2,G.n-1);
-  sb.center(`<div class="rt">⚡ ÉVÉNEMENT SURPRISE ⚡</div><div class="evc"><div class="ei" id="evi">❓</div><div class="en" id="evn">…</div></div>`);
+  evShow(sb,`<span id="evi">❓</span>`,`<div class="rt">⚡ ÉVÉNEMENT SURPRISE</div><div class="en" id="evn">…</div>`);
   let s=0;const roll=()=>{const e=s<14?pick(EVENTS):ev;document.querySelectorAll("#evi").forEach(x=>x.textContent=e.i);document.querySelectorAll("#evn").forEach(x=>x.textContent=e.t);sfx.tick();s++;if(s<=14)T(70+s*12,roll);else land()};
   sfx.dice();T(300,roll);
   const land=()=>{sfx.jingle("event");impact();sparks(innerWidth/2,innerHeight/2,14);
-    sb.center(`<div class="rt">⚡ ÉVÉNEMENT SURPRISE ⚡</div><div class="evc"><div class="ei">${ev.i}</div><div class="en">${ev.t}</div><div class="ed">${ev.d}</div></div>`);
+    evShow(sb,ev.i,`<div class="rt">⚡ ÉVÉNEMENT SURPRISE</div><div class="en">${ev.t}</div><div class="ed">${ev.d}</div>`);
     const go=()=>{sb.btn(`<button class="btn sm" data-act="evgo" style="margin-top:6px">CONTINUER ▶</button>`);ACT.evgo=once(()=>{sfx.select();wipe(then)})};
     if(ev.k==="or"){G.mult=2;T(900,go)}
     else if(ev.k==="etoile"){G.bonusWin=gift;T(900,go)}
@@ -1287,17 +1368,17 @@ function eventScreen(then){newRun();musicMode("match");theme("candy");
       T(900,()=>{const ef=sb.el(F),el=sb.el(L);let k=0;coinFly(ef,el,take,{each:j=>{ef.textContent=sb.fmt(a-j);el.textContent=sb.fmt(b+j);punch(el);punch(ef,.8);sfx.coin(j)},done:()=>{sb.resort();T(500,go)}})})}
     else if(ev.k==="choix"){const L=lastOf(),opts=shuffle(avail().filter(k=>k!==G.last)).slice(0,3);
       T(800,()=>{const h=`<div class="rt">${esc(G.P[L].name).toUpperCase()} CHOISIT :</div><div class="pickg">${opts.map(k=>`<button data-act="pk_${k}" data-g="${k}"><span>${GAMES[k].icon}</span>${GAMES[k].name}</button>`).join("")}</div>`;
-        sb.center(`<div class="evc"><div class="ei">${ev.i}</div><div class="en">${ev.t}</div></div>${h}`);
+        if(sb.zones){sb.center(`<div class="evc"><div class="ei">${ev.i}</div></div>`);sb.zones(i=>i===L?`<div class="evc">${h}</div>`:`<div class="evc"><div class="en">${ev.t}</div><div class="ed">${esc(G.P[L].name)} choisit le prochain jeu…</div></div>`)}else sb.center(`<div class="evc"><div class="ei">${ev.i}</div><div class="en">${ev.t}</div></div>${h}`);
         const pk=once(k=>{G.forced=k;sfx.confirm();T(300,()=>wipe(then))});opts.forEach(k=>{ACT["pk_"+k]=()=>pk(k)})})}
   };
 }
 /* ===== Étoiles bonus de fin de partie (façon jeu de plateau) ===== */
 function bonusStars(then){newRun();musicMode("match");theme("arena");const picks=bonusPick();if(!picks.length)return then();
   const sb=scoreBoard(),gift=Math.max(1,G.n-1);let j=0;
-  sb.center(`<div class="rt">⭐ ÉTOILES BONUS ⭐</div><div class="evc"><div class="ei">🎁</div><div class="en">Qui va les gagner ?</div></div>`);sfx.roll(1.4);
+  evShow(sb,"🎁",`<div class="rt">⭐ ÉTOILES BONUS</div><div class="en">Qui va les gagner ?</div>`);sfx.roll(1.4);
   const next=()=>{if(j>=picks.length){T(600,()=>{sb.btn(`<button class="btn sm" data-act="bsgo" style="margin-top:6px">PODIUM 🏆</button>`);ACT.bsgo=once(()=>{sfx.select();wipe(then)})});return}
     const {b,w}=picks[j++];sfx.roll(1.1);
-    T(1200,()=>{sb.center(`<div class="rt">⭐ ÉTOILE BONUS ${j}/${picks.length} ⭐</div><div class="evc"><div class="ei">${b.i}</div><div class="en">${b.t}</div><div class="ed">${b.d}</div><div class="hrow">${w.map(i=>`<span class="tagx gold">${esc(G.P[i].name)} +${gift}</span>`).join("")}</div></div>`);
+    T(1200,()=>{evShow(sb,b.i,`<div class="rt">⭐ ÉTOILE BONUS ${j}/${picks.length}</div><div class="en">${b.t}</div><div class="ed">${b.d}</div><div class="hrow">${w.map(i=>`<span class="tagx gold">${esc(G.P[i].name)} +${gift}</span>`).join("")}</div>`);
       sfx.jingle("event");impact();let left=w.length;
       w.forEach(i=>{const a=G.scores[i];G.scores[i]+=gift;T(700,()=>addStars({x:innerWidth/2,y:innerHeight/2},sb.el(i),a,gift,sb.fmt,()=>{if(--left===0){sb.resort();T(1300,next)}}))})})};
   T(1500,next);
@@ -1472,17 +1553,17 @@ function editName(i,cb){const s=G.slots[i],o=document.createElement("div");o.cla
 const lockHint=()=>{const l=HEROES.length-nUnlocked();return l?`🔒 ${l} héros à débloquer avec les trophées`:""};
 function selectScreen(){
   newRun();musicMode("menu");theme("arena");prepPlayers();
-  const n=G.n,{Z}=buildStage(n,.5,{header:false}),ready=Array(n).fill(false);
-  const check=()=>{if(!ready.every(Boolean))return;startMatch();midSet(`<div class="fin">C'EST PARTI !</div>`);sfx.go();impact();T(1000,()=>wipe(nextRound))};
-  const draw=i=>{const z=Z[i],sz=Math.round(Math.max(56,Math.min(z.el.clientHeight*.36,z.el.clientWidth-104,170)));
+  const n=G.n,{Z,area}=buildStage(n,.42,{header:false}),ready=Array(n).fill(false);area.classList.add("band");
+  area.innerHTML=`<div class="bandc"><div class="vs">VS</div></div>`;
+  const check=()=>{if(!ready.every(Boolean))return;startMatch();zoneSay(`<div class="fin">C'EST PARTI !</div>`);sfx.go();impact();T(1100,()=>wipe(nextRound))};
+  const draw=i=>{const z=Z[i],sz=Math.round(Math.max(56,Math.min(z.el.clientHeight*.32,z.el.clientWidth-104,150)));
     z.el.classList.toggle("ok",ready[i]);
-    z.zb.innerHTML=`<div class="pn big" style="--c:${PCOL[i]}">P${i+1}</div><div class="selrow"><button class="arr" data-d="-1">◀</button><div class="selav">${avatar(G.P[i].av,sz)}</div><button class="arr" data-d="1">▶</button></div><div class="selnm">${esc(G.P[i].name)} ✎</div><button class="rdy">${ready[i]?"PRÊT ✔":"PRÊT ?"}</button>`;
+    z.zb.innerHTML=`<div class="zsm">Joueur ${i+1} · choisis ton héros</div><div class="selrow"><button class="arr" data-d="-1">◀</button><div class="selav">${avatar(G.P[i].av,sz)}</div><button class="arr" data-d="1">▶</button></div><div class="selnm">${esc(G.P[i].name)} ✎</div><button class="rdy">${ready[i]?"PRÊT ✔":"PRÊT ?"}</button>`;
     z.zb.querySelectorAll(".arr").forEach(b=>on(b,()=>{if(ready[i])return;cycleHero(i,+b.dataset.d);draw(i);punch(z.zb.querySelector(".selav"),1.15)}));
     z.zb.querySelector(".selnm").onclick=()=>{if(!ready[i])editName(i,()=>draw(i))};
     on(z.zb.querySelector(".rdy"),()=>{ready[i]=!ready[i];ready[i]?sfx.confirm():sfx.back();unlockBA();draw(i);check()});
   };
   Z.forEach((_,i)=>draw(i));
-  midSet(`<div class="zbig">Choisissez votre héros !</div><div class="zsm">${lockHint()}</div>`);
 }
 function selectList(){
   newRun();musicMode("menu");theme("arena");plain();prepPlayers();
@@ -1512,16 +1593,18 @@ function scoreHeads(Z,sc=G.scores){Z.forEach(z=>{z.st.textContent="⭐ "+sc[z.i]
 const twistTag=()=>G.finale?`<span class="tagx gold">MANCHE FINALE · POINTS ×2</span>`:G.mult>1?`<span class="tagx gold">💰 POINTS ×2</span>`:G.bonusWin?`<span class="tagx">🌠 BONUS +${G.bonusWin} AU GAGNANT</span>`:"";
 function roulette(){
   newRun();musicMode("match");theme("arena");
-  const key=drawGame(),keys=avail(),tour=G.mode==="tour",tg=twistTag();
+  const key=drawGame(),keys=avail(),tour=G.mode==="tour",tg=twistTag();let Z=null;
   if(tour){plain();stage.innerHTML=`<div class="scr"><div class="rt">MANCHE ${G.round+1} / ${G.rounds}</div>${tg}<div class="rcard solo1" id="rc"></div><div class="rt">PROCHAIN MINI-JEU</div>${standHTML()}</div>`;addPause()}
-  else{const {Z,area}=buildStage(G.n,.22);scoreHeads(Z);
-    Z.forEach(z=>{z.zb.innerHTML=`<div class="zsm">Manche</div><div class="zhuge">${G.round+1}<small>/${G.rounds}</small></div>`});
-    area.innerHTML=`<div class="rt r">PROCHAIN MINI-JEU ${tg}</div><div class="rcard" id="rc"></div><div class="rt">PROCHAIN MINI-JEU ${tg}</div>`}
-  const rc=$("#rc"),fill=k=>{const g=GAMES[k];rc.innerHTML=tour?`<div class="ri">${g.icon}</div><div class="rn">${g.name}</div>`:`<div class="rn r">${g.name}</div><div class="ri">${g.icon}</div><div class="rn">${g.name}</div>`};
+  else{const st=buildStage(G.n,.36);Z=st.Z;st.area.classList.add("band");scoreHeads(Z);
+    Z.forEach(z=>{z.zb.innerHTML=`<div class="zsm">Manche ${G.round+1} / ${G.rounds}</div><div class="zgame"><div class="zname">Tirage du jeu…</div></div>${tg}`});
+    st.area.innerHTML=`<div class="bandc"><div class="rcard" id="rc"></div></div>`}
+  const rc=$("#rc"),fill=k=>{const g=GAMES[k];rc.innerHTML=tour?`<div class="ri">${g.icon}</div><div class="rn">${g.name}</div>`:`<div class="ri">${g.icon}</div>`};
   const seq=[];for(let s=0;s<19;s++)seq.push(pick(keys));seq.push(key);
   let s=0,d=55;
   const go=()=>{fill(seq[s]);sfx.tick();rc.classList.remove("bump");void rc.offsetWidth;rc.classList.add("bump");s++;
-    if(s<seq.length){d*=1.11;T(d,go)}else{rc.classList.remove("bump");rc.classList.add("land");sfx.sting();impact();const c=ctr(rc);sparks(c.x,c.y,14);T(1700,()=>wipe(()=>intro(key)))}};
+    if(s<seq.length){d*=1.11;T(d,go)}else{rc.classList.remove("bump");rc.classList.add("land");sfx.sting();impact();const c=ctr(rc);sparks(c.x,c.y,14);
+      if(Z)Z.forEach(z=>{const zg=z.zb.querySelector(".zgame");if(zg)zg.innerHTML=`<div class="gi">${GAMES[key].icon}</div><div class="zname">${GAMES[key].name}</div>`});
+      T(1900,()=>wipe(()=>intro(key)))}};
   if(G.finale&&G.round===G.rounds-1){T(200,()=>{banner("MANCHE FINALE !","Tous les points comptent double","gold",1700);sfx.roll(1)});T(2100,()=>{sfx.dice();go()})}
   else{sfx.dice();T(450,go)}
 }
@@ -1530,18 +1613,18 @@ function intro(key){
   if(G.mode==="tour"){plain();
     stage.innerHTML=`<div class="scr"><div class="gi">${g.icon}</div><div class="gname big">${g.name}</div><div class="grule big">${g.rule}</div><div class="hint">🏁 ${g.goal||""}</div>${twistTag()}<button class="btn big" id="gogo">C'EST PARTI ▶</button></div>`;
     addPause();sfx.question();on($("#gogo"),once(()=>{sfx.go();wipe(()=>playSolo(key))}));return}
-  const {Z,area}=buildStage(G.n,.24),rd=Array(G.n).fill(false);
+  const {Z,area}=buildStage(G.n,.4),rd=Array(G.n).fill(false);area.classList.add("band");
   scoreHeads(Z);sfx.question();
-  const txt=`<div class="gname">${g.name}</div><div class="grule">${g.rule}${g.solo?` <b style="color:var(--yellow)">🔄 On se passe le téléphone !</b>`:""}</div>`;
-  area.innerHTML=`<div class="dual"><div class="r">${txt}</div><div class="gi">${g.icon}</div><div>${txt}</div></div>`;
-  Z.forEach(z=>{z.zb.innerHTML=`<div class="zhuge">👆</div><div class="zbig">Touche ici quand tu es prêt !</div>`;
-    on(z.el,()=>{if(rd[z.i])return;rd[z.i]=true;unlockBA();z.el.classList.add("ok");z.zb.innerHTML=`<div class="zhuge">✔</div><div class="zbig">PRÊT !</div>`;sfx.confirm();punch(z.zb,1.08);
+  area.innerHTML=`<div class="bandc"><div class="gi">${g.icon}</div></div>`;
+  Z.forEach(z=>{z.zb.innerHTML=`<div class="zname">${g.name}</div><div class="grule">${g.rule}${g.solo?" 🔄 On se passe le téléphone !":""}</div><div class="zready">👆 Touche ici quand tu es prêt !</div>`;
+    on(z.el,()=>{if(rd[z.i])return;rd[z.i]=true;unlockBA();z.el.classList.add("ok");z.zb.querySelector(".zready").textContent="✔ PRÊT !";sfx.confirm();punch(z.zb.querySelector(".zready"),1.15);
       if(rd.every(Boolean))T(450,()=>wipe(()=>(g.solo?playSolo:play)(key)))})});
 }
-function countdown(fn){
-  let k=3;
-  const step=()=>{if(k>0){midSet(`<div class="cd">${k}</div>`);sfx.beep();k--;T(650,step)}
-    else{midSet(`<div class="cd go">GO !</div>`);sfx.go();impact();const tok=$("#mid").innerHTML;T(550,()=>{const m=$("#mid");if(m&&m.innerHTML===tok)midSet("")});fn()}};
+function zoneSay(h){document.querySelectorAll(".zsay").forEach(e=>e.remove());document.querySelectorAll(".zone .zin").forEach(z=>{const d=document.createElement("div");d.className="zsay";d.innerHTML=h;z.appendChild(d)})}
+function countdown(fn,mid){
+  let k=3;const say=h=>mid?midSet(h):zoneSay(h);
+  const step=()=>{if(k>0){say(`<div class="cd">${k}</div>`);sfx.beep();k--;T(650,step)}
+    else{say(`<div class="cd go">GO !</div>`);sfx.go();impact();T(550,()=>{if(mid)midSet("");document.querySelectorAll(".zsay").forEach(e=>e.remove())});fn()}};
   T(350,step);
 }
 function makeCtx(key,{Z,area}){
@@ -1558,14 +1641,14 @@ function makeCtx(key,{Z,area}){
 }
 function play(key){
   newRun();const g=GAMES[key];musicMode(g.mus||"battle");theme(g.th||"arena");
-  const st=buildStage(G.n,g.edge??.5),c=makeCtx(key,st);
+  const e=g.full?(g.edge??.5):Math.min(g.edge??.5,.4),st=buildStage(G.n,e),c=makeCtx(key,st);if(st.area&&e>=.36)st.area.classList.add("band");
   g.setup&&g.setup(c);
-  countdown(()=>{if(RUN===c.run){c.go=true;g.start&&g.start(c)}});
+  countdown(()=>{if(RUN===c.run){c.go=true;g.start&&g.start(c)}},!!g.full);
 }
 function calcPts(places){const n=places.length;return places.every(p=>p===places[0])?places.map(()=>0):places.map(p=>Math.max(0,n-1-p))}
 function endGame(key,places,pts){
   newRun();pts=pts||calcPts(places);
-  midSet(`<div class="fin">FIN !</div>`);sfx.go();impact();
+  if(GAMES[key].full||!document.querySelector(".zone"))midSet(`<div class="fin">FIN !</div>`);else zoneSay(`<div class="fin">FIN !</div>`);sfx.go();impact();
   T(1000,()=>showResult(key,places,pts));
 }
 function showResult(key,places,pts,labels){(G.mode==="tour"?resultList:result)(key,places,pts,labels)}
@@ -1585,11 +1668,11 @@ const nextLabel=(loser,last)=>loser>=0?`🃏 GAGE DE ${esc(G.P[loser].name).toUp
 const goNext=loser=>{sfx.select();if(loser>=0)wipe(()=>gageScreen(loser,nextRound));else wipe(nextRound)};
 function result(key,places,pts0,labels){
   newRun();musicMode("match");theme("arena");
-  const {pts,tags,old,loser}=settle(key,places,pts0),g=GAMES[key],{Z,area}=buildStage(G.n,.3),last=G.round>=G.rounds;
+  const {pts,tags,old,loser}=settle(key,places,pts0),g=GAMES[key],{Z,area}=buildStage(G.n,.34),last=G.round>=G.rounds;area.classList.add("band");
   scoreHeads(Z,old);
   Z.forEach(z=>{const i=z.i,p=places[i];z.el.classList.toggle("win",p===0&&pts[i]>0);if(!pts[i])z.el.classList.add("dim");
-    z.zb.innerHTML=`<div class="medal" style="animation-delay:${.15+p*.2}s">${pts[i]?MEDAL(p):"😶"}</div><div class="plus" style="animation-delay:${.35+p*.2}s">+${pts[i]}</div>${tags[i]?`<span class="tagx gold">${tags[i]}</span>`:""}${labels&&labels[i]?`<div class="zsm">${esc(labels[i])}</div>`:""}`});
-  area.innerHTML=dual(`<div class="rt">${g.icon} ${g.name.toUpperCase()} · ${G.round}/${G.rounds}</div>${standHTML(old)}<button class="btn sm" data-act="next">${nextLabel(loser,last)}</button>`);
+    z.zb.innerHTML=`<div class="zsm">${g.icon} ${g.name}</div><div class="medal" style="animation-delay:${.15+p*.2}s">${pts[i]?MEDAL(p):"😶"}</div><div class="plus" style="animation-delay:${.35+p*.2}s">+${pts[i]}</div>${tags[i]?`<span class="tagx gold">${tags[i]}</span>`:""}${labels&&labels[i]?`<div class="zsm">${esc(labels[i])}</div>`:""}`});
+  area.innerHTML=`<div class="bandc">${standHTML(old)}<button class="btn" data-act="next">${nextLabel(loser,last)}</button></div>`;
   ACT.next=once(()=>goNext(loser));
   cheer(places,pts);
   T(1100,()=>{let left=Z.filter(z=>pts[z.i]>0).length;const fin=()=>T(250,()=>standRefresh(area));if(!left)return fin();
@@ -1597,12 +1680,11 @@ function result(key,places,pts0,labels){
 }
 function podium(){
   newRun();musicMode("match");theme("arena");
-  const pl=rankBy(G.scores),{Z,area}=buildStage(G.n,.28),w=G.P.map((_,i)=>i).filter(i=>pl[i]===0);
+  const pl=rankBy(G.scores),{Z,area}=buildStage(G.n,.34),w=G.P.map((_,i)=>i).filter(i=>pl[i]===0),name=w.map(i=>G.P[i].name).join(" & ");area.classList.add("band");
   scoreHeads(Z);
   Z.forEach(z=>{const p=pl[z.i];z.el.classList.toggle("win",p===0);if(p>0)z.el.classList.add("dim");
-    z.zb.innerHTML=`<div class="medal big">${MEDAL(p)}</div><div class="zbig">${p===0?"CHAMPION !":(p+1)+"e place"}</div><div class="ttl" style="animation-delay:${1+z.i*.15}s">${titleOf(z.i,p===0)}</div>`});
-  const name=w.map(i=>G.P[i].name).join(" & "),txt=`<div class="rt">🏆 GRAND CHAMPION</div><div class="gname">${esc(name)}</div><button class="btn sm" data-act="suite">SUITE ▶</button>`;
-  area.innerHTML=`<div class="dual"><div class="r">${txt}</div><div class="champ">${avatar(G.P[w[0]].av,Math.min(120,area.clientHeight*.3))}</div><div>${txt}</div></div>`;
+    z.zb.innerHTML=`<div class="medal big">${MEDAL(p)}</div><div class="zbig">${p===0?"CHAMPION !":(p+1)+"e place"}</div><div class="ttl" style="animation-delay:${1+z.i*.15}s">${titleOf(z.i,p===0)}</div>${p>0?`<div class="zsm">👑 ${esc(name)}</div>`:""}`});
+  area.innerHTML=`<div class="bandc row"><div class="champ">${avatar(G.P[w[0]].av,Math.round(Math.min(96,area.clientHeight*.55)))}</div><button class="btn" data-act="suite">SUITE ▶</button></div>`;
   ACT.suite=once(()=>{sfx.select();finishMatch()});
   celebrate();
 }
@@ -2210,6 +2292,214 @@ calcul:{name:"Calcul éclair",icon:"🧮",solo:true,th:"space",mus:"turbo",goal:
   IV(1000,()=>{t--;tt.textContent=Math.max(0,t);tt.classList.toggle("hot",t<=5);if(t<=5&&t>0)sfx.tick();if(t<=0&&!over){over=true;sfx.boom();T(900,()=>s.end(sc,lab(sc)))}})}}
 });
 Object.assign(CAT,{ballon:"show",feu:"vite",roue:"vise",helico:"vise",intrus:"tete",calcul:"tete"});
+
+/* ===================== MINI-JEUX v6 : golf, burger, fléchettes, estimation, cartes, chifoumi, paires, basket, mots ===================== */
+delete GAMES.feu;
+/* Position du doigt dans un élément, en tenant compte des coins retournés */
+const zpos=(el,e,flip)=>{const r=el.getBoundingClientRect();let x=e.clientX-r.left,y=e.clientY-r.top;if(flip){x=r.width-x;y=r.height-y}return[x,y]};
+/* --- Mini-golf : terrain réutilisable (trous en coordonnées 0..1) --- */
+const GOLF=[{h:[.5,.15],w:[[0,.47,.62,.05]]},{h:[.5,.15],w:[[.38,.47,.62,.05]]},{h:[.5,.14],w:[[0,.33,.58,.045],[.42,.6,.58,.045]]},
+ {h:[.5,.16],w:[[.3,.4,.4,.12]]},{h:[.2,.17],w:[[.42,.28,.1,.4]]},{h:[.8,.18],w:[[0,.55,.45,.05],[.55,.34,.45,.05]]},{h:[.5,.13],w:[[.15,.3,.22,.06],[.63,.3,.22,.06],[.39,.55,.22,.06]]}];
+function golfField(par,{flip=false,hole,onShot,onStop,onSink}){
+  const {cv,x,w,h}=canvasIn(par),M=Math.min(w,h),R=Math.max(6,M*.03),HR=R*1.8,hx=hole.h[0]*w,hy=hole.h[1]*h,walls=hole.w.map(([a,b,c,d])=>({x:a*w,y:b*h,w:c*w,h:d*h}));
+  const g={x:w*.5,y:h*.86,vx:0,vy:0,shots:0,sunk:false,drag:null,aim:null,lock:false,moving:false};
+  cv.addEventListener("pointerdown",e=>{e.preventDefault();e.stopPropagation();if(g.sunk||g.moving||g.lock)return;try{cv.setPointerCapture(e.pointerId)}catch(_){}g.drag=zpos(cv,e,flip);g.aim=g.drag});
+  cv.addEventListener("pointermove",e=>{if(g.drag)g.aim=zpos(cv,e,flip)});
+  cv.addEventListener("pointerup",()=>{if(!g.drag)return;const dx=g.drag[0]-g.aim[0],dy=g.drag[1]-g.aim[1],d=Math.hypot(dx,dy);g.drag=null;if(d<10)return;
+    const p=Math.min(1,d/(M*.42)),sp=40+p*Math.max(w,h)*2.3;g.vx=dx/d*sp;g.vy=dy/d*sp;g.shots++;g.moving=true;sfx.hit();onShot&&onShot(g.shots)});
+  cv.addEventListener("pointercancel",()=>g.drag=null);
+  const hitRect=r=>{const cx=Math.max(r.x,Math.min(g.x,r.x+r.w)),cy=Math.max(r.y,Math.min(g.y,r.y+r.h)),dx=g.x-cx,dy=g.y-cy,d=Math.hypot(dx,dy);
+    if(d<R&&d>0){const nx=dx/d,ny=dy/d;g.x=cx+nx*R;g.y=cy+ny*R;const vn=g.vx*nx+g.vy*ny;if(vn<0){g.vx-=1.75*vn*nx;g.vy-=1.75*vn*ny;sfx.wall()}}};
+  g.step=dt=>{if(g.moving&&!g.sunk){const sp=Math.hypot(g.vx,g.vy),n=Math.max(1,Math.ceil(sp*dt/(R*.7))),sd=dt/n;
+     for(let k=0;k<n;k++){g.x+=g.vx*sd;g.y+=g.vy*sd;
+      if(g.x<R){g.x=R;g.vx=Math.abs(g.vx)*.8;sfx.wall()}if(g.x>w-R){g.x=w-R;g.vx=-Math.abs(g.vx)*.8;sfx.wall()}
+      if(g.y<R){g.y=R;g.vy=Math.abs(g.vy)*.8;sfx.wall()}if(g.y>h-R){g.y=h-R;g.vy=-Math.abs(g.vy)*.8;sfx.wall()}
+      walls.forEach(hitRect);
+      const dh=Math.hypot(g.x-hx,g.y-hy),s2=Math.hypot(g.vx,g.vy);
+      if(dh<HR*.9&&s2<M*2.4){g.sunk=true;g.moving=false;g.x=hx;g.y=hy;g.vx=g.vy=0;sfx.coin(3);sparks(...Object.values(ctr(cv)),6);onSink&&onSink(g.shots);break}
+      if(dh<HR*1.6){g.vx+=(hx-g.x)*sd*3;g.vy+=(hy-g.y)*sd*3}}
+     const s3=Math.hypot(g.vx,g.vy),ns=Math.max(0,s3-M*.35*dt)*Math.pow(.55,dt);if(s3>0){g.vx*=ns/s3;g.vy*=ns/s3}
+     if(ns<6&&!g.sunk){g.vx=g.vy=0;g.moving=false;onStop&&onStop(g.shots)}}
+   x.save();if(flip){x.translate(w,h);x.rotate(Math.PI)}
+   x.fillStyle="#3fcf6e";x.fillRect(0,0,w,h);x.fillStyle="#36bd62";for(let yy=0;yy<h;yy+=M*.16)x.fillRect(0,yy,w,M*.08);
+   x.strokeStyle="#1b1440";x.lineWidth=5;x.strokeRect(2.5,2.5,w-5,h-5);
+   walls.forEach(r=>{x.fillStyle="#b4733a";x.fillRect(r.x,r.y,r.w,r.h);x.strokeStyle="#1b1440";x.lineWidth=3;x.strokeRect(r.x,r.y,r.w,r.h)});
+   x.fillStyle="#1b1440";x.beginPath();x.arc(hx,hy,HR,0,7);x.fill();
+   x.strokeStyle="#fff";x.lineWidth=3;x.beginPath();x.moveTo(hx,hy);x.lineTo(hx,hy-M*.16);x.stroke();x.fillStyle="#ff4d6d";x.beginPath();x.moveTo(hx,hy-M*.16);x.lineTo(hx+M*.1,hy-M*.13);x.lineTo(hx,hy-M*.1);x.fill();
+   if(g.drag&&g.aim){const dx=g.drag[0]-g.aim[0],dy=g.drag[1]-g.aim[1],d=Math.hypot(dx,dy);if(d>10){const p=Math.min(1,d/(M*.42)),L=M*.12+p*M*.38;
+     x.strokeStyle=p>.8?"#ff4d6d":p>.45?"#ffd23f":"#fff";x.lineWidth=5;x.setLineDash([8,8]);x.beginPath();x.moveTo(g.x,g.y);x.lineTo(g.x+dx/d*L,g.y+dy/d*L);x.stroke();x.setLineDash([])}}
+   if(!g.sunk){x.fillStyle="#0003";x.beginPath();x.ellipse(g.x+2,g.y+3,R,R*.8,0,0,7);x.fill();x.fillStyle="#fff";x.strokeStyle="#1b1440";x.lineWidth=2.5;x.beginPath();x.arc(g.x,g.y,R,0,7);x.fill();x.stroke()}
+   x.restore()};
+  return g}
+/* --- Questions d'estimation --- */
+const ESTIME=[["Combien de marches pour monter tout en haut de la tour Eiffel ?",1665,100,3000,"marches"],["Distance à vol d'oiseau entre Paris et Marseille ?",660,100,1500,"km"],
+ ["En quelle année a été inventé le Coca-Cola ?",1886,1800,2000,""],["Combien d'os compte le squelette d'un adulte ?",206,50,500,"os"],["Hauteur de la tour Eiffel, antennes comprises ?",330,100,700,"m"],
+ ["Combien de touches sur un piano classique ?",88,20,150,"touches"],["Combien de cœurs a une pieuvre ?",3,1,10,"cœurs"],["En quelle année est sorti le premier iPhone ?",2007,1990,2020,""],
+ ["Combien de départements en France métropolitaine ?",96,50,150,"départements"],["Combien de jours dure la grossesse d'une éléphante ?",650,100,900,"jours"],["Combien d'habitants en Moselle (en milliers) ?",1050,200,3000,"milliers"],
+ ["Combien de litres de sang dans le corps d'un adulte ?",5,1,15,"litres"],["Longueur de la Loire ?",1006,200,2000,"km"],["Poids d'une baguette de pain classique ?",250,100,600,"g"],
+ ["Distance entre la Terre et la Lune (en milliers de km) ?",384,100,1000,"milliers de km"],["En quelle année la tour Eiffel a-t-elle été inaugurée ?",1889,1800,1950,""],
+ ["Combien de pays dans l'Union européenne ?",27,5,60,"pays"],["Hauteur du mont Blanc ?",4806,1000,9000,"m"],["Combien de secondes dans une journée ?",86400,10000,200000,"s"],
+ ["Combien de cases sur un échiquier ?",64,10,150,"cases"],["Vitesse d'un TGV en service commercial ?",320,100,600,"km/h"],["En quelle année a eu lieu le premier Tour de France ?",1903,1850,1960,""]];
+const fmtN=v=>Math.round(v).toLocaleString("fr-FR");
+const CARD=v=>["","A","2","3","4","5","6","7","8","9","10","V","D","R"][v];
+const cardHTML=(v,s)=>{const red=s==="♥"||s==="♦";return`<div class="pcard${red?" red":""}"><span class="ci">${CARD(v)}<br>${s}</span><b>${s}</b><span class="ci r">${CARD(v)}<br>${s}</span></div>`};
+const PAIRS=["🍕","🍔","🍩","🍉","🍓","🍒","🥑","🌮","🍦","🧁","🍪","🥨"];
+const MOTS=["CHAT","POMME","SOLEIL","MAISON","JARDIN","BALLON","FROMAGE","CUISINE","VOITURE","GUITARE","PIZZA","CAMION","LAPIN","CITRON","BATEAU","MUSIQUE","PLAGE","NUAGE","TOMATE","BANANE","OISEAU","DANSE","TIGRE","ROBOT","CANARD","FLEUR","LIVRE","CHEVAL","PIRATE","SALADE","DRAGON","FUSEE","MONTAGNE","PINGOUIN","GATEAU","CAROTTE","FOURCHETTE","PARAPLUIE"];
+const ING=["🥩","🧀","🥬","🍅","🥓","🧅","🥒","🍳"];
+
+Object.assign(GAMES,{
+golf:{name:"Mini-golf",icon:"⛳",edge:.5,th:"arena",mus:"arena",
+ rule:"Pose le doigt sur ton terrain, tire vers l'arrière comme un lance-pierre, puis lâche pour frapper. Mets la balle dans le trou en un minimum de coups (6 maximum) !",
+ start(c){const hole=pick(GOLF),n=c.n,res=Array(n).fill(null);let over=false;
+  const F=c.Z.map(z=>{c.body(z.i,`<div class="gf"></div><div class="zsm gs">Coups : 0</div>`);const gs=z.zb.querySelector(".gs");
+   const done=v=>{if(res[z.i]!=null)return;res[z.i]=v;g.lock=true;c.cls(z.i,"ok");gs.textContent=v>6?"Raté… 7 coups":`⛳ Dans le trou en ${v} coup${v>1?"s":""} !`;if(v<=6)c.ft(z.i,v===1?"TROU EN UN !":"Bravo !");if(res.every(r=>r!=null))T(900,end)};
+   const g=golfField(z.zb.querySelector(".gf"),{flip:z.rot===180,hole,onShot:k=>gs.textContent=`Coups : ${k}`,onSink:k=>done(k),onStop:k=>{if(k>=6)done(7)}});return g});
+  LOOP(dt=>{if(over)return false;F.forEach(g=>g.step(dt))});
+  T(75000,end);
+  function end(){if(over)return;over=true;const v=F.map((g,i)=>res[i]??7),pl=rankBy(v,false);c.Z.forEach(z=>c.cls(z.i,"win",pl[z.i]===0));sfx.win();T(1500,()=>c.finish(pl))}}},
+
+burger:{name:"Burger chef",icon:"🍔",edge:.5,th:"candy",mus:"arena",
+ rule:"Mémorise la commande, puis reconstruis le burger dans le bon ordre en touchant les ingrédients. Le premier qui réussit gagne la commande. 3 commandes !",
+ start(c){const n=c.n,pts=Array(n).fill(0);let r=0,order=[],prog=[],lockT=[],won=false,over=false;
+  const round=()=>{if(RUN!==c.run)return;if(r>=3){over=true;return c.finish(rankBy(pts))}r++;won=false;order=shuffle(ING).slice(0,2+r);prog=Array(n).fill(0);lockT=Array(n).fill(0);
+   c.Z.forEach(z=>{c.cls(z.i,"ok",false);c.cls(z.i,"win",false);c.body(z.i,`<div class="zsm">Commande ${r}/3 · mémorise !</div><div class="border">${order.map(e=>`<span>${e}</span>`).join("<i>➜</i>")}</div>`)});sfx.question();
+   T(2200+order.length*600,build)};
+  const build=()=>{if(RUN!==c.run)return;c.Z.forEach(z=>{const i=z.i;c.body(i,`<div class="bplate"><span>🍞</span></div><div class="bings">${shuffle(ING).map(e=>`<button class="bing" data-e="${e}">${e}</button>`).join("")}</div>`);
+    z.zb.querySelectorAll(".bing").forEach(b=>on(b,()=>{if(won||over||performance.now()<lockT[i])return;const pl=z.zb.querySelector(".bplate");
+     if(b.dataset.e===order[prog[i]]){prog[i]++;pl.insertAdjacentHTML("beforeend",`<span>${b.dataset.e}</span>`);sfx.pop(1+prog[i]*.08);
+      if(prog[i]>=order.length){won=true;pts[i]++;pl.insertAdjacentHTML("beforeend","<span>🍞</span>");c.cls(i,"win");c.ft(i,"Servi ! +1");sfx.coin(pts[i]);c.score(i,pts[i]);T(1700,round)}}
+     else{prog[i]=0;lockT[i]=performance.now()+900;pl.innerHTML="<span>🍞</span>";c.blink(i,"flashr");c.ft(i,"Raté !","#ff4d6d");sfx.bad()}}))});
+   const rr=r;T(20000,()=>{if(r===rr&&!won&&!over){won=true;T(300,round)}})};
+  c.Z.forEach(z=>c.score(z.i,0));round()}},
+
+flechettes:{name:"Fléchettes",icon:"🎯",edge:.5,th:"western",mus:"tension",
+ rule:"Le viseur glisse de gauche à droite : touche ton coin pour le bloquer. Puis il monte et descend : touche encore pour lancer ! 3 fléchettes, le plus de points gagne.",
+ start(c){const n=c.n;let over=false;
+  const P=c.Z.map(z=>{c.body(z.i,`<div class="gf"></div><div class="zbig fs">0 point</div>`);const {x,w,h}=canvasIn(z.zb.querySelector(".gf"));return{x,w,h,ph:0,t:rnd(0,6),tx:0,ty:0,d:[],sc:0,k:0,sp:1.6,el:z.zb.querySelector(".fs")}});
+  const RING=[[.07,50,"#ff3b5c"],[.17,25,"#3be08a"],[.4,10,"#fff3d6"],[.65,5,"#1b1440"],[1,2,"#ff3b5c"]];
+  const draw=p=>{const{x,w,h}=p,R=Math.min(w,h)*.42,cx=w/2,cy=h/2;x.clearRect(0,0,w,h);
+   for(let k=RING.length-1;k>=0;k--){x.fillStyle=RING[k][2];x.beginPath();x.arc(cx,cy,R*RING[k][0],0,7);x.fill();x.strokeStyle="#1b1440";x.lineWidth=2.5;x.stroke()}
+   p.d.forEach(([dx,dy])=>{x.fillStyle="#ffd23f";x.strokeStyle="#1b1440";x.lineWidth=2;x.beginPath();x.arc(cx+dx*R,cy+dy*R,5,0,7);x.fill();x.stroke()});
+   if(p.k<3){const ax=p.ph===0?Math.sin(p.t*p.sp):p.tx,ay=p.ph===1?Math.sin(p.t*p.sp*1.15):0;x.strokeStyle="#fff";x.lineWidth=3;x.setLineDash([6,5]);
+    x.beginPath();x.moveTo(cx+ax*R*1.05,cy-R*1.1);x.lineTo(cx+ax*R*1.05,cy+R*1.1);x.stroke();if(p.ph===1){x.beginPath();x.moveTo(cx-R*1.1,cy+ay*R*1.05);x.lineTo(cx+R*1.1,cy+ay*R*1.05);x.stroke()}x.setLineDash([])}};
+  c.Z.forEach(z=>c.tap(z.i,()=>{const p=P[z.i];if(over||p.k>=3)return;
+   if(p.ph===0){p.tx=Math.sin(p.t*p.sp);p.ph=1;p.t=rnd(0,6);sfx.select()}
+   else{const ty=Math.sin(p.t*p.sp*1.15),dx=p.tx*1.05+rnd(-.04,.04),dy=ty*1.05+rnd(-.04,.04),dd=Math.hypot(dx,dy),pts=(RING.find(r=>dd<=r[0])||[0,0])[1];
+    p.d.push([dx,dy]);p.sc+=pts;p.k++;p.ph=0;p.t=rnd(0,6);p.sp*=1.2;p.el.textContent=`${p.sc} point${p.sc>1?"s":""}`;c.ft(z.i,pts?"+"+pts:"Raté","#ffe766");pts?sfx.coin(pts>=25?5:1):sfx.bad();
+    if(p.k>=3){c.cls(z.i,"ok");if(P.every(q=>q.k>=3))T(900,end)}}}));
+  LOOP(dt=>{if(over)return false;P.forEach(p=>{p.t+=dt;draw(p)})});
+  T(45000,end);
+  function end(){if(over)return;over=true;const v=P.map(p=>p.sc),pl=rankBy(v);c.Z.forEach(z=>c.cls(z.i,"win",pl[z.i]===0&&v[z.i]>0));sfx.win();T(1500,()=>c.finish(pl))}}},
+
+estime:{name:"Estimez !",icon:"🤔",edge:.5,th:"studio",mus:"tension",
+ rule:"Une question dont personne ne connaît la réponse exacte ! Glisse le doigt sur ta règle pour choisir ton nombre, ajuste avec − et +, puis valide. Le plus proche gagne. 3 questions.",
+ start(c){const n=c.n,pts=Array(n).fill(0),qs=shuffle(ESTIME).slice(0,3);let q=-1,val=[],ok=[],tm=null,over=false;
+  const step=Q=>{const r=Q[3]-Q[2];return r>50000?1000:r>5000?100:r>800?10:r>200?5:1};
+  const ask=()=>{if(RUN!==c.run)return;q++;if(q>=qs.length){over=true;return c.finish(rankBy(pts))}const Q=qs[q],S=step(Q);val=Array(n).fill(Math.round((Q[2]+Q[3])/2/S)*S);ok=Array(n).fill(false);
+   c.Z.forEach(z=>{const i=z.i;c.cls(i,"ok",false);c.cls(i,"win",false);
+    c.body(i,`<div class="qq">${q+1}/3 · ${esc(Q[0])}</div><div class="zhuge ev">${fmtN(val[i])}</div><div class="zsm">${esc(Q[4])}</div><div class="rule"><i></i></div><div class="erow"><button class="btn sm ghost em">−</button><button class="btn sm green eok">VALIDER</button><button class="btn sm ghost ep">+</button></div>`);
+    const rl=z.zb.querySelector(".rule"),fill=rl.querySelector("i"),ev=z.zb.querySelector(".ev"),upd=()=>{ev.textContent=fmtN(val[i]);fill.style.width=((val[i]-Q[2])/(Q[3]-Q[2])*100)+"%"};upd();
+    const setX=e=>{if(ok[i])return;const r=rl.getBoundingClientRect();let f=(e.clientX-r.left)/r.width;if(z.rot===180)f=1-f;f=Math.max(0,Math.min(1,f));val[i]=Math.round((Q[2]+f*(Q[3]-Q[2]))/S)*S;upd()};
+    rl.addEventListener("pointerdown",e=>{e.preventDefault();e.stopPropagation();try{rl.setPointerCapture(e.pointerId)}catch(_){}setX(e)});rl.addEventListener("pointermove",e=>{if(e.buttons||e.pointerType!=="mouse")setX(e)});
+    on(z.zb.querySelector(".em"),()=>{if(!ok[i]){val[i]=Math.max(Q[2],val[i]-S);upd();sfx.tap(1)}});on(z.zb.querySelector(".ep"),()=>{if(!ok[i]){val[i]=Math.min(Q[3],val[i]+S);upd();sfx.tap(3)}});
+    on(z.zb.querySelector(".eok"),()=>{if(ok[i])return;ok[i]=true;c.cls(i,"ok");sfx.confirm();z.zb.querySelector(".erow").innerHTML=`<div class="zbig">🔒 Validé</div>`;if(ok.every(Boolean))reveal()})});
+   tm=T(25000,reveal)};
+  const reveal=()=>{if(RUN!==c.run||!ok.length||ok.done)return;ok.done=true;clearTimeout(tm);const Q=qs[q],d=val.map(v=>Math.abs(v-Q[1])),m=Math.min(...d);
+   c.Z.forEach(z=>{const i=z.i,w=d[i]===m;if(w){pts[i]++;c.score(i,pts[i])}c.cls(i,"ok",false);c.cls(i,"win",w);
+    c.body(i,`<div class="zsm">Réponse</div><div class="zhuge">${fmtN(Q[1])}</div><div class="zsm">${esc(Q[4])} · toi : ${fmtN(val[i])}</div><div class="zbig">${w?"🎯 Le plus proche ! +1":"écart : "+fmtN(d[i])}</div>`)});sfx.win();T(3200,ask)};
+  c.Z.forEach(z=>c.score(z.i,0));ask()}},
+
+plusmoins:{name:"Plus ou moins",icon:"🃏",edge:.4,th:"studio",mus:"tension",
+ rule:"Une carte est retournée au centre. La prochaine sera-t-elle plus haute ou plus basse ? Chacun parie dans son coin. 6 cartes : une bonne réponse = 1 point !",
+ start(c){const n=c.n,pts=Array(n).fill(0),S=["♥","♠","♦","♣"];let cur=[1+Math.random()*13|0,pick(S)],k=0,bet=[],over=false,tm=null;
+  const show=()=>{c.area.innerHTML=`<div class="cardrow">${cardHTML(cur[0],cur[1])}<div class="cnext">?</div></div>`};
+  const ask=()=>{if(RUN!==c.run)return;if(k>=6){over=true;return c.finish(rankBy(pts))}k++;bet=Array(n).fill(null);show();sfx.card();
+   c.Z.forEach(z=>{const i=z.i;c.cls(i,"ok",false);c.cls(i,"win",false);c.body(i,`<div class="zsm">Carte ${k}/6 · la suivante sera…</div><div class="pmb"><button class="btn green" data-b="1">⬆ PLUS</button><button class="btn pink" data-b="-1">⬇ MOINS</button></div>`);
+    z.zb.querySelectorAll("[data-b]").forEach(b=>on(b,()=>{if(bet[i]!=null)return;bet[i]=+b.dataset.b;c.cls(i,"ok");sfx.select();c.body(i,`<div class="zhuge">${bet[i]>0?"⬆":"⬇"}</div><div class="zbig">Pari fait !</div>`);if(bet.every(v=>v!=null))flip()}))});
+   tm=T(9000,flip)};
+  const flip=()=>{if(RUN!==c.run||bet.flipped)return;bet.flipped=true;clearTimeout(tm);let nx;do{nx=1+Math.random()*13|0}while(nx===cur[0]&&Math.random()<.7);const ns=pick(S),dir=Math.sign(nx-cur[0]);
+   c.area.innerHTML=`<div class="cardrow">${cardHTML(cur[0],cur[1])}<div class="flipin">${cardHTML(nx,ns)}</div></div>`;sfx.flip();
+   T(700,()=>{c.Z.forEach(z=>{const i=z.i,good=dir!==0&&bet[i]===dir;if(good){pts[i]++;c.score(i,pts[i]);c.ft(i,"+1");sfx.coin(pts[i])}c.cls(i,"ok",false);c.cls(i,"win",good);
+     c.body(i,`<div class="zhuge">${dir===0?"=":good?"✔":"✘"}</div><div class="zbig">${dir===0?"Égalité, personne ne marque":good?"Bien vu ! +1":bet[i]==null?"Pas de pari":"Raté !"}</div>`)});cur=[nx,ns];T(2000,ask)})};
+  c.Z.forEach(z=>c.score(z.i,0));ask()}},
+
+pfc:{name:"Pierre, feuille, ciseaux",icon:"✊",edge:.42,th:"dojo",mus:"tension",
+ rule:"Choisis en secret pierre, feuille ou ciseaux (cache ton coin avec ta main !). Ton choix affronte celui de chaque adversaire : 1 point par duel gagné. 5 manches.",
+ start(c){const n=c.n,pts=Array(n).fill(0),E=["✊","✋","✌️"],N=["Pierre","Feuille","Ciseaux"];let k=0,ch=[],tm=null,over=false;
+  const ask=()=>{if(RUN!==c.run)return;if(k>=5){over=true;return c.finish(rankBy(pts))}k++;ch=Array(n).fill(null);c.mid(`<div class="zbig">Manche ${k}/5</div>`);
+   c.Z.forEach(z=>{const i=z.i;c.cls(i,"ok",false);c.cls(i,"win",false);c.body(i,`<div class="zsm">Manche ${k}/5 · choisis en cachette</div><div class="pfcb">${E.map((e,j)=>`<button data-j="${j}">${e}<small>${N[j]}</small></button>`).join("")}</div>`);
+    z.zb.querySelectorAll("[data-j]").forEach(b=>on(b,()=>{if(ch[i]!=null)return;ch[i]=+b.dataset.j;c.cls(i,"ok");sfx.select();c.body(i,`<div class="zhuge">🤫</div><div class="zbig">Choix fait !</div>`);if(ch.every(v=>v!=null))go()}))});
+   tm=T(9000,go)};
+  const go=()=>{if(RUN!==c.run||ch.go)return;ch.go=true;clearTimeout(tm);ch.forEach((v,i)=>{if(v==null)ch[i]=Math.random()*3|0});let s=3;
+   const cnt=()=>{if(s>0){c.mid(`<div class="cd">${["","FOU…","FI…","CHI…"][s]}</div>`);sfx.beep();s--;T(450,cnt)}else res()};cnt()};
+  const res=()=>{const win=(a,b)=>(a-b+3)%3===1,g=ch.map((a,i)=>ch.reduce((t,b,j)=>t+(j!==i&&win(a,b)?1:0),0));sfx.go();c.mid("");
+   c.Z.forEach(z=>{const i=z.i;pts[i]+=g[i];c.score(i,pts[i]);c.cls(i,"ok",false);c.cls(i,"win",g[i]>0);c.body(i,`<div class="zhuge pfcr">${E[ch[i]]}</div><div class="zbig">${N[ch[i]]} · ${g[i]?"+"+g[i]:"0"}</div><div class="zsm">${G.P.map((p,j)=>j===i?"":E[ch[j]]).join(" ")}</div>`)});
+   T(2600,ask)};
+  c.Z.forEach(z=>c.score(z.i,0));ask()}},
+
+paires:{name:"Paires",icon:"🧠",edge:.5,th:"space",mus:"tension",
+ rule:"Retourne les cartes deux par deux pour trouver toutes les paires de ton coin. Le premier à tout trouver gagne !",
+ start(c){const n=c.n,found=Array(n).fill(0),fin=[];let over=false,ord=0;
+  c.Z.forEach(z=>{const i=z.i,set=shuffle(PAIRS).slice(0,6),deck=shuffle([...set,...set]);let open=[],busy=false;
+   c.body(i,`<div class="pgrid">${deck.map((e,k)=>`<button class="pc" data-k="${k}"><span>${e}</span></button>`).join("")}</div>`);c.score(i,"0/6");
+   z.zb.querySelectorAll(".pc").forEach(b=>on(b,()=>{if(over||busy||b.classList.contains("up"))return;b.classList.add("up");sfx.card();open.push(b);
+    if(open.length===2){const[a,d]=open;open=[];if(deck[a.dataset.k]===deck[d.dataset.k]){a.classList.add("ok");d.classList.add("ok");found[i]++;c.score(i,found[i]+"/6");sfx.coin(found[i]);
+      if(found[i]===6){fin[i]=++ord;c.cls(i,"win");c.ft(i,ord===1?"1er !":ord+"e");if(ord===1)T(6000,end);if(ord===n)T(800,end)}}
+     else{busy=true;T(700,()=>{a.classList.remove("up");d.classList.remove("up");busy=false})}}}))});
+  T(70000,end);
+  function end(){if(over)return;over=true;const v=c.P.map((_,i)=>fin[i]?100-fin[i]:found[i]);sfx.win();T(1000,()=>c.finish(rankBy(v)))}}},
+
+golfp:{name:"Parcours de golf",icon:"🏌️",solo:true,hi:false,th:"arena",mus:"arena",goal:"le moins de coups gagne",
+ rule:"3 trous de mini-golf en 2 minutes 30 ! Pose le doigt, tire vers l'arrière comme un lance-pierre, lâche pour frapper. Le moins de coups au total gagne (6 maximum par trou).",
+ run(s){const holes=shuffle(GOLF).slice(0,3);let h=0,tot=0,g=null,over=false;
+  const play=()=>{s.sb.innerHTML=`<div class="gf full"></div>`;let done=false;const fin=v=>{if(done)return;done=true;tot+=v;h++;s.ft(v>6?"Raté (7)":v===1?"TROU EN UN !":`${v} coup${v>1?"s":""}`);
+     T(1100,()=>{if(h>=3){over=true;s.end(tot,tot+" coups")}else play()})};
+   g=golfField(s.sb.querySelector(".gf"),{hole:holes[h],onShot:k=>s.score(`Trou ${h+1}/3 · ${k} coup${k>1?"s":""}`),onSink:fin,onStop:k=>{if(k>=6)fin(7)}});s.score(`Trou ${h+1}/3`)};
+  play();LOOP(dt=>{if(over)return false;g&&g.step(dt)});
+  T(150000,()=>{if(!over){over=true;tot+=7*(3-h);s.ft("⏰ Temps écoulé");T(800,()=>s.end(tot,tot+" coups"))}})}},
+
+basket:{name:"Lancer franc",icon:"🏀",solo:true,th:"arena",mus:"turbo",goal:"le plus de paniers gagne",
+ rule:"Glisse le doigt vers le haut pour lancer le ballon dans le panier. Après 3 paniers, le panier se met à bouger ! 30 secondes.",
+ run(s){s.sb.innerHTML=`<div class="dvt">30</div><div class="gf full"></div>`;const {cv,x,w,h}=canvasIn(s.sb.querySelector(".gf")),tt=s.sb.querySelector(".dvt");
+  let t=30,sc=0,over=false,T0=0,st=null,b=null,hx=w/2,clock=0;const by0=h*.86,BR=Math.min(w,h)*.07,RW=Math.min(w*.17,BR*2.3),HY=h*.3;
+  const reset=()=>{b={x:w/2,y:by0,vx:0,vy:0,fly:false,down:false,scored:false,age:0}};reset();
+  cv.addEventListener("pointerdown",e=>{e.preventDefault();if(over||b.fly)return;st={p:zpos(cv,e),t:performance.now()}});
+  cv.addEventListener("pointerup",e=>{if(!st||over||b.fly)return;const p=zpos(cv,e),dt=Math.max(60,performance.now()-st.t)/1000,dx=p[0]-st.p[0],dy=p[1]-st.p[1];st=null;if(dy>-30)return;
+   b.vx=Math.max(-w*1.4,Math.min(w*1.4,dx/dt*.55));b.vy=Math.max(-h*2.2,Math.min(-h*1.1,dy/dt*.9));b.fly=true;sfx.dash()});
+  s.score("0 panier");
+  LOOP(dt=>{if(over)return false;clock+=dt;if(sc>=3)hx=w/2+Math.sin(clock*(1+sc*.08))*w*.28;
+   if(b.fly){b.age+=dt;b.vy+=h*2.6*dt;b.x+=b.vx*dt;b.y+=b.vy*dt;if(b.vy>0)b.down=true;
+    const r=BR*(.62+.38*Math.min(1,b.y/by0));[[hx-RW,HY],[hx+RW,HY]].forEach(([rx,ry])=>{const d=Math.hypot(b.x-rx,b.y-ry);if(d<r&&d>0&&b.down){const nx=(b.x-rx)/d,ny=(b.y-ry)/d;b.x=rx+nx*r;b.y=ry+ny*r;const vn=b.vx*nx+b.vy*ny;if(vn<0){b.vx-=1.6*vn*nx;b.vy-=1.6*vn*ny;sfx.wall()}}});
+    if(b.down&&!b.scored&&Math.abs(b.y-HY)<b.vy*dt+2&&Math.abs(b.x-hx)<RW-r*.6){b.scored=true;sc++;s.score(sc+" panier"+(sc>1?"s":""));s.ft("+1");sfx.coin(sc);sparks(...Object.values(ctr(cv)),8)}
+    if(b.y>h+BR*2||b.age>3)reset()}
+   x.clearRect(0,0,w,h);
+   x.fillStyle="#fff";x.strokeStyle="#1b1440";x.lineWidth=4;x.beginPath();x.rect(hx-RW*1.5,HY-RW*1.6,RW*3,RW*1.4);x.fill();x.stroke();x.strokeStyle="#ff4d6d";x.strokeRect(hx-RW*.6,HY-RW*1.05,RW*1.2,RW*.8);
+   const drawBall=()=>{const r=BR*(.62+.38*Math.min(1,b.y/by0));x.fillStyle="#ff8a1f";x.strokeStyle="#1b1440";x.lineWidth=3;x.beginPath();x.arc(b.x,b.y,r,0,7);x.fill();x.stroke();x.beginPath();x.moveTo(b.x-r,b.y);x.lineTo(b.x+r,b.y);x.moveTo(b.x,b.y-r);x.lineTo(b.x,b.y+r);x.lineWidth=2;x.stroke()};
+   if(!b.down)drawBall();
+   x.strokeStyle="#ff4d6d";x.lineWidth=6;x.beginPath();x.moveTo(hx-RW,HY);x.lineTo(hx+RW,HY);x.stroke();x.strokeStyle="#ffffffcc";x.lineWidth=2;for(let k=-3;k<=3;k++){x.beginPath();x.moveTo(hx+k*RW/3.2,HY);x.lineTo(hx+k*RW/4.5,HY+RW*.9);x.stroke()}
+   if(b.down)drawBall();
+   if(!b.fly){x.fillStyle="#fff";x.font="bold 15px sans-serif";x.textAlign="center";x.fillText("⬆ glisse vers le haut",w/2,h*.98)}});
+  IV(1000,()=>{t--;tt.textContent=Math.max(0,t);tt.classList.toggle("hot",t<=5);if(t<=5&&t>0)sfx.tick();if(t<=0&&!over){over=true;sfx.boom();T(900,()=>s.end(sc,sc+" panier"+(sc>1?"s":"")))}})}},
+
+anagramme:{name:"Mot mélangé",icon:"🔤",solo:true,th:"studio",mus:"tension",goal:"le plus de mots trouvés gagne",
+ rule:"Les lettres d'un mot sont mélangées : touche-les dans le bon ordre pour retrouver le mot. 45 secondes ! Tu peux effacer une lettre ou passer un mot trop dur.",
+ run(s){let t=45,sc=0,over=false,word="",typed=[];const bag=shuffle(MOTS),lab=n=>n+" mot"+(n>1?"s":"");
+  s.sb.innerHTML=`<div class="dvt">45</div><div class="anw"></div><div class="anl"></div><div class="hrow"><button class="btn ghost sm" id="anb">⌫ Effacer</button><button class="btn pink sm" id="anp">Passer ▶</button></div>`;
+  const W=s.sb.querySelector(".anw"),L=s.sb.querySelector(".anl"),tt=s.sb.querySelector(".dvt");
+  const draw=()=>{W.innerHTML=[...word].map((_,k)=>`<span>${typed[k]?typed[k].ch:""}</span>`).join("")};
+  const next=()=>{word=bag.pop()||pick(MOTS);typed=[];let mix;do{mix=shuffle([...word])}while(mix.join("")===word&&word.length>2);
+   L.innerHTML=mix.map((ch,k)=>`<button class="anc" data-k="${k}">${ch}</button>`).join("");draw();
+   L.querySelectorAll(".anc").forEach(b=>on(b,()=>{if(over||b.disabled)return;b.disabled=true;typed.push({ch:b.textContent,b});sfx.tap(typed.length);draw();
+    if(typed.length===word.length){if(typed.map(o=>o.ch).join("")===word){sc++;s.score(lab(sc));s.ft("+1");sfx.coin(sc);W.classList.add("good");T(450,()=>{W.classList.remove("good");next()})}
+     else{sfx.bad();W.classList.add("bad");T(450,()=>{W.classList.remove("bad");typed.forEach(o=>o.b.disabled=false);typed=[];draw()})}}}))};
+  on(s.sb.querySelector("#anb"),()=>{const o=typed.pop();if(o){o.b.disabled=false;draw();sfx.back()}});
+  on(s.sb.querySelector("#anp"),()=>{if(over)return;s.ft(word,"#ffe766");sfx.whoosh();next()});
+  s.score(lab(0));next();
+  IV(1000,()=>{t--;tt.textContent=Math.max(0,t);tt.classList.toggle("hot",t<=5);if(t<=5&&t>0)sfx.tick();if(t<=0&&!over){over=true;sfx.boom();T(900,()=>s.end(sc,lab(sc)))}})}}
+});
+delete CAT.feu;Object.assign(CAT,{golf:"vise",golfp:"vise",flechettes:"vise",burger:"tete",estime:"tete",plusmoins:"show",pfc:"show",paires:"tete",basket:"vise",anagramme:"tete"});
+
+GAMES.hockey.full=true;
 
 fxInit();sndInit();home();
 

@@ -18,15 +18,20 @@ Fin : **étoiles bonus** (`bonusStars`, 2 catégories tirées au sort) → podiu
 → gage du dernier (option « à la fin ») → **route des trophées** (`trophyRoad`) avec coffre si un héros se débloque.
 Points par manche : 1er = n-1, 2e = n-2… ; égalité totale = personne ne marque.
 
-## Les 30 mini-jeux
-**18 jeux de table** (objet `GAMES`) : degaine, course, sumo, bombe, chrono, cible, couleur, quiz, vf, compte,
-blind (extraits iTunes), etoiles, corde, hockey, dessin, ballon (gonfler sans éclater), feu (feu rouge / feu vert),
-roue (stopper l'aiguille dans la zone verte).
+## Les 39 mini-jeux
+**24 jeux de table** (objet `GAMES`) : degaine, course, sumo, bombe, chrono, cible, couleur, quiz, vf, compte,
+blind (extraits iTunes), etoiles, corde, hockey, dessin, ballon (gonfler sans éclater), roue (stopper l'aiguille),
+golf (mini-golf, 1 trou chacun, lance-pierre), burger (mémoriser puis reconstruire), flechettes, estime (le plus proche
+d'un nombre, règle à glisser), plusmoins (cartes plus haut / plus bas), pfc (pierre-feuille-ciseaux), paires (memory).
+« Feu rouge, feu vert » a été retiré (trop proche de Course folle) : Julien trouve qu'il y a déjà assez de jeux
+« taper vite jusqu'à une ligne d'arrivée », en ajouter d'autres genres.
 **Dessin éclair** : le dessinateur prend le téléphone, voit son mot en gardant le doigt appuyé, 60 s ;
 « Trouvé » → il choisit qui a trouvé ; temps écoulé → personne ne marque.
-**12 jeux à se passer** (`solo:true`) : tour, memoire, tiles, devine, cercle (40 s max), bulles, reflexe, pile10, quizx,
-helico (doigt appuyé pour monter), intrus (trouver l'image différente), calcul (calcul mental 30 s).
-Les 6 derniers jeux et la nouvelle version du dessin sont dans le bloc « NOUVEAUX MINI-JEUX (v5) », à la fin du script.
+**15 jeux à se passer** (`solo:true`) : tour, memoire, tiles, devine, cercle (40 s max), bulles, reflexe, pile10, quizx,
+helico (doigt appuyé pour monter), intrus (trouver l'image différente), calcul (calcul mental 30 s),
+golfp (parcours de 3 trous, 2 min 30), basket (lancer franc), anagramme (mot mélangé).
+Les jeux ajoutés sont à la fin du script, blocs « NOUVEAUX MINI-JEUX (v5) » et « MINI-JEUX v6 ». Le moteur de mini-golf
+(`golfField`, trous `GOLF`) sert aux deux versions. `zpos` donne la position du doigt dans un coin retourné.
 `hi:false` = le score le plus bas gagne. `avail()` filtre les jeux selon le mode. `CAT` range chaque jeu dans une
 famille (vite, tête, visée, force, ambiance) pour les titres et les étoiles bonus.
 
@@ -63,6 +68,10 @@ famille (vite, tête, visée, force, ambiance) pour les titres et les étoiles b
 - `index.html` (HTML + CSS + JS) + dossier `sons/`. Ressources externes : Google Fonts (Lilita One, Baloo 2), iTunes (blind test).
 - Publié avec GitHub Pages depuis `main` : https://julienbordin57500.github.io/soiree-jeux/
 - Mode table : zones (`layout()` / `buildStage()`), celles du haut tournées à 180°, pointer events multi-doigts.
+  **Toujours une bande centrale** (`area.band`) : les jeux à `edge` 0.5 sont ramenés à 0.4 (sauf `full:true`, ex. hockey).
+  Les textes vont **dans chaque coin, à l'endroit** (règle, nom du jeu, résultats, événements via `evShow`) ;
+  la bande ne contient qu'une icône, le classement et **un seul bouton**. Compte à rebours, « C'est parti » et « Fin »
+  s'affichent dans chaque coin (`zoneSay`). Éviter le texte en double tête-bêche au milieu : jugé brouillon.
 - Jeux de table : `setup` / `start` avec le contexte `c` ; jeux à se passer : `run(s)` puis `s.end(valeur, libellé)`.
 - Minuteries par écran (`newRun` / `cleanup` / `T` / `IV` / `LOOP`). Boutons qui font avancer protégés par `once()`.
 - Boutons des écrans en zones : attribut `data-act` + objet `ACT` (marche aussi pour les écrans en liste).
