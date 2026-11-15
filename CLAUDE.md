@@ -1,4 +1,30 @@
 # Soirée Arena
+
+## Pour reprendre (à lire en premier)
+- Jeu en ligne : https://julienbordin57500.github.io/soiree-jeux/ (GitHub Pages, branche `main`).
+- Copie d'essai privée sur claude.ai (le blind test n'y marche pas) : https://claude.ai/artifact/2sAsUzr3AzaeXk3i2BoXjs
+- Pour modifier : cloner le dépôt dans le dossier temporaire de la session, **modifier directement `index.html`**,
+  tester, pousser sur `main`, effacer la copie. Les anciens fichiers de fabrication (modules séparés) n'existent
+  plus : `index.html` est la seule source. Les blocs du script sont repérables par leurs titres en commentaire
+  (`/* ===== … ===== */`).
+- Outils de test dans `outils-test/` (Chrome sans fenêtre piloté par Node, voir « Technique » en bas) :
+  servir le dossier en local sur le port 8791, lancer Chrome avec `--headless=new --remote-debugging-port=9333`, puis
+  `node outils-test/cdp.mjs 9333 dossier_sortie 4` (tous les jeux), `SCR=./screens8.js node outils-test/cdp3.mjs 9333
+  dossier_sortie "375x667,390x844,430x932"` (écrans + éléments coupés), `node outils-test/cdp2.mjs 9333 sortie outils-test/flow.js "startExpr" 10` (partie complète, `startExpr` = code qui lance la partie).
+  Pour simuler l'encoche d'iPhone : injecter `#stage{top:47px!important;bottom:34px!important}`.
+- Julien teste surtout sur iPhone, souvent loin de l'ordinateur : mettre en ligne quand il le demande
+  (« Oui, en ligne »), et toujours mettre à jour ce fichier en même temps.
+
+## Ce que Julien a demandé et aimé (historique)
+- Un vrai jeu, pas une maquette : style cartoon en relief, musique électro-funk libre de droits, effets qui « claquent »,
+  personnages dessinés expressifs, inspiré des grands jeux mobiles, coloré et rigolo.
+- Très sensible aux **cases et boutons coupés** et au **texte brouillon** : vérifier chaque écran sur petit iPhone.
+- Veut **beaucoup de mini-jeux**, variés, innovants ; **pas trop de jeux « taper le plus vite »**.
+- Retirés à sa demande : Feu rouge (doublon de course), Parcours de golf (doublon), Chrono parfait (incompris), voix de synthèse.
+- Aime jouer à deux avec sa femme : les jeux à 2 en même temps comptent (mini-golf, ping-pong).
+- Quiz : il veut de la diversité, pas de questions qui reviennent vite ; en ajouter régulièrement.
+- Idée possible plus tard : retirer aussi « Stop à 10 secondes » (`pile10`), proche de Chrono parfait (proposé, pas tranché).
+
 Jeu de soirée sur un seul téléphone, à une suite de mini-jeux tirés au hasard (esprit Mario Party),
 style **cartoon en relief** façon jeux mobiles (Brawl Stars) : gros boutons qui s'enfoncent, textes contourés,
 couleurs franches. Trois façons de jouer, choisies sur l'écran « Comment on joue ? » :
@@ -34,7 +60,7 @@ basket (lancer franc), anagramme (mot mélangé), lampe (lampe torche), espion (
 mot secret, discussion, vote ; déroulé spécial via `custom(key)` au lieu de `run`).
 « Parcours de golf » retiré : Julien préfère le mini-golf où l'on joue en même temps.
 Chaque jeu a une règle courte `tip` (objet `TIPS`) affichée dans les petits coins et dans l'écran « Les jeux ».
-Icônes : dessins SVG maison (`icons8.js` dans la source, bloc « ICÔNES DESSINÉES ») ; `g.emoji` garde l'ancien émoji.
+Icônes : dessins SVG maison (bloc « ICÔNES DESSINÉES » du script) ; `g.emoji` garde l'ancien émoji.
 Les jeux ajoutés sont à la fin du script, blocs « NOUVEAUX MINI-JEUX (v5) » et « MINI-JEUX v6 ». Le moteur de mini-golf
 (`golfField`, trous `GOLF`) sert aux deux versions. `zpos` donne la position du doigt dans un coin retourné.
 `hi:false` = le score le plus bas gagne. `avail()` filtre les jeux selon le mode. `CAT` range chaque jeu dans une
