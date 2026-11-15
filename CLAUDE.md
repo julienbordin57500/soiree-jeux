@@ -18,8 +18,8 @@ Fin : **étoiles bonus** (`bonusStars`, 2 catégories tirées au sort) → podiu
 → gage du dernier (option « à la fin ») → **route des trophées** (`trophyRoad`) avec coffre si un héros se débloque.
 Points par manche : 1er = n-1, 2e = n-2… ; égalité totale = personne ne marque.
 
-## Les 44 mini-jeux
-**28 jeux de table** (objet `GAMES`) : degaine, course, sumo, bombe, chrono, cible, couleur, quiz, vf, compte,
+## Les 43 mini-jeux
+**27 jeux de table** (objet `GAMES`) : degaine, course, sumo, bombe, cible, couleur, quiz, vf, compte,
 blind (extraits iTunes), etoiles, corde, hockey, dessin, ballon (gonfler sans éclater), roue (stopper l'aiguille),
 golf (mini-golf, 1 trou chacun, lance-pierre), burger (mémoriser puis reconstruire), flechettes, estime (le plus proche
 d'un nombre, règle à glisser), plusmoins (cartes plus haut / plus bas), pfc (pierre-feuille-ciseaux), paires (memory), serpents (traînées lumineuses, ↺ ↻),
@@ -95,6 +95,11 @@ famille (vite, tête, visée, force, ambiance) pour les titres et les étoiles b
 - Anti-débordement : un observateur réduit automatiquement (propriété `zoom` via `--fz`) le contenu d'un coin,
   de la bande ou d'un écran qui ne rentre pas (`fitBox`). Julien est très sensible aux cases coupées.
 - Préférences dans le navigateur (localStorage, clés `sa_…`).
+- « Chrono parfait » retiré (jugé incompréhensible). Quiz : 221 questions, Vrai ou Faux : 81 ; `freshFirst()` fait
+  passer les questions jamais vues en premier (clés `sa_seen_q`, `sa_seen_vf`).
+- Zones iPhone : `#stage` s'arrête à l'encoche et à la barre du bas (`env(safe-area-inset-*)`) ; les marges
+  internes n'en tiennent plus compte. Les jeux sur toute la scène (peinture, pong) retirent la position du canevas.
+- Pages qui défilent : leurs éléments ne rétrécissent pas (`flex-shrink:0`), sinon le gros bouton du bas est écrasé.
 - Test automatique utilisé : Chrome sans fenêtre piloté par le protocole DevTools. (1) chaque jeu joué avec des touches
   au hasard : il doit se terminer sans erreur ; (2) chaque écran rendu à 2/3/4 joueurs (et 8 en tour) sur 375×667,
   390×844 et 430×932 avec un détecteur d'éléments coupés ou hors écran ; (3) parties complètes dans les 3 modes.

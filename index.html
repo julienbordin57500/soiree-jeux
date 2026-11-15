@@ -79,7 +79,7 @@ button{font-family:inherit;cursor:pointer;touch-action:none;color:inherit}
 [data-th=candy] .rays{opacity:1}
 
 /* ===== Menus ===== */
-.scr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:max(22px,env(safe-area-inset-top)) 18px max(22px,env(safe-area-inset-bottom));text-align:center;z-index:2;animation:rise .5s cubic-bezier(.2,1.3,.4,1) both}
+.scr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:max(22px,0px) 18px max(22px,0px);text-align:center;z-index:2;animation:rise .5s cubic-bezier(.2,1.3,.4,1) both}
 .scr.scroll{justify-content:flex-start;overflow-y:auto;touch-action:pan-y;-webkit-overflow-scrolling:touch}
 @keyframes rise{from{opacity:0;transform:translateY(30px) scale(.95)}}
 .orbit{position:relative;width:min(320px,88vw);height:min(320px,88vw);display:flex;align-items:center;justify-content:center;flex:none}
@@ -102,7 +102,7 @@ button{font-family:inherit;cursor:pointer;touch-action:none;color:inherit}
 .btn.ghost{background:#ffffff14;color:#fff;box-shadow:0 4px 0 #0007;border:2px solid #ffffff35;font-size:16px}
 .btn.sm{font-size:16px;padding:10px 18px;border-radius:14px}
 .btn.sm::after{display:none}
-.mute,.back{position:absolute;top:max(14px,env(safe-area-inset-top));width:44px;height:44px;border-radius:50%;border:2px solid #ffffff30;background:#0007;font-size:20px;z-index:5}
+.mute,.back{position:absolute;top:max(14px,0px);width:44px;height:44px;border-radius:50%;border:2px solid #ffffff30;background:#0007;font-size:20px;z-index:5}
 .mute{right:14px}.back{left:14px}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:380px}
 .ccard{background:var(--card);border:3px solid #3a3380;border-radius:20px;padding:12px 6px 14px;font-family:var(--fd);font-size:36px;color:#fff;transition:transform .15s}
@@ -276,7 +276,7 @@ button{font-family:inherit;cursor:pointer;touch-action:none;color:inherit}
 /* ===== Chacun son tour ===== */
 .pass .pav svg{filter:drop-shadow(0 0 30px var(--c));animation:bob 2s ease-in-out infinite}
 .pname{font-family:var(--fd);font-size:clamp(30px,10vw,46px);color:#fff;text-shadow:0 0 22px var(--c),0 4px 0 #000;line-height:1}
-.solo{position:absolute;inset:0;display:flex;flex-direction:column;padding:max(8px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom));z-index:2}
+.solo{position:absolute;inset:0;display:flex;flex-direction:column;padding:max(8px,0px) 10px max(10px,0px);z-index:2}
 .sh{display:flex;align-items:center;gap:8px;min-height:50px;padding-left:46px;flex:none;font-weight:800}
 .sh .pn{background:var(--c)}
 .sh .nm{font-size:16px}
@@ -286,7 +286,7 @@ button{font-family:inherit;cursor:pointer;touch-action:none;color:inherit}
 .scd .cd{font-size:120px}
 .tend{position:absolute;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#07051add;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:rise .4s both;text-align:center;padding:20px}
 .tsc{font-family:var(--fd);font-size:clamp(32px,10vw,54px);color:var(--yellow);text-shadow:0 0 26px var(--yellow),0 5px 0 #000;animation:cd .6s both;line-height:1.05}
-.pz.tl{left:10px;top:max(10px,env(safe-area-inset-top));margin-top:0}
+.pz.tl{left:10px;top:max(10px,0px);margin-top:0}
 .gname.big{font-size:30px}
 .grule.big{font-size:18px;max-width:380px;line-height:1.3}
 .rcard.solo1{min-width:min(300px,80vw);padding:22px}
@@ -463,7 +463,7 @@ body{font-weight:700}
 [data-th=ice]{--sky:linear-gradient(#1a5fd0,#3aa0ff 50%,#8fd8ff 82%,#e6f7ff)}
 
 /* ===== Éléments ajoutés ===== */
-.topbar{position:absolute;top:max(14px,env(safe-area-inset-top));left:14px;right:70px;display:flex;gap:8px;z-index:5}
+.topbar{position:absolute;top:max(14px,0px);left:14px;right:70px;display:flex;gap:8px;z-index:5}
 .chipc{display:flex;align-items:center;gap:6px;height:44px;padding:0 14px 0 8px;border-radius:22px;background:#0a1a5acc;border:3px solid var(--ink);font-family:var(--fd);font-size:20px;color:#fff;text-shadow:var(--ol1);box-shadow:0 4px 0 var(--ink)}
 .chipc i{font-style:normal;font-size:24px;filter:drop-shadow(0 2px 0 var(--ink))}
 .hrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
@@ -582,12 +582,12 @@ body{font-weight:700}
 /* ===================== NOUVEAUX JEUX ===================== */
 /* Dessin */
 .draww{background:#120d3a}
-.dhide{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:max(20px,env(safe-area-inset-top)) 18px 20px;text-align:center;background:radial-gradient(120% 80% at 50% 30%,#3d86f5,#123ea8)}
+.dhide{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:max(20px,0px) 18px 20px;text-align:center;background:radial-gradient(120% 80% at 50% 30%,#3d86f5,#123ea8)}
 .hold{width:min(230px,62vw);aspect-ratio:1;border-radius:50%;border:4px solid var(--ink);background:var(--panel);box-shadow:var(--lift);font-family:var(--fd);font-size:19px;line-height:1.2;color:#fff;text-shadow:var(--ol1);touch-action:none}
 .hold.on{background:var(--gold);transform:translateY(4px);box-shadow:none}
 .wsec{font-family:var(--fd);font-size:clamp(30px,10vw,48px);line-height:1.05;color:#ffe766;text-shadow:var(--olb);min-height:1.2em;visibility:hidden}
 .wsec.on{visibility:visible}
-.dtop{display:flex;align-items:center;gap:8px;padding:max(8px,env(safe-area-inset-top)) 56px 8px 10px;flex:none;position:relative}
+.dtop{display:flex;align-items:center;gap:8px;padding:max(8px,0px) 56px 8px 10px;flex:none;position:relative}
 .dtop .dt{font-family:var(--fd);font-size:30px;color:#fff;text-shadow:var(--ol1);min-width:46px}
 .dtop .dt.hot{color:#ff6a7a}
 .hold.mini{width:auto;aspect-ratio:auto;border-radius:14px;padding:8px 12px;font-size:15px}
@@ -795,6 +795,9 @@ body[data-fete=foot] [data-th=arena] .dots{opacity:0}
 body[data-fete=foot] [data-th=arena] .rays{opacity:.45}
 body[data-fete=foot] .wipe{background:repeating-linear-gradient(115deg,#fff 0 54px,#16b87a 54px 108px)}
 body[data-fete=foot] .wipe::after{content:"⚽"}body[data-fete=noel] .wipe::after{content:"🎄"}body[data-fete=anniv] .wipe::after{content:"🎂"}
+#stage{top:env(safe-area-inset-top,0px);bottom:env(safe-area-inset-bottom,0px);left:env(safe-area-inset-left,0px);right:env(safe-area-inset-right,0px)}
+.scr.scroll>*,.scr>.btn,.scr>.hrow{flex-shrink:0}
+.btn.big{max-width:calc(100% - 8px);white-space:normal;line-height:1.1;font-size:clamp(19px,6.4vw,30px);padding:14px clamp(18px,6vw,44px)}
 </style>
 </head>
 <body>
@@ -2055,13 +2058,13 @@ couleur:{name:"Bonne couleur",icon:"🎨",edge:.3,
 
 quiz:{name:"Quiz Buzz",icon:"🧠",edge:.4,
  rule:"Une question au centre, 4 réponses dans votre coin. Le premier qui touche la bonne réponse marque. Une erreur et vous êtes bloqué pour cette question.",
- start(c){const qs=shuffle(QUESTIONS).slice(0,5);
+ start(c){const qs=freshFirst(QUESTIONS,'q',5).slice(0,5);
   buzz(c,{rounds:5,gen:k=>{const[cat,q,a]=qs[k-1],o=shuffle(a.map((t,j)=>({t,ok:j===0})));
    return{html:dual(`<div class="qcat">${esc(cat).toUpperCase()} · ${k}/5</div><div class="qq">${esc(q)}</div>`),opts:o.map(x=>esc(x.t)),ok:o.findIndex(x=>x.ok)}}})}},
 
 vf:{name:"Vrai ou Faux",icon:"✅",edge:.36,
  rule:"Une affirmation au centre : touchez VRAI ou FAUX dans votre coin. Le plus rapide marque, mais une erreur coûte un point !",
- start(c){const qs=shuffle(VF).slice(0,6);
+ start(c){const qs=freshFirst(VF,'vf',6).slice(0,6);
   buzz(c,{rounds:6,penalty:true,gen:k=>{const[t,v]=qs[k-1];return{html:dual(`<div class="qcat">${k}/6</div><div class="qq" style="font-size:17px">${esc(t)}</div>`),opts:["VRAI","FAUX"],ok:v?0:1}}})}},
 
 compte:{name:"Compte éclair",icon:"🔢",edge:.36,
@@ -2295,7 +2298,7 @@ pile10:{name:"Pile 10 secondes",icon:"⏲️",solo:true,hi:false,th:"synth",mus:
 
 quizx:{name:"Quiz express",icon:"📚",solo:true,th:"studio",mus:"arena",goal:"le plus de points gagne",
  rule:"30 secondes pour répondre à un max de questions. Bonne réponse +1, mauvaise −1 !",
- run(s){const qs=shuffle(QUESTIONS);let k=0,sc=0,t=30,over=false;const lab=n=>n+" point"+(Math.abs(n)>1?"s":"");
+ run(s){const qs=freshFirst(QUESTIONS,'q',12);let k=0,sc=0,t=30,over=false;const lab=n=>n+" point"+(Math.abs(n)>1?"s":"");
   s.sb.innerHTML=`<div class="dvt">30</div><div class="qcat"></div><div class="qq big"></div><div class="opts n4 solo"></div>`;
   const o=s.sb.querySelector(".opts");
   const ask=()=>{const q=qs[k++%qs.length],op=shuffle(q[2]);delete o.dataset.lock;s.sb.querySelector(".qcat").textContent=q[0].toUpperCase();s.sb.querySelector(".qq").textContent=q[1];
@@ -2690,7 +2693,7 @@ serpents:{name:"Serpents lumineux",icon:"🐍",edge:.17,th:"synth",mus:"turbo",
 peinture:{name:"Guerre de peinture",icon:"🎨",edge:.5,full:true,th:"candy",mus:"turbo",
  rule:"20 secondes pour recouvrir l'écran de ta couleur ! Pose le doigt dans ton coin puis peins partout, même sur la peinture des autres. Celui qui a le plus de surface gagne.",
  start(c){const {cv,x,w,h}=canvasIn(stage),R=Math.max(14,Math.min(w,h)*.05),own=new Map(),last=new Map();let left=20,over=false;cv.style.zIndex=4;
-  x.fillStyle="#f4f1ff";x.fillRect(0,0,w,h);
+  x.fillStyle="#f4f1ff";x.fillRect(0,0,w,h);{const o=cv.getBoundingClientRect();x.translate(-o.left,-o.top)}
   c.Z.forEach(z=>{const r=z.el.getBoundingClientRect();x.fillStyle=PCOL[z.i]+"22";x.fillRect(r.left,r.top,r.width,r.height);x.save();x.translate(r.left+r.width/2,r.top+r.height/2);if(z.rot)x.rotate(Math.PI);
    const nm=G.P[z.i].name,fs=Math.round(Math.min(30,r.width*.85/(Math.max(nm.length,10)*.56)));x.fillStyle=PCOL[z.i];x.textAlign="center";x.textBaseline="middle";x.font=`${fs}px "Lilita One",sans-serif`;x.fillText(nm,0,-fs*.6);x.font=`${Math.round(fs*.75)}px "Lilita One",sans-serif`;x.fillText("pars d'ici !",0,fs*.55);x.restore()});
   const who=(px,py)=>{const z=c.Z.find(z=>{const r=z.el.getBoundingClientRect();return px>=r.left&&px<=r.right&&py>=r.top&&py<=r.bottom});return z?z.i:-1};
@@ -2711,8 +2714,9 @@ pong:{name:"Ping-pong duel",icon:"🏓",edge:.5,full:true,th:"arena",mus:"turbo"
  start(c){const {cv,x,w,h}=canvasIn(stage),PW=w*.27,PH=14,BR=Math.max(8,w*.024),pad=[w/2,w/2],sc=[0,0];let b,over=false,serve=0,wait=.8;cv.style.zIndex=4;
   const reset=to=>{const a=(Math.random()*.6-.3)+(to?-Math.PI/2:Math.PI/2);b={x:w/2,y:h/2,vx:Math.cos(a)*h*.42,vy:Math.sin(a)*h*.42};wait=.9};reset(0);
   const own=new Map();
-  cv.addEventListener("pointerdown",e=>{e.preventDefault();own.set(e.pointerId,e.clientY>h/2?0:1);pad[own.get(e.pointerId)]=e.clientX});
-  cv.addEventListener("pointermove",e=>{if(own.has(e.pointerId))pad[own.get(e.pointerId)]=e.clientX});
+  const ox=e=>e.clientX-cv.getBoundingClientRect().left,oy=e=>e.clientY-cv.getBoundingClientRect().top;
+  cv.addEventListener("pointerdown",e=>{e.preventDefault();own.set(e.pointerId,oy(e)>h/2?0:1);pad[own.get(e.pointerId)]=ox(e)});
+  cv.addEventListener("pointermove",e=>{if(own.has(e.pointerId))pad[own.get(e.pointerId)]=ox(e)});
   ["pointerup","pointercancel"].forEach(t=>cv.addEventListener(t,e=>own.delete(e.pointerId)));
   const PY=[h*.9,h*.1];
   LOOP(dt=>{if(over)return false;if(wait>0)wait-=dt;else{b.x+=b.vx*dt;b.y+=b.vy*dt;
@@ -2892,6 +2896,204 @@ function feteMenu(){const o=document.createElement("div");o.className="ov";
   o.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{G.fete=b.dataset.f;save("fete",G.fete);applyFete();o.querySelectorAll("[data-f]").forEach(x=>x.classList.toggle("on",x===b));sfx.select();confetti(40)});
   o.querySelector("#ok").onclick=()=>{o.remove();home()}}
 applyFete();
+
+/* ===================== v9 : beaucoup plus de questions + rotation sans répétition ===================== */
+QUESTIONS.push(
+["Géographie","Quelle est la capitale du Canada ?",["Ottawa","Toronto","Montréal","Vancouver"]],
+["Géographie","Quelle est la capitale de l'Espagne ?",["Madrid","Barcelone","Séville","Valence"]],
+["Géographie","Quelle est la capitale du Brésil ?",["Brasília","Rio de Janeiro","São Paulo","Salvador"]],
+["Géographie","Quelle est la capitale de la Suisse ?",["Berne","Genève","Zurich","Lausanne"]],
+["Géographie","Quelle est la capitale du Japon ?",["Tokyo","Kyoto","Osaka","Séoul"]],
+["Géographie","Quelle est la capitale de la Turquie ?",["Ankara","Istanbul","Izmir","Antalya"]],
+["Géographie","Quelle est la capitale de la Belgique ?",["Bruxelles","Anvers","Liège","Bruges"]],
+["Géographie","Quelle est la capitale du Portugal ?",["Lisbonne","Porto","Faro","Madrid"]],
+["Géographie","Quelle est la capitale de l'Égypte ?",["Le Caire","Alexandrie","Louxor","Tunis"]],
+["Géographie","Quelle est la capitale du Maroc ?",["Rabat","Casablanca","Marrakech","Fès"]],
+["Géographie","Quel est le plus grand pays du monde ?",["La Russie","Le Canada","La Chine","Les États-Unis"]],
+["Géographie","Quel est le plus grand désert chaud du monde ?",["Le Sahara","Le Gobi","Le Kalahari","L'Atacama"]],
+["Géographie","Quel fleuve traverse Paris ?",["La Seine","La Loire","La Marne","Le Rhin"]],
+["Géographie","Quel fleuve traverse Le Caire ?",["Le Nil","Le Congo","Le Niger","L'Euphrate"]],
+["Géographie","Quelle est la plus haute montagne du monde ?",["L'Everest","Le K2","Le Mont Blanc","Le Kilimandjaro"]],
+["Géographie","Sur quel continent se trouve le Kenya ?",["L'Afrique","L'Asie","L'Amérique du Sud","L'Océanie"]],
+["Géographie","Quelle ville est la préfecture de la Moselle ?",["Metz","Nancy","Thionville","Forbach"]],
+["Géographie","Quelle ville est surnommée la Cité phocéenne ?",["Marseille","Nice","Toulon","Lyon"]],
+["Géographie","Dans quelle ville se trouve la tour Eiffel ?",["Paris","Lyon","Bordeaux","Lille"]],
+["Géographie","Quelle île est française ?",["La Corse","La Sardaigne","Malte","La Sicile"]],
+["Géographie","Quel pays a pour capitale Oslo ?",["La Norvège","La Suède","Le Danemark","La Finlande"]],
+["Géographie","Quelle mer borde Nice ?",["La Méditerranée","La Manche","L'Atlantique","La mer du Nord"]],
+["Géographie","Quel pays a le plus d'habitants ?",["L'Inde","La Chine","Les États-Unis","Le Brésil"]],
+["Géographie","Où se trouve la statue de la Liberté ?",["New York","Washington","Paris","Boston"]],
+["Géographie","Dans quel pays se trouve le Machu Picchu ?",["Le Pérou","Le Mexique","Le Chili","La Bolivie"]],
+["Géographie","Quelle est la plus grande île du monde ?",["Le Groenland","Madagascar","L'Australie","Bornéo"]],
+["Géographie","Quel pays est voisin de la Moselle ?",["L'Allemagne","L'Italie","L'Espagne","La Suisse"]],
+["Histoire","Qui a été sacré empereur en 1804 ?",["Napoléon Ier","Louis XVI","Charlemagne","Napoléon III"]],
+["Histoire","En quelle année a commencé la Première Guerre mondiale ?",["1914","1918","1939","1905"]],
+["Histoire","En quelle année a pris fin la Seconde Guerre mondiale ?",["1945","1944","1940","1950"]],
+["Histoire","Quel jour célèbre-t-on la fête nationale française ?",["Le 14 juillet","Le 11 novembre","Le 8 mai","Le 1er mai"]],
+["Histoire","Qui était la reine guillotinée en 1793 ?",["Marie-Antoinette","Catherine de Médicis","Anne de Bretagne","Joséphine"]],
+["Histoire","Quelle civilisation a construit les pyramides de Gizeh ?",["Les Égyptiens","Les Romains","Les Grecs","Les Mayas"]],
+["Histoire","Qui a libéré Orléans en 1429 ?",["Jeanne d'Arc","Napoléon","Charlemagne","Du Guesclin"]],
+["Histoire","Quel était le nom du bateau qui a coulé en 1912 ?",["Le Titanic","Le Normandie","Le Britannic","Le Lusitania"]],
+["Histoire","Qui était le premier homme à marcher sur la Lune ?",["Neil Armstrong","Buzz Aldrin","Youri Gagarine","Thomas Pesquet"]],
+["Histoire","Qui a été le premier homme dans l'espace ?",["Youri Gagarine","Neil Armstrong","John Glenn","Buzz Aldrin"]],
+["Histoire","En quelle année l'euro est-il arrivé en pièces et billets ?",["2002","1999","1995","2005"]],
+["Histoire","Quel empereur romain a été assassiné en -44 ?",["Jules César","Néron","Auguste","Caligula"]],
+["Histoire","Qui a inventé l'imprimerie en Europe ?",["Gutenberg","Pascal","Da Vinci","Edison"]],
+["Histoire","Quelle ville a été coupée par un mur de 1961 à 1989 ?",["Berlin","Moscou","Varsovie","Vienne"]],
+["Histoire","Qui a dit « Je pense, donc je suis » ?",["Descartes","Voltaire","Rousseau","Pascal"]],
+["Histoire","Quel peuple venu du Nord a envahi la Normandie ?",["Les Vikings","Les Huns","Les Gaulois","Les Romains"]],
+["Histoire","Quel président a aboli la peine de mort en France (1981) ?",["François Mitterrand","Jacques Chirac","Valéry Giscard d'Estaing","Charles de Gaulle"]],
+["Histoire","Quel chef gaulois a affronté Jules César ?",["Vercingétorix","Astérix","Clovis","Brennus"]],
+["Histoire","Quel roi des Francs a été baptisé à Reims ?",["Clovis","Charlemagne","Louis IX","Pépin le Bref"]],
+["Histoire","Dans quel château vivait Louis XIV ?",["Versailles","Chambord","Fontainebleau","Le Louvre"]],
+["Histoire","Quand a eu lieu le débarquement en Normandie ?",["Juin 1944","Mai 1945","Août 1939","Novembre 1918"]],
+["Sciences","Quelle est la planète la plus grande du système solaire ?",["Jupiter","Saturne","Neptune","La Terre"]],
+["Sciences","Quelle planète est surnommée la planète rouge ?",["Mars","Vénus","Jupiter","Mercure"]],
+["Sciences","Combien de planètes compte le système solaire ?",["8","9","7","10"]],
+["Sciences","Quel est le symbole chimique de l'eau ?",["H₂O","CO₂","O₂","NaCl"]],
+["Sciences","Quel organe pompe le sang ?",["Le cœur","Les poumons","Le foie","Les reins"]],
+["Sciences","Combien de dents a un adulte (avec les sagesses) ?",["32","28","30","36"]],
+["Sciences","Quel est le plus grand organe du corps humain ?",["La peau","Le foie","Le cerveau","L'intestin"]],
+["Sciences","À quelle température l'eau gèle-t-elle ?",["0 °C","-10 °C","4 °C","10 °C"]],
+["Sciences","Qui a formulé la théorie de la relativité ?",["Albert Einstein","Isaac Newton","Marie Curie","Galilée"]],
+["Sciences","Quelle force nous retient au sol ?",["La gravité","Le magnétisme","L'électricité","Le vent"]],
+["Sciences","De quoi les plantes ont-elles besoin pour la photosynthèse ?",["De lumière","De sel","De sable","De nuit"]],
+["Sciences","Quel est le métal liquide à température ambiante ?",["Le mercure","Le plomb","Le fer","L'étain"]],
+["Sciences","Combien de chromosomes a un être humain ?",["46","23","42","48"]],
+["Sciences","Quel est le symbole chimique du fer ?",["Fe","Fr","Ir","F"]],
+["Sciences","Quelle est l'étoile la plus proche de la Terre ?",["Le Soleil","Sirius","L'étoile polaire","Alpha du Centaure"]],
+["Sciences","Combien de temps met la Terre pour tourner autour du Soleil ?",["Un an","Un mois","Un jour","Une semaine"]],
+["Sciences","Quel scientifique a reçu deux prix Nobel ?",["Marie Curie","Albert Einstein","Louis Pasteur","Isaac Newton"]],
+["Sciences","Qui a mis au point le vaccin contre la rage ?",["Louis Pasteur","Marie Curie","Robert Koch","Claude Bernard"]],
+["Sciences","Combien de litres de sang a un adulte environ ?",["5 litres","2 litres","10 litres","15 litres"]],
+["Sciences","Quel est l'os le plus long du corps ?",["Le fémur","Le tibia","L'humérus","Le radius"]],
+["Animaux","Quel est l'animal le plus haut du monde ?",["La girafe","L'éléphant","Le rhinocéros","Le chameau"]],
+["Animaux","Combien de cœurs a une pieuvre ?",["3","1","2","8"]],
+["Animaux","Quel oiseau ne vole pas ?",["L'autruche","Le moineau","L'aigle","La mouette"]],
+["Animaux","Comment s'appelle le petit de la vache ?",["Le veau","Le poulain","L'agneau","Le chevreau"]],
+["Animaux","Comment s'appelle le petit du cheval ?",["Le poulain","Le veau","Le faon","Le porcelet"]],
+["Animaux","Quel animal est l'emblème de la France ?",["Le coq","Le lion","L'aigle","L'ours"]],
+["Animaux","Quel est le seul mammifère qui vole vraiment ?",["La chauve-souris","L'écureuil volant","Le pingouin","Le colibri"]],
+["Animaux","Combien de pattes a un insecte ?",["6","8","4","10"]],
+["Animaux","Que mange principalement le panda ?",["Du bambou","Du poisson","Des fruits","Des insectes"]],
+["Animaux","Quel animal change de couleur pour se camoufler ?",["Le caméléon","Le crocodile","Le lézard vert","L'iguane"]],
+["Animaux","Où vivent les manchots empereurs ?",["En Antarctique","En Arctique","En Australie","Au Canada"]],
+["Animaux","Quel est le cri du loup ?",["Il hurle","Il brame","Il barrit","Il glousse"]],
+["Animaux","Quel animal a la plus longue gestation ?",["L'éléphant","La baleine","La girafe","Le cheval"]],
+["Animaux","Combien de bosses a un dromadaire ?",["1","2","3","0"]],
+["Animaux","Quel poisson remonte les rivières pour pondre ?",["Le saumon","Le thon","La sardine","Le requin"]],
+["Animaux","Quel animal est surnommé « le roi des animaux » ?",["Le lion","Le tigre","L'éléphant","L'ours"]],
+["Cinéma & Musique","Qui a réalisé « Intouchables » avec Olivier Nakache ?",["Éric Toledano","Luc Besson","Dany Boon","Jean Dujardin"]],
+["Cinéma & Musique","Quel film se déroule chez les Ch'tis ?",["Bienvenue chez les Ch'tis","Les Visiteurs","Le Dîner de cons","Taxi"]],
+["Cinéma & Musique","Comment s'appelle le petit robot de Star Wars qui bipe ?",["R2-D2","C-3PO","BB-8","Wall-E"]],
+["Cinéma & Musique","Quel personnage dit « Vers l'infini et au-delà » ?",["Buzz l'Éclair","Woody","Shrek","Nemo"]],
+["Cinéma & Musique","Comment s'appelle la reine des neiges ?",["Elsa","Anna","Raiponce","Vaiana"]],
+["Cinéma & Musique","Quel ogre vert vit dans un marais ?",["Shrek","Hulk","Grinch","Fiona"]],
+["Cinéma & Musique","Qui chante « Thriller » ?",["Michael Jackson","Prince","Madonna","Stevie Wonder"]],
+["Cinéma & Musique","Quel chanteur est surnommé « le taulier » ?",["Johnny Hallyday","Eddy Mitchell","Michel Sardou","Renaud"]],
+["Cinéma & Musique","Qui chante « Je te promets » ?",["Johnny Hallyday","Florent Pagny","Patrick Bruel","Garou"]],
+["Cinéma & Musique","Qui chante « Formidable » ?",["Stromae","Maître Gims","Orelsan","Angèle"]],
+["Cinéma & Musique","Quel groupe a chanté « Get Lucky » ?",["Daft Punk","Justice","Air","Coldplay"]],
+["Cinéma & Musique","Combien de cordes a un violon ?",["4","5","6","3"]],
+["Cinéma & Musique","Quel compositeur était sourd à la fin de sa vie ?",["Beethoven","Mozart","Bach","Chopin"]],
+["Cinéma & Musique","Quel agent secret porte le matricule 007 ?",["James Bond","Ethan Hunt","OSS 117","Jason Bourne"]],
+["Cinéma & Musique","Dans quelle ville a lieu le Festival de Cannes ?",["Cannes","Nice","Paris","Deauville"]],
+["Cinéma & Musique","Quel super-héros vit à Gotham City ?",["Batman","Superman","Spider-Man","Iron Man"]],
+["Cinéma & Musique","Qui chante « Dernière danse » ?",["Indila","Zaz","Louane","Aya Nakamura"]],
+["Cinéma & Musique","Quel personnage de Disney a un nez qui s'allonge ?",["Pinocchio","Peter Pan","Dumbo","Aladdin"]],
+["Cinéma & Musique","Quelle chanteuse a chanté « Pour que tu m'aimes encore » ?",["Céline Dion","Mylène Farmer","Lara Fabian","Patricia Kaas"]],
+["Cinéma & Musique","Quel film a pour héros un poisson-clown ?",["Le Monde de Nemo","Le Roi Lion","Ratatouille","Cars"]],
+["Cinéma & Musique","Dans « Ratatouille », quel animal cuisine ?",["Un rat","Un chat","Un chien","Un lapin"]],
+["Sport","Combien de joueurs dans une équipe de rugby à XV sur le terrain ?",["15","13","11","7"]],
+["Sport","Combien de points vaut un panier à 3 points ?",["3","2","4","1"]],
+["Sport","Quelle course cycliste se termine sur les Champs-Élysées ?",["Le Tour de France","Le Giro","Paris-Roubaix","La Vuelta"]],
+["Sport","Quel tournoi de tennis se joue sur terre battue à Paris ?",["Roland-Garros","Wimbledon","L'US Open","Bercy"]],
+["Sport","Tous les combien d'années ont lieu les Jeux olympiques d'été ?",["4 ans","2 ans","3 ans","5 ans"]],
+["Sport","Quel footballeur français porte le surnom de « Zizou » ?",["Zinédine Zidane","Kylian Mbappé","Thierry Henry","Michel Platini"]],
+["Sport","Combien de temps dure un match de football (hors prolongations) ?",["90 minutes","80 minutes","60 minutes","100 minutes"]],
+["Sport","Dans quel sport fait-on un « strike » ?",["Le bowling","Le golf","Le tennis","La pétanque"]],
+["Sport","Quel est le club de foot de la ville de Metz ?",["Le FC Metz","L'AS Nancy","Le RC Strasbourg","Le Stade de Reims"]],
+["Sport","Combien de trous a un parcours de golf classique ?",["18","9","12","24"]],
+["Sport","Quel nageur américain a gagné 23 médailles d'or olympiques ?",["Michael Phelps","Mark Spitz","Ryan Lochte","Ian Thorpe"]],
+["Sport","Qui est l'homme le plus rapide du monde sur 100 m ?",["Usain Bolt","Carl Lewis","Tyson Gay","Yohan Blake"]],
+["Sport","Quel sport pratique Teddy Riner ?",["Le judo","La boxe","La lutte","Le karaté"]],
+["Sport","Quel sport pratique Antoine Dupont ?",["Le rugby","Le football","Le handball","Le basket"]],
+["Sport","Quelle est la distance d'un marathon ?",["42,195 km","40 km","21,1 km","50 km"]],
+["Sport","Dans quel sport utilise-t-on un cochonnet ?",["La pétanque","Le curling","Le billard","Le croquet"]],
+["Sport","Combien y a-t-il d'anneaux sur le drapeau olympique ?",["5","4","6","7"]],
+["Sport","Quel pays a remporté la Coupe du monde 2022 ?",["L'Argentine","La France","Le Brésil","L'Allemagne"]],
+["Gastronomie","De quelle région vient la choucroute ?",["L'Alsace","La Bretagne","La Provence","La Normandie"]],
+["Gastronomie","Quel fruit est la base de la mirabelle de Lorraine ?",["Une prune","Une cerise","Un abricot","Une pêche"]],
+["Gastronomie","De quelle ville vient la bouillabaisse ?",["Marseille","Nice","Bordeaux","Lyon"]],
+["Gastronomie","Quel fromage est fabriqué en Normandie ?",["Le camembert","Le roquefort","Le comté","Le reblochon"]],
+["Gastronomie","Avec quel fromage fait-on la tartiflette ?",["Le reblochon","Le brie","Le cantal","Le munster"]],
+["Gastronomie","Quel légume est la base de la ratatouille ? (avec d'autres)",["L'aubergine","La pomme de terre","Le chou","La carotte"]],
+["Gastronomie","De quel pays vient la paella ?",["L'Espagne","Le Portugal","Le Mexique","L'Italie"]],
+["Gastronomie","Quel alcool est fait à partir de pommes en Normandie ?",["Le calvados","Le cognac","L'armagnac","Le kirsch"]],
+["Gastronomie","Quelle viande trouve-t-on dans un bœuf bourguignon ?",["Du bœuf","Du porc","Du veau","De l'agneau"]],
+["Gastronomie","Quel est l'ingrédient principal des frites ?",["La pomme de terre","La patate douce","Le manioc","Le navet"]],
+["Gastronomie","De quel pays vient le burger ?",["Les États-Unis","L'Allemagne","L'Angleterre","Le Canada"]],
+["Gastronomie","Quelle épice donne sa couleur jaune au curry ?",["Le curcuma","Le safran","Le paprika","Le cumin"]],
+["Gastronomie","Quel est le dessert fait de couches de biscuits, café et mascarpone ?",["Le tiramisu","La panna cotta","Le fraisier","Le baba"]],
+["Gastronomie","Quelle sauce est faite d'œufs, d'huile et de moutarde ?",["La mayonnaise","La béchamel","Le ketchup","La vinaigrette"]],
+["Gastronomie","Quelle ville est célèbre pour sa moutarde ?",["Dijon","Lyon","Reims","Nantes"]],
+["Gastronomie","Les macarons de Nancy sont faits surtout avec…",["Des amandes","Des noisettes","Des noix","Des pistaches"]],
+["Gastronomie","Quel plat lorrain se fait avec une pâte, des lardons et de la crème ?",["La quiche","La potée","La flammekueche","Le pâté lorrain"]],
+["Gastronomie","Quel fruit sec entoure le Ferrero Rocher ?",["La noisette","L'amande","La cacahuète","La noix"]],
+["Culture générale","Combien de minutes dans une heure ?",["60","100","50","30"]],
+["Culture générale","Combien de secondes dans une minute ?",["60","100","30","120"]],
+["Culture générale","Combien de cartes dans un jeu classique ?",["52","54","32","48"]],
+["Culture générale","Quel jour vient après mercredi ?",["Jeudi","Mardi","Vendredi","Samedi"]],
+["Culture générale","Combien de faces a un dé classique ?",["6","8","4","12"]],
+["Culture générale","Qui a écrit « Le Petit Prince » ?",["Saint-Exupéry","Jules Verne","Victor Hugo","Molière"]],
+["Culture générale","Qui a écrit « Vingt mille lieues sous les mers » ?",["Jules Verne","Alexandre Dumas","Émile Zola","Balzac"]],
+["Culture générale","Qui a écrit « Les Trois Mousquetaires » ?",["Alexandre Dumas","Victor Hugo","Molière","Flaubert"]],
+["Culture générale","Quel dramaturge a écrit « L'Avare » ?",["Molière","Racine","Corneille","Shakespeare"]],
+["Culture générale","Qui a peint « Les Tournesols » ?",["Van Gogh","Monet","Picasso","Renoir"]],
+["Culture générale","Combien de joueurs aux échecs ?",["2","4","3","1"]],
+["Culture générale","Quelle pièce bouge en L aux échecs ?",["Le cavalier","Le fou","La tour","La reine"]],
+["Culture générale","Quelle est la couleur du cheval blanc d'Henri IV ?",["Blanc","Noir","Gris","Marron"]],
+["Culture générale","Combien de zéros dans un million ?",["6","5","7","9"]],
+["Culture générale","Quel est le résultat de 7 × 8 ?",["56","54","48","64"]],
+["Culture générale","Combien de mois ont 31 jours ?",["7","6","5","8"]],
+["Culture générale","Quel est le féminin de « jars » ?",["L'oie","La cane","La poule","La dinde"]],
+["Culture générale","Quelle est la langue la plus parlée au Brésil ?",["Le portugais","L'espagnol","Le brésilien","L'anglais"]],
+["Culture générale","Quelle est la couleur du petit bonhomme quand on peut traverser ?",["Vert","Rouge","Orange","Blanc"]],
+["Culture générale","Combien d'années dure un siècle ?",["100","1000","10","50"]],
+["Culture générale","Quel personnage de BD est accompagné de Milou ?",["Tintin","Astérix","Spirou","Lucky Luke"]],
+["Culture générale","Quel cow-boy tire plus vite que son ombre ?",["Lucky Luke","Billy the Kid","Buffalo Bill","Rantanplan"]],
+["Culture générale","Dans quel jeu vidéo un plombier sauve une princesse ?",["Super Mario","Sonic","Zelda","Pac-Man"]],
+["Culture générale","Quel petit monstre jaune est le Pokémon de Sacha ?",["Pikachu","Évoli","Salamèche","Rondoudou"]],
+["Culture générale","Quelle marque a créé l'iPhone ?",["Apple","Samsung","Google","Nokia"]],
+["Culture générale","Combien de pièces en euros existe-t-il ?",["8","6","10","7"]],
+["Culture générale","Quel est le plus petit nombre premier ?",["2","1","3","0"]],
+["Culture générale","De quelle couleur est le maillot du leader du Tour de France ?",["Jaune","Vert","Rouge","À pois"]]
+);
+VF.push(
+["Le cœur d'une crevette se trouve dans sa tête.",1],["Un éléphant ne peut pas sauter.",1],["La Tour Eiffel grandit un peu en été.",1],
+["Le soleil est une étoile.",1],["Les tomates sont originaires d'Italie.",0],["L'eau de mer est plus lourde que l'eau douce.",1],
+["Le chocolat est toxique pour les chiens.",1],["Les koalas sont des ours.",0],["Mars a deux lunes.",1],["Le diamant est fait de carbone.",1],
+["Le requin est un mammifère.",0],["La baleine est un mammifère.",1],["Le Canada est plus grand que les États-Unis.",1],["L'Australie est un continent et un pays.",1],
+["Les cheveux continuent de pousser après la mort.",0],["On utilise seulement 10 % de notre cerveau.",0],["La foudre ne tombe jamais deux fois au même endroit.",0],["Les chats retombent presque toujours sur leurs pattes.",1],
+["Le Sahara est le plus grand désert du monde, tous types confondus.",0],["Vénus est la planète la plus chaude du système solaire.",1],["Un pied de pieuvre peut goûter ce qu'il touche.",1],["Les taureaux détestent la couleur rouge.",0],
+["Il y a plus d'arbres sur Terre que d'étoiles dans la Voie lactée.",1],["Les flamants roses naissent roses.",0],["La Joconde n'a pas de sourcils.",1],
+["Le Vatican est un pays.",1],["Le Mont-Saint-Michel est en Bretagne.",0],["Le français est une langue officielle au Canada.",1],
+["Les carottes améliorent la vision dans le noir.",0],["Un œuf d'autruche est le plus gros œuf d'oiseau vivant.",1],["Les abeilles meurent toutes après avoir piqué.",0],["Le Rhin passe à Strasbourg.",1],
+["Le cœur humain bat environ 100 000 fois par jour.",1],["Les escargots peuvent dormir trois ans.",1],["Le pôle Nord est un continent.",0],
+["Une journée sur Vénus est plus longue qu'une année sur Vénus.",1],["La France a plus de fuseaux horaires que tout autre pays.",1],["Le basket a été inventé aux États-Unis.",1],
+["Les dauphins dorment avec un œil ouvert.",1],
+["Les fraises ne sont pas des baies, mais les bananes oui.",1],["L'homme descend directement du chimpanzé.",0],["Le kiwi est aussi un oiseau.",1],["La Lune s'éloigne de la Terre chaque année.",1],
+["Le sang est bleu dans les veines.",0],["Un poulpe a huit bras.",1],["Napoléon est né en Corse.",1],["Les manchots peuvent voler.",0],
+["La Moselle est une rivière.",1],["Le verre est fait à partir de sable.",1],["Le blanc d'œuf contient plus de protéines que le jaune.",1],["Les girafes ont plus de vertèbres au cou que les humains.",0]
+);
+/* Rotation : on ne revoit une question qu'une fois toutes les autres passées (mémorisé sur le téléphone) */
+function freshFirst(arr,key,n=10){const id=x=>String(x[1]&&x[1].length>3?x[1]:x[0]).slice(0,60);
+  let seen;try{seen=new Set(JSON.parse(localStorage.getItem("sa_seen_"+key)||"[]"))}catch(e){seen=new Set()}
+  let fresh=arr.filter(q=>!seen.has(id(q)));if(fresh.length<n){seen=new Set();fresh=arr.slice()}
+  const out=[...shuffle(fresh),...shuffle(arr.filter(q=>seen.has(id(q))))];
+  out.slice(0,n).forEach(q=>seen.add(id(q)));try{localStorage.setItem("sa_seen_"+key,JSON.stringify([...seen]))}catch(e){}
+  return out}
+delete GAMES.chrono;delete CAT.chrono;
 
 fxInit();sndInit();home();
 
