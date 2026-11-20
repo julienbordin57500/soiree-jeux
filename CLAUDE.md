@@ -23,6 +23,7 @@
   (« Oui, en ligne »), et toujours mettre à jour ce fichier en même temps.
 
 ## Ce que Julien a demandé et aimé (historique)
+- 21/11/2026 : « améliore l'interface » → menu d'accueil en 4 boutons alignés (`.hmenu`), héros verrouillés en silhouette « ? », moments forts « Tout le monde ! » si tous ex æquo, noms masqués au hockey (`.zone.ghost`).
 - 20/11/2026 : aperçu du lien avec le logo, icône Android, retrait de pile10.
 - 20/11/2026 : nouveau nom « Tous au Milieu » + logo mascotte (il a refusé la 1re version « téléphone sur fond bleu », a choisi Captain Néon en violet et rose).
 - Un vrai jeu, pas une maquette : style cartoon en relief, musique électro-funk libre de droits, effets qui « claquent »,
