@@ -1,6 +1,10 @@
-# Soirée Arena
+# Tous au Milieu (ancien nom : Soirée Arena)
 
 ## Pour reprendre (à lire en premier)
+- Nom du jeu : **Tous au Milieu** (choisi par Julien le 20/11/2026 ; le dépôt garde son adresse `soiree-jeux`).
+- Logo et icône : dossier `logo/` (mascotte Captain Néon, poing levé, fond violet-rose). `logo/gen.py` refait
+  `logo.svg`/`icone.svg` ; les PNG 1024 sont rendus avec Chrome sans fenêtre. Icône iPhone : `apple-touch-icon.png`
+  (180 px) et `icone-512.png`, réduites depuis `logo/icone.png` avec `sips -z`.
 - Jeu en ligne : https://julienbordin57500.github.io/soiree-jeux/ (GitHub Pages, branche `main`).
 - Copie d'essai privée sur claude.ai (le blind test n'y marche pas) : https://claude.ai/artifact/2sAsUzr3AzaeXk3i2BoXjs
 - Pour modifier : cloner le dépôt dans le dossier temporaire de la session, **modifier directement `index.html`**,
@@ -16,6 +20,7 @@
   (« Oui, en ligne »), et toujours mettre à jour ce fichier en même temps.
 
 ## Ce que Julien a demandé et aimé (historique)
+- 20/11/2026 : nouveau nom « Tous au Milieu » + logo mascotte (il a refusé la 1re version « téléphone sur fond bleu », a choisi Captain Néon en violet et rose).
 - Un vrai jeu, pas une maquette : style cartoon en relief, musique électro-funk libre de droits, effets qui « claquent »,
   personnages dessinés expressifs, inspiré des grands jeux mobiles, coloré et rigolo.
 - Très sensible aux **cases et boutons coupés** et au **texte brouillon** : vérifier chaque écran sur petit iPhone.

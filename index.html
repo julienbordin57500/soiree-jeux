@@ -7,8 +7,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Soirée Arena">
-<title>Soirée Arena</title>
+<meta name="apple-mobile-web-app-title" content="Tous au Milieu">
+<title>Tous au Milieu</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icone-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Lilita+One&display=swap" rel="stylesheet">
@@ -1588,7 +1590,7 @@ function home(){
   stage.innerHTML=`<div class="scr">
    <div class="topbar"><div class="chipc"><i>🏆</i>${PROF.tro}</div><div class="chipc"><i>🦸</i>${nu}/${HEROES.length}</div><button class="chipc chipb" id="ft"><i>${FETES[G.fete].i}</i>Thème</button></div>
    <button class="mute" id="mu">${muted?"🔇":"🔊"}</button>
-   <div class="orbit">${ul.map((k,j)=>`<div class="orb" style="--k:${j}">${avatar(k,56)}</div>`).join("")}<div class="logo">SOIRÉE<small>ARENA</small></div></div>
+   <div class="orbit">${ul.map((k,j)=>`<div class="orb" style="--k:${j}">${avatar(k,56)}</div>`).join("")}<div class="logo"><small>TOUS AU</small>MILIEU</div></div>
    ${G.fete!=="classique"?`<div class="fetetag">${FETES[G.fete].i} Édition ${FETES[G.fete].n}</div>`:""}<p class="tag">Des mini-jeux à la chaîne entre amis.<br>Téléphone au milieu… ou de main en main&nbsp;!</p>
    <button class="btn big cta" id="play">JOUER</button>
    <div class="hrow"><button class="btn ghost sm" id="hh">🦸 Héros${nu>PROF.seen?` <span class="tagx">NEW</span>`:""}</button><button class="btn ghost sm" id="gj">🎮 Jeux</button><button class="btn ghost sm" id="rr">🏆 Records</button><button class="btn ghost sm" id="how">❓ Règles</button></div>
