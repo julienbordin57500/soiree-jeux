@@ -4,7 +4,10 @@
 - Nom du jeu : **Tous au Milieu** (choisi par Julien le 20/11/2026 ; le dépôt garde son adresse `soiree-jeux`).
 - Logo et icône : dossier `logo/` (mascotte Captain Néon, poing levé, fond violet-rose). `logo/gen.py` refait
   `logo.svg`/`icone.svg` ; les PNG 1024 sont rendus avec Chrome sans fenêtre. Icône iPhone : `apple-touch-icon.png`
-  (180 px) et `icone-512.png`, réduites depuis `logo/icone.png` avec `sips -z`.
+  (180 px), `icone-192.png` et `icone-512.png`, réduites depuis `logo/icone.png` avec `sips -z`.
+- Android / « installer l'appli » : `manifest.webmanifest` (nom, icônes, plein écran).
+- Aperçu du lien (WhatsApp, Messenger…) : balises `og:` dans `<head>`, image `partage.jpg` (1200×630, logo au
+  centre sur fond flouté). WhatsApp garde l'ancien aperçu en mémoire quelque temps.
 - Jeu en ligne : https://julienbordin57500.github.io/soiree-jeux/ (GitHub Pages, branche `main`).
 - Copie d'essai privée sur claude.ai (le blind test n'y marche pas) : https://claude.ai/artifact/2sAsUzr3AzaeXk3i2BoXjs
 - Pour modifier : cloner le dépôt dans le dossier temporaire de la session, **modifier directement `index.html`**,
@@ -20,6 +23,7 @@
   (« Oui, en ligne »), et toujours mettre à jour ce fichier en même temps.
 
 ## Ce que Julien a demandé et aimé (historique)
+- 20/11/2026 : aperçu du lien avec le logo, icône Android, retrait de pile10.
 - 20/11/2026 : nouveau nom « Tous au Milieu » + logo mascotte (il a refusé la 1re version « téléphone sur fond bleu », a choisi Captain Néon en violet et rose).
 - Un vrai jeu, pas une maquette : style cartoon en relief, musique électro-funk libre de droits, effets qui « claquent »,
   personnages dessinés expressifs, inspiré des grands jeux mobiles, coloré et rigolo.
@@ -28,7 +32,7 @@
 - Retirés à sa demande : Feu rouge (doublon de course), Parcours de golf (doublon), Chrono parfait (incompris), voix de synthèse.
 - Aime jouer à deux avec sa femme : les jeux à 2 en même temps comptent (mini-golf, ping-pong).
 - Quiz : il veut de la diversité, pas de questions qui reviennent vite ; en ajouter régulièrement.
-- Idée possible plus tard : retirer aussi « Stop à 10 secondes » (`pile10`), proche de Chrono parfait (proposé, pas tranché).
+- 20/11/2026 : « Stop à 10 secondes » (`pile10`) retiré aussi (`delete GAMES.pile10`), à la demande de Julien.
 
 Jeu de soirée sur un seul téléphone, à une suite de mini-jeux tirés au hasard (esprit Mario Party),
 style **cartoon en relief** façon jeux mobiles (Brawl Stars) : gros boutons qui s'enfoncent, textes contourés,
@@ -49,7 +53,7 @@ Fin : **étoiles bonus** (`bonusStars`, 2 catégories tirées au sort) → podiu
 → gage du dernier (option « à la fin ») → **route des trophées** (`trophyRoad`) avec coffre si un héros se débloque.
 Points par manche : 1er = n-1, 2e = n-2… ; égalité totale = personne ne marque.
 
-## Les 43 mini-jeux
+## Les 42 mini-jeux
 **27 jeux de table** (objet `GAMES`) : degaine, course, sumo, bombe, cible, couleur, quiz, vf, compte,
 blind (extraits iTunes), etoiles, corde, hockey, dessin, ballon (gonfler sans éclater), roue (stopper l'aiguille),
 golf (mini-golf, 1 trou chacun, lance-pierre), burger (mémoriser puis reconstruire), flechettes, estime (le plus proche
@@ -59,7 +63,7 @@ peinture (couvrir l'écran de sa couleur, `full`), pong (2 joueurs seulement, `n
 « taper vite jusqu'à une ligne d'arrivée », en ajouter d'autres genres.
 **Dessin éclair** : le dessinateur prend le téléphone, voit son mot en gardant le doigt appuyé, 60 s ;
 « Trouvé » → il choisit qui a trouvé ; temps écoulé → personne ne marque.
-**16 jeux à se passer** (`solo:true`) : tour, memoire, tiles, devine, cercle (40 s max), bulles, reflexe, pile10, quizx,
+**15 jeux à se passer** (`solo:true`) : tour, memoire, tiles, devine, cercle (40 s max), bulles, reflexe, quizx,
 helico (doigt appuyé pour monter), intrus (trouver l'image différente), calcul (calcul mental 30 s),
 basket (lancer franc), anagramme (mot mélangé), lampe (lampe torche), espion (jeu de groupe 3+ joueurs :
 mot secret, discussion, vote ; déroulé spécial via `custom(key)` au lieu de `run`).

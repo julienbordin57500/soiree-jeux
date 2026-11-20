@@ -11,6 +11,16 @@
 <title>Tous au Milieu</title>
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icone-512.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="description" content="Des mini-jeux à la chaîne entre amis : téléphone au milieu, ou de main en main ! 2 à 8 joueurs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://julienbordin57500.github.io/soiree-jeux/">
+<meta property="og:title" content="Tous au Milieu">
+<meta property="og:description" content="Des mini-jeux à la chaîne entre amis : téléphone au milieu, ou de main en main ! 2 à 8 joueurs.">
+<meta property="og:image" content="https://julienbordin57500.github.io/soiree-jeux/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Lilita+One&display=swap" rel="stylesheet">
@@ -3095,7 +3105,7 @@ function freshFirst(arr,key,n=10){const id=x=>String(x[1]&&x[1].length>3?x[1]:x[
   const out=[...shuffle(fresh),...shuffle(arr.filter(q=>seen.has(id(q))))];
   out.slice(0,n).forEach(q=>seen.add(id(q)));try{localStorage.setItem("sa_seen_"+key,JSON.stringify([...seen]))}catch(e){}
   return out}
-delete GAMES.chrono;delete CAT.chrono;
+delete GAMES.chrono;delete CAT.chrono;delete GAMES.pile10;delete CAT.pile10;
 
 fxInit();sndInit();home();
 
