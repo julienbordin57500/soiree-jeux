@@ -23,6 +23,14 @@
   (« Oui, en ligne »), et toujours mettre à jour ce fichier en même temps.
 
 ## Ce que Julien a demandé et aimé (historique)
+- 21/11/2026 : **refonte de l'accueil** : Captain Néon animé au centre (`MASCOT`, fabriqué par `logo/mascotte_animee.py` :
+  calques cape / bras / tête / yeux), les héros débloqués tournent autour en se dandinant et sautent sur les basses
+  de la musique (`heroHop`), tuiles colorées, bouton JOUER avec rond ▶. **Écran titre** « Touche l'écran pour commencer »
+  (`splash`) : ce 1er toucher lance la musique (l'iPhone interdit le son avant un toucher). Tous les héros clignent
+  des yeux (`.aeye`). **Reflet qui balaie les boutons supprimé** (Julien ne veut plus jamais cet effet) → « boing »
+  élastique sur JOUER + gerbe de confettis sous le doigt (`.tapburst`). Avant d'ajouter une classe CSS, vérifier
+  qu'elle n'existe pas déjà (`.up`, `.pop`, `.tbar`, `.on`… sont pris).
+- 21/11/2026 : « rajoute des idées de mini-jeux, vérifie bugs et timings » → 5 nouveaux jeux (bloc « MINI-JEUX v13 ») : Bonneteau, Nombre unique, Tape-taupe, Funambule, Coupe-fruits. Réglages vérifiés avec des joueurs simulés (`outils-test/joueurs13.js`) : funambule ≈ 35 m pour un joueur moyen, 80 m (le maximum) pour un très bon ; coupe-fruits ≈ 40 fruits pour un joueur parfait. Attention : la classe `.up` existe déjà (badge vert), donner des noms de classe uniques aux nouveaux jeux.
 - 21/11/2026 : « améliore l'interface » → menu d'accueil en 4 boutons alignés (`.hmenu`), héros verrouillés en silhouette « ? », moments forts « Tout le monde ! » si tous ex æquo, noms masqués au hockey (`.zone.ghost`).
 - 20/11/2026 : aperçu du lien avec le logo, icône Android, retrait de pile10.
 - 20/11/2026 : nouveau nom « Tous au Milieu » + logo mascotte (il a refusé la 1re version « téléphone sur fond bleu », a choisi Captain Néon en violet et rose).
@@ -54,19 +62,22 @@ Fin : **étoiles bonus** (`bonusStars`, 2 catégories tirées au sort) → podiu
 → gage du dernier (option « à la fin ») → **route des trophées** (`trophyRoad`) avec coffre si un héros se débloque.
 Points par manche : 1er = n-1, 2e = n-2… ; égalité totale = personne ne marque.
 
-## Les 42 mini-jeux
-**27 jeux de table** (objet `GAMES`) : degaine, course, sumo, bombe, cible, couleur, quiz, vf, compte,
+## Les 47 mini-jeux
+**30 jeux de table** (objet `GAMES`) : degaine, course, sumo, bombe, cible, couleur, quiz, vf, compte,
 blind (extraits iTunes), etoiles, corde, hockey, dessin, ballon (gonfler sans éclater), roue (stopper l'aiguille),
 golf (mini-golf, 1 trou chacun, lance-pierre), burger (mémoriser puis reconstruire), flechettes, estime (le plus proche
 d'un nombre, règle à glisser), plusmoins (cartes plus haut / plus bas), pfc (pierre-feuille-ciseaux), paires (memory), serpents (traînées lumineuses, ↺ ↻),
-peinture (couvrir l'écran de sa couleur, `full`), pong (2 joueurs seulement, `need`, `full`), atterro (parachute).
+peinture (couvrir l'écran de sa couleur, `full`), pong (2 joueurs seulement, `need`, `full`), atterro (parachute),
+bonneteau (suivre la balle sous 3 gobelets, 5 manches de plus en plus rapides ; dans les coins du haut le bouton j vise le gobelet 2-j),
+unique (bluff : le plus petit nombre 1-5 choisi par une seule personne marque sa valeur, 3 joueurs mini), taupe (tape-taupe dans son coin, 25 s).
 « Feu rouge, feu vert » a été retiré (trop proche de Course folle) : Julien trouve qu'il y a déjà assez de jeux
 « taper vite jusqu'à une ligne d'arrivée », en ajouter d'autres genres.
 **Dessin éclair** : le dessinateur prend le téléphone, voit son mot en gardant le doigt appuyé, 60 s ;
 « Trouvé » → il choisit qui a trouvé ; temps écoulé → personne ne marque.
-**15 jeux à se passer** (`solo:true`) : tour, memoire, tiles, devine, cercle (40 s max), bulles, reflexe, quizx,
+**17 jeux à se passer** (`solo:true`) : tour, memoire, tiles, devine, cercle (40 s max), bulles, reflexe, quizx,
 helico (doigt appuyé pour monter), intrus (trouver l'image différente), calcul (calcul mental 30 s),
-basket (lancer franc), anagramme (mot mélangé), lampe (lampe torche), espion (jeu de groupe 3+ joueurs :
+basket (lancer franc), anagramme (mot mélangé), lampe (lampe torche), funambule (équilibre sur un fil, appui gauche/droite, 40 s max, score en mètres),
+fruits (coupe-fruits au doigt, combos, bombes −3, 30 s), espion (jeu de groupe 3+ joueurs :
 mot secret, discussion, vote ; déroulé spécial via `custom(key)` au lieu de `run`).
 « Parcours de golf » retiré : Julien préfère le mini-golf où l'on joue en même temps.
 Chaque jeu a une règle courte `tip` (objet `TIPS`) affichée dans les petits coins et dans l'écran « Les jeux ».
